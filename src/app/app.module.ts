@@ -4,6 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicModule } from './modules/public/public.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { CompanyModule } from './modules/company/company.module';
 PublicModule
 @NgModule({
   declarations: [
@@ -13,6 +17,10 @@ PublicModule
     BrowserModule,
     AppRoutingModule,
     PublicModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    CompanyModule
 
   ],
   providers: [],
