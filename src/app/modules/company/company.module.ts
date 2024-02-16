@@ -25,6 +25,12 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule,
     CompanyRoutingModule,
     SharedModule
+  ],
+  exports:[
+    companyComponent,
+    DashboardComponent,
+    EmployeeformComponent,
+    EmployeelistComponent
   ]
 })
 export class CompanyModule { }

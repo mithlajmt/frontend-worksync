@@ -46,15 +46,24 @@ export class VerificationOtpComponent  implements OnInit {
   
     this.apiService.verifyOtp(combinedData).subscribe({
       next: (res) => {
-        console.log(res);
         if (res.success) {
           // Display success message in your component
           console.log('OTP verified successfully');
-          console.log(res.token)
+
          this.validationResult=res.message
          this.token=res.token
+
+         console.log(this.token,'hihihii')
         this.jwtService.setToken(this.token)
+
+        const decodedtoken = this.jwtService.decodeToken(this.token)
+        // const role = decodedtoken?.role;
+        // const companyID = decodedtoken?.companyID
+        // console.log(role,companyID);
         this.router.navigate(['/company'])
+        
+        
+        // this.router.navigate(['/company'])
 
          
         } else {

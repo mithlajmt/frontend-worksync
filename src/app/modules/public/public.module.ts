@@ -13,6 +13,8 @@ import { PublicviewComponent } from './components/publicview/publicview.componen
 import { VerificationOtpComponent } from './components/authorisation/verification-otp/verification-otp.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { companyComponent } from '../company/company.component';
+import { CompanyModule } from '../company/company.module';
 VerificationOtpComponent
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ VerificationOtpComponent
     PublicRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CompanyModule
 
   ],
   exports: [LandingpageComponent] 
