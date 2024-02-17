@@ -57,9 +57,9 @@ export class VerificationOtpComponent  implements OnInit {
         this.jwtService.setToken(this.token)
 
         const decodedtoken = this.jwtService.decodeToken(this.token)
-        // const role = decodedtoken?.role;
-        // const companyID = decodedtoken?.companyID
-        // console.log(role,companyID);
+        const role = decodedtoken?.role;
+        const companyID = decodedtoken?.companyID
+        console.log(role,companyID);
         this.router.navigate(['/company'])
         
         
@@ -79,6 +79,5 @@ export class VerificationOtpComponent  implements OnInit {
       },
     });
   }
-  
 
 }

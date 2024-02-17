@@ -1,66 +1,95 @@
-<form [formGroup]="employeeForm" class="horizontal-form"  (ngSubmit)="onSubmit()">
-    <!-- Personal Information -->
-    <div class="form-row">
-      <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input type="text" formControlName="firstName" id="firstName" />
+<div class="form-container min-w-screen m-6 rounded hover:shadow-lg transition duration-300 bg-gradient-to-r from-[#4CAF50] to-[#45aaf2] flex flex-col">
+  <h1 class="font-kanit font-semibold text-2xl pl-8 pt-6 text-white">ADD EMPLOYEE</h1>
+  <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" class="m-3 ml-12 md:mt-7 pb-9 flex lg:flex-row flex-col lg:gap-20 self-center gap-10 flex-wrap ">
+    <div class="font-serif field-container text-sm gap-5 flex flex-col">
+
+      <div class="flex flex-col border-black">
+        <label for="employeeName" class="text-white">EMPLOYEE NAME :</label>
+        <input type="text" id="employeeName" formControlName="employeeName" placeholder="Enter First Name" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
       </div>
-      <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" formControlName="lastName" id="lastName" />
-      </div>
-    </div>
-  
-    <div class="form-row">
-      <div class="form-group">
-        <label for="dateOfBirth">Date of Birth:</label>
-        <input type="date" formControlName="dateOfBirth" id="dateOfBirth" />
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender:</label>
-        <select formControlName="gender" id="gender">
+
+      <div class="flex flex-col border-black relative">
+        <label for="gender" class="text-white">GENDER :</label>
+        <select id="gender" formControlName="gender" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2] appearance-none">
+          <option value="" disabled selected class="text-gray-500">Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none transition-transform transform hover:rotate-180">
+          <svg class="h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
       </div>
+
+      <div class="flex flex-col border-black">
+        <label for="contactNumber" class="text-white">Phone Number :</label>
+        <input type="text" id="contactNumber" formControlName="contactNumber" placeholder="Enter Phone Number" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
+      </div>
+
     </div>
-  
-    <!-- Contact Information -->
-    <div class="form-row">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" formControlName="email" id="email" />
+
+    <div class="font-serif field-container text-sm gap-5 flex flex-col">
+
+      <div class="flex flex-col border-black">
+        <label for="email" class="text-white">EMAIL :</label>
+        <input type="text" id="email" formControlName="email" placeholder="Enter email address" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
       </div>
-      <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" formControlName="phoneNumber" id="phoneNumber" />
+
+      <div class="flex flex-col border-black relative">
+        <label for="role" class="text-white">EMPLOYEE ROLE :</label>
+        <select id="role" formControlName="role" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2] appearance-none">
+          <option value="" disabled selected class="text-gray-500">Select Role</option>
+          <option value="Department-head">Department-head</option>
+          <option value="Employee">Employee</option>
+        </select>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none transition-transform transform hover:rotate-180">
+          <svg class="h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
       </div>
+
+      <div class="flex flex-col border-black relative">
+        <label for="department" class="text-white">DEPARTMENT :</label>
+        <select id="department" formControlName="department" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2] appearance-none">
+          <option value="" disabled selected class="text-gray-500">Select department</option>
+          <option value="Sales">Sales</option>
+          <option value="Promotion">Promotion</option>
+        </select>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none transition-transform transform hover:rotate-180">
+          <svg class="h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+      </div>
+
     </div>
-  
-    <!-- Hire Date and Department -->
-    <div class="form-row">
-      <div class="form-group">
-        <label for="hireDate">Hire Date:</label>
-        <input type="date" formControlName="hireDate" id="hireDate" />
+    <div class="font-serif field-container text-sm gap-5 flex flex-col">
+
+      <div class="flex flex-col border-black">
+        <label for="dateOfBirth" class="text-white">DATE OF BIRTH :</label>
+        <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
       </div>
-      <div class="form-group">
-        <label for="department">Department:</label>
-        <input type="text" formControlName="department" id="department" />
+
+      <div class="flex flex-col border-black">
+        <label for="hireDate" class="text-white">HIRING DATE :</label>
+        <input type="date" id="hireDate" formControlName="hireDate" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
       </div>
-    </div>
-  
-    <!-- Role/Position -->
-    <div class="form-group">
-      <label for="position">Role/Position:</label>
-      <input type="text" formControlName="position" id="position" />
-    </div>
-  
-    <!-- Submit Button -->
-    <div class="form-group">
-      <button type="submit">Submit</button>
+
+      <div class="flex flex-col border-black">
+        <label for="identityProof" class="text-white">IDENTITY PROOF :</label>
+        <input type="file" id="identityProof" formControlName="identityProof" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2">
+      </div>
+
+    
+      <button type="submit" class="bg-[#45aaf2] text-white font-semibold px-6 py-2 rounded-lg mt-4">SUBMIT</button>
     </div>
   </form>
-  
-
-
-  <!-- <app-employeelist></app-employeelist> -->
+</div>

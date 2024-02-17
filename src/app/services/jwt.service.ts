@@ -1,6 +1,9 @@
 import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+// import { LocalStorage } from '@angular/common';
+
+
 
 
 @Injectable({
@@ -8,15 +11,17 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class JwtService {
 
-  constructor() { }
+  // constructor(private localstorage:LocalStorage) { }
 
   
   setToken(token: string) {
-    localStorage.setItem('token', token);
+    localStorage.setItem('authToken',token)
+    console.log(token);
+    
   }
 
   getTokenFromLocalStorage(): string | null {
-    return localStorage.getItem('Token');
+    return localStorage.getItem('authToken');
   }
 
   deleteToken(){

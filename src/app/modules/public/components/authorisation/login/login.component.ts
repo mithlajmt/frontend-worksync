@@ -6,6 +6,7 @@ import { Login } from '../../../interfaces/login';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
+import { JwtService } from 'src/app/services/jwt.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private http:HttpClient,
     private router:Router,
-    private api:ApiService
+    private api:ApiService,
+    private jwt:JwtService
     ) { }
  
   ngOnInit(): void {    
@@ -46,6 +48,9 @@ export class LoginComponent implements OnInit {
         if(res.success){
           console.log('chathisghatt');
           this.router.navigate(['/company/dashboard'])
+         const decodedToken= this.jwt.decodeToken(res.token)
+         console.log(decodedToken.companyID,decodedToken.role);
+         
         }
       },
       error:(err)=>{

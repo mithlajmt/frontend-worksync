@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicModule } from './modules/public/public.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CompanyModule } from './modules/company/company.module';
+import { AuthInterceptor } from './services/AuthInterceptor.service';
 PublicModule
 @NgModule({
   declarations: [
@@ -20,10 +21,15 @@ PublicModule
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    CompanyModule
-
+    CompanyModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

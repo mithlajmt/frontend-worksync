@@ -7,6 +7,7 @@ import { LoginComponent } from './components/authorisation/login/login.component
 import { DashboardComponent } from '../company/components/dashboard/dashboard/dashboard.component';
 import { EmployeeformComponent } from '../company/components/employee/employeeform/employeeform.component';
 import { companyComponent } from '../company/company.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
-      {path:'employee',component:EmployeeformComponent}
+      {path:'employee',component:EmployeeformComponent},
     ],
   },
 

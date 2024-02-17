@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { companyComponent } from '../company/company.component';
 import { CompanyModule } from '../company/company.module';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 VerificationOtpComponent
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ VerificationOtpComponent
     SignupComponent,
     LoginComponent,
     PublicviewComponent,
-    VerificationOtpComponent
+    VerificationOtpComponent,
+    NotfoundComponent
 
   ],
   imports: [
@@ -38,7 +40,7 @@ VerificationOtpComponent
     CompanyModule
 
   ],
-  exports: [LandingpageComponent] 
+  exports: [LandingpageComponent,NotfoundComponent] 
 
 })
 export class PublicModule { }

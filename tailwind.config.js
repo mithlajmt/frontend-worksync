@@ -10,6 +10,8 @@ module.exports = {
       },
         fontFamily: {
           sans: ['Poppins', 'sans-serif'],
+          kanit:["Kanit", 'sans-serif'],       
+
         }
       },
   },

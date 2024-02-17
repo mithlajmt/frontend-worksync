@@ -1,0 +1,43 @@
+.form-container{
+    box-shadow: 0px 0px 3px black;
+}
+
+/* .field-container{
+    font-weight: 200;
+    color: red;
+} */
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .custom-dropdown::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .custom-dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px; /* Space for the arrow */
+    cursor: pointer;
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+  
+  /* Add a subtle hover effect */
+  .custom-dropdown:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Style the selected option */
+  .custom-dropdown select option:checked {
+    background-color: #4caf50; /* Change the background color of the selected option */
+    color: #fff; /* Change the text color of the selected option */
+  }
+  

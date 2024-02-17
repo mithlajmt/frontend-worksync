@@ -68,6 +68,7 @@ export class SignupComponent {
       next:(res:any)=>{
         this.showOtpComp=true
         this.errorMessage=''
+        
         console.log(res);
         
       },
