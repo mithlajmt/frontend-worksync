@@ -35,15 +35,15 @@
 
       <div class="flex flex-col border-black">
         <label for="email" class="text-white">EMAIL :</label>
-        <input type="text" id="email" formControlName="email" placeholder="Enter email address" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
+        <input type="text" id="email" formControlName="contactEmail" placeholder="Enter email address" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2]">
       </div>
 
       <div class="flex flex-col border-black relative">
         <label for="role" class="text-white">EMPLOYEE ROLE :</label>
         <select id="role" formControlName="role" class="border rounded-lg border-th mt-2 min-w-[300px] md:max-w-[240px] md:min-h-12 px-3 py-2 text-gray-700 focus:outline-none focus:border-[#45aaf2] appearance-none">
           <option value="" disabled selected class="text-gray-500">Select Role</option>
-          <option value="Department-head">Department-head</option>
-          <option value="Employee">Employee</option>
+          <option value="departmentHead">Department head</option>
+          <option value="employee">Employee</option>
         </select>
         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none transition-transform transform hover:rotate-180">
           <svg class="h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
