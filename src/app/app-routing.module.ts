@@ -10,9 +10,7 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('../app/modules/public/public.module').then(m => m.PublicModule) },
   { path: 'company', loadChildren: () => CompanyRoutingModule },
   {path:'**',component:NotfoundComponent}
-
-
-
+  
 ];
 
 @NgModule({

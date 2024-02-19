@@ -4,16 +4,19 @@ import { EmployeeformComponent } from './components/employee/employeeform/employ
 import { companyComponent } from './company.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { NotificationsComponent } from '../shared/components/notifications/notifications.component';
 
 const routes: Routes = [
     {
       path: 'company',
-      component: DashboardComponent,
+      component:companyComponent,
       children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         { path: 'dashboard', component: DashboardComponent },
         {path:'employee',component:EmployeeformComponent},
-        {path:'departments',component:DepartmentsComponent}
+        {path:'departments',component:DepartmentsComponent},
+        {path:'notifications',component:NotificationsComponent}
+        
       ],
     },
   ];
