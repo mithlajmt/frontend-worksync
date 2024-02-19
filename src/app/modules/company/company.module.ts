@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { RouterModule } from '@angular/router';
 import { CompanyRoutingModule } from './company-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { DepartmentsComponent } from './components/departments/departments.component';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     EmployeeformComponent,
     EmployeelistComponent,
     companyComponent,
-    DashboardComponent
+    DashboardComponent,
+    DepartmentsComponent
 
   ],
   imports: [
@@ -24,7 +26,9 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     RouterModule,
     CompanyRoutingModule,
-    SharedModule
+    SharedModule,
+    CompanyRoutingModule,
+
   ],
   exports:[
     companyComponent,

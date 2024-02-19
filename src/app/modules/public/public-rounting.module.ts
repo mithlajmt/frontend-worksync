@@ -8,6 +8,7 @@ import { DashboardComponent } from '../company/components/dashboard/dashboard/da
 import { EmployeeformComponent } from '../company/components/employee/employeeform/employeeform.component';
 import { companyComponent } from '../company/company.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { DepartmentsComponent } from '../company/components/departments/departments.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       {path:'employee',component:EmployeeformComponent},
+      {path:'departments',component:DepartmentsComponent},
     ],
   },
 

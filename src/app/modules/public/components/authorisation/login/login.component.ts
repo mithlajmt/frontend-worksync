@@ -48,10 +48,21 @@ export class LoginComponent implements OnInit {
         
         if(res.success){
           console.log('chathisghatt');
-          this.router.navigate(['/company/dashboard'])
           this.jwt.setToken(res.token)
          const decodedToken= this.jwt.decodeToken(res.token)
          console.log(decodedToken.companyID,decodedToken.role);
+         if(decodedToken.role === 'employee'){
+         }
+         else if(decodedToken.role === 'companyAdmin'){
+          this.router.navigate(['/company/dashboard'])
+         }
+         else if(decodedToken.role === 'admin'){
+          // this.router.navigate(['/company/dashboard'])
+         }
+         else if(decodedToken.role === 'departmentHead'){
+          // this.router.navigate(['/company/dashboard'])
+         }
+
         }
       },
       error:(err)=>{

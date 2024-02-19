@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeformComponent } from './components/employee/employeeform/employeeform.component';
 import { companyComponent } from './company.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
 
 const routes: Routes = [
     {
@@ -11,7 +12,8 @@ const routes: Routes = [
       children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         { path: 'dashboard', component: DashboardComponent },
-        {path:'employee',component:EmployeeformComponent}
+        {path:'employee',component:EmployeeformComponent},
+        {path:'departments',component:DepartmentsComponent}
       ],
     },
   ];
