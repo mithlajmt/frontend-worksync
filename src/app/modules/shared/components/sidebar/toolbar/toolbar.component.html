@@ -1,11 +1,17 @@
-<div class=" md:w-[270px] rounded-tr-[45px]  min-h-screen flex flex-col shadow-2xl gap-8 text-[#76839A]">
-    <div > <h1 class="font-sans font-bold text-2xl px-5 mt-10 text- text-black">"COMPANY NAME"</h1> </div>
-    <div class="flex-1 white  bg-red flex flex-col pr-2">
-        <input type="" placeholder="Search" class="search-in-toolbar bg-white shadow-2xl self-center " >
-        <button *ngIf="isCompany" [routerLink]="['/company/employee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-3 pl-14">Employees</button>
-        <button  [routerLink]="['/company/dashboard']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14">dashboard</button>
-        <button  [routerLink]="['/company/departments']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14">departments</button>
-        <button  [routerLink]="['/company/notifications']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14">Notifications</button>
-        <button (click)="ji()">sflkmivuohb</button>
+<div class="md:w-[270px] rounded-tr-[45px] min-h-screen flex flex-col shadow-2xl gap-8 text-[#76839A]">
+    <div>
+        <h1 class="font-sans font-bold text-2xl px-5 mt-10 text-black">"COMPANY NAME"</h1>
+    </div>
+    <div class="flex-1 white bg-red flex flex-col pr-2">
+        <input type="" placeholder="Search" class="search-in-toolbar bg-white shadow-2xl self-center">
+        <button *ngIf="isCompany" [routerLink]="['/company/employee']"  class="bg-blue-950 text-left h-10 rounded-r-3xl mt-3 pl-14 hover:bg-blue-850">Employees</button>
+        <button [routerLink]="['/company/dashboard']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Dashboard</button>
+        <button [routerLink]="['/company/departments']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Departments</button>
+        <button [routerLink]="['/company/notifications']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Notifications</button>
+        <button [routerLink]="['/company/addemployee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Recruitment</button>
+        <button [routerLink]="['/company/todo']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Todo</button>
+        <!-- <button [routerLink]="['/company/emoloyee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">employees</button> -->
+        <button (click)="ji()" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">sflkmivuohb</button>
     </div>
 </div>
+```

@@ -10,14 +10,8 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class JwtService {
-
-  // constructor(private localstorage:LocalStorage) { }
-
-  
   setToken(token: string) {
     localStorage.setItem('authToken',token)
-    console.log(token);
-    
   }
 
   getTokenFromLocalStorage(): string | null {

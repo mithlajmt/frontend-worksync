@@ -1,1 +1,48 @@
-<p>todo works!</p>
+<div
+  class="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-800 to-gray-700 text-gray-300"
+>
+  <div
+    class="task-container w-full sm:w-3/4 lg:w-2/3 xl:w-1/2 font-sans bg-gray-900 p-8 rounded-lg shadow-lg"
+  >
+    <h1 class="text-4xl mb-6 text-center">Classy ToDo App</h1>
+    <div
+      *ngFor="let task of tasks"
+      class="task bg-blue-500 text-gray-100 border-none my-4 p-4 rounded-lg cursor-pointer transition-all duration-300 ease-in-out"
+      (click)="editTask(task)"
+    >
+      <p class="text-lg">
+        {{ task.title }} - {{ task.description }} - {{ task.status }}
+      </p>
+      <button
+        class="bg-green-500 text-gray-100 p-2 rounded cursor-pointer mr-2"
+        (click)="editTask(task)"
+      >
+        Edit
+      </button>
+      <button
+        class="bg-red-500 text-gray-100 p-2 rounded cursor-pointer"
+        (click)="deleteTask(task._id)"
+      >
+        Delete
+      </button>
+    </div>
+    
+    <div class="add-task mt-8 flex flex-col items-center sm:flex-row">
+      <h2 class="text-2xl text-gray-100 mb-4 sm:mb-0 sm:mr-4">Add Task</h2>
+      <input
+        placeholder="Title"
+        class="p-2 mb-4 sm:mb-0 sm:mr-4 border border-gray-300 rounded"
+      />
+      <input
+        placeholder="Description"
+        class="p-2 mb-4 sm:mb-0 sm:mr-4 border border-gray-300 rounded"
+      />
+      <button
+        class="bg-green-500 text-gray-100 p-3 rounded cursor-pointer transition-all duration-300 ease-in-out"
+        (click)="addTask()"
+      >
+        Add Task
+      </button>
+    </div>
+  </div>
+</div>

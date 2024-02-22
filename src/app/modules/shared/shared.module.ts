@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoComponent } from './components/todo/todo.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -15,12 +16,13 @@ import { TodoComponent } from './components/todo/todo.component';
     TopbarComponent,
     NotificationsComponent,
     TodoComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
   ],
-  exports:[TopbarComponent,ToolbarComponent,NotificationsComponent]
+  exports:[TopbarComponent,ToolbarComponent,NotificationsComponent,ConfirmationDialogComponent]
 })
 export class SharedModule { }

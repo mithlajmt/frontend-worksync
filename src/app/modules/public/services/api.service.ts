@@ -30,6 +30,8 @@ const httpOptions = {
     userSignupPost(data:Signup){
       return this.http.post(`${this.userapi}/signup`,data,httpOptions)
     }
+
+
   
   
     verifyOtp(otp:any){
@@ -43,6 +45,4 @@ const httpOptions = {
     login(data:Login){
       return this.http.post<any>(`${this.apiUrl}/login`,data,httpOptions)
     }
-  
-
-    }
+ }

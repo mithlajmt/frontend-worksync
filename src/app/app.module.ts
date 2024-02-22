@@ -9,6 +9,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CompanyModule } from './modules/company/company.module';
 import { AuthInterceptor } from './services/AuthInterceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './modules/shared/shared.module';
+
+
 PublicModule
 @NgModule({
   declarations: [
@@ -22,6 +26,8 @@ PublicModule
     HttpClientModule,
     RouterModule,
     CompanyModule,
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [
     {

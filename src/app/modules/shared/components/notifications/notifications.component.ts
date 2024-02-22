@@ -29,8 +29,6 @@ export class  NotificationsComponent implements OnInit {
     });
   }
 
-
-
   createEvent(): void {
     // Handle form submission logic here
     console.log(this.eventForm.value);

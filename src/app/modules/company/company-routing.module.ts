@@ -5,17 +5,21 @@ import { companyComponent } from './company.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { NotificationsComponent } from '../shared/components/notifications/notifications.component';
+import { TodoComponent } from '../shared/components/todo/todo.component';
+import { EmployeelistComponent } from './components/employee/employeelist/employeelist.component';
 
 const routes: Routes = [
     {
       path: 'company',
       component:companyComponent,
-      children: [
+       children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         { path: 'dashboard', component: DashboardComponent },
-        {path:'employee',component:EmployeeformComponent},
+        {path:'employee',component:EmployeelistComponent},
+        {path:'addemployee',component:EmployeeformComponent},
         {path:'departments',component:DepartmentsComponent},
-        {path:'notifications',component:NotificationsComponent}
+        {path:'notifications',component:NotificationsComponent},
+        {path:'todo',component:TodoComponent}
         
       ],
     },

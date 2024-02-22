@@ -8,7 +8,7 @@ import { NotfoundComponent } from './modules/public/components/notfound/notfound
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('../app/modules/public/public.module').then(m => m.PublicModule) },
-  { path: 'company', loadChildren: () => CompanyRoutingModule },
+  // { path: 'company', loadChildren: () => CompanyRoutingModule },
   {path:'**',component:NotfoundComponent}
   
 ];

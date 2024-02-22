@@ -15,16 +15,6 @@ const routes: Routes = [
   { path: '', component: LandingpageComponent }, // Redirect root path to 'homepage'
   { path: 'signup', component: SignupComponent , canDeactivate:[(comp:SignupComponent)=>{return comp.canExit()}]}, // Route for /signup path
   { path: 'login', component: LoginComponent ,}, // Route for /signup path
-  {
-    path: 'company',
-    component: companyComponent,
-    children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
-      {path:'employee',component:EmployeeformComponent},
-      {path:'departments',component:DepartmentsComponent},
-    ],
-  },
 
 ];
 

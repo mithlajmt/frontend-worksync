@@ -1,0 +1,110 @@
+.container {
+    max-width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.add-button {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-button:hover {
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+}
+
+/* Add responsive styles as needed */
+@media (max-width: 768px) {
+    .add-button {
+        /* Adjust styles for smaller screens if necessary */
+    }
+}
+
+
+
+@keyframes tableEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-table-animation {
+    animation: tableEntrance 0.5s ease-out;
+}
+
+
+/* Add this to your CSS file */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.confirmation-container {
+    /* display: none; Hide by default */
+    position: fixed; /* Position the popup in the center of the screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100; /* Make sure it's on top of other elements */
+    background-color: #fff; /* Set a white background */
+    border: 1px solid #ddd; /* Add a thin border */
+    border-radius: 8px; /* Round the corners slightly */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  }
+  
+  .confirmation-dialog {
+    padding: 20px; /* Add some padding for content */
+    animation: fadeIn 0.3s ease-in-out forwards; /* Add a fade-in animation */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .confirm-button,
+  .cancel-button {
+    cursor: pointer; /* Make buttons clickable */
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .confirm-button {
+    background-color: #e74c3c; /* Red color for confirmation */
+  }
+  
+  .cancel-button {
+    background-color: #f1f1f1; /* Neutral color for cancellation */
+  }
+  
+  .confirm-button:hover,
+  .cancel-button:hover {
+    background-color: #ddd; /* Lighter background on hover */
+  }
+  
+  .confirmation-container.show {
+    display: block; /* Show the popup when the condition is met */
+  }
+  

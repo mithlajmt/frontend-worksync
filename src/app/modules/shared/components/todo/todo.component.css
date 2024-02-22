@@ -1,0 +1,43 @@
+.task-container {
+    width: 60%;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .task {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .task:hover {
+    background-color: #e0e0e0;
+  }
+
+  .add-task {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }

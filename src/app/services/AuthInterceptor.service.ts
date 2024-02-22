@@ -9,7 +9,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const token = this.authService.getTokenFromLocalStorage();
-    console.log(token);
     
     if (token) {
       const cloned = req.clone({
