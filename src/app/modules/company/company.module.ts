@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CompanyRoutingModule } from './company-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DepartmentsComponent } from './components/departments/departments.component';
-import { EditEmployeeDataComponent } from './components/edit-employee-data/edit-employee-data.component';
+import { EditEmployeeDataComponent } from './components/employee/edit-employee-data/edit-employee-data.component';
 
 
 

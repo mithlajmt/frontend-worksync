@@ -1,0 +1,94 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 z-50"></div>
+<div class="max-w-xl mx-auto">
+  <div
+    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-sm m-auto bg-white rounded shadow-md px-6 py-8 flex flex-col gap-6 z-50"
+  >
+    <h1 class="text-2xl font-semibold mb-4 text-center text-indigo-600">
+      EDIT EMPLOYEE
+    </h1>
+    <form [formGroup]="editingForm"  class="space-y-6">
+      
+      <fieldset
+        class="border border-gray-300 rounded p-4 transition duration-300 ease-in-out transform hover:shadow-md hover:border-indigo-500"
+      >
+        <legend class="text-lg font-semibold mb-2 text-gray-800">
+          personal details
+        </legend>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col">
+            <label for="employeeName" class="mb-1 text-gray-600">Employee Name:</label>
+            <input type="text" id="employeeName" formControlName="employeeName" placeholder="Enter First Name" class="border rounded-md px-3 py-2 focus:outline-blue-500 focus:ring-blue-500 focus:ring-opacity-50">
+          </div>
+          <div class="flex flex-col">
+            <label  for="gender" class="mb-1  text-gray-600">Gender:</label>
+            <select id="gender" formControlName="gender" class="custom-select">
+              <option value="" disabled selected class="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <label for="contactNumber" class="mb-1 text-gray-600">Phone Number:</label>
+            <input type="text" id="contactNumber" formControlName="contactNumber" placeholder="Enter Phone Number" class="border rounded-md px-3 py-2 focus:outline-blue-500 focus:ring-blue-500 focus:ring-opacity-50">
+          </div>
+          <div class="flex flex-col">
+            <label for="email" class="mb-1 text-gray-600">Email:</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="contactEmail"
+              placeholder="Enter email address"
+              class="border rounded-md px-3 py-2 focus:outline-blue-500 focus:ring-blue-500 focus:ring-opacity-50"
+            />
+          </div>
+        </div>
+      </fieldset>
+        
+      <fieldset class="border border-gray-300 rounded p-4 transition duration-300 ease-in-out transform hover:shadow-md hover:border-indigo-500">
+        <legend class="text-lg font-semibold mb-2 text-gray-800">Employment Details</legend>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col">
+            <label for="role" class="mb-1 text-gray-600">Employee Role:</label>
+            <select id="role" formControlName="role" class="custom-select">
+              <option value="" disabled selected>Select Role</option>
+              <option value="departmentHead">Department head</option>
+              <option value="employee">Employee</option>
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <label for="department" class="mb-1 text-gray-600">Department:</label>
+            <select id="department" formControlName="department" class="custom-select">
+              <option value="" disabled selected>Select department</option>
+              <option value="Sales">Sales</option>
+              <option value="Promotion">Promotion</option>
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <label for="salary" class="mb-1 text-gray-600">Salary:</label>
+            <input type="text" id="salary" formControlName="salary" placeholder="Enter Salary" class="border rounded-md px-3 py-2 focus:outline-blue-500 focus:ring-blue-500 focus:ring-opacity-50">
+          </div>
+          <div class="flex flex-col">
+            <label for="hireDate" class="mb-1 text-gray-600">Hiring Date:</label>
+            <input type="date" id="hireDate" formControlName="hireDate" class="border rounded-md px-3 py-2 focus:outline-blue-500 focus:ring-blue-500 focus:ring-opacity-50">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="flex justify-between">
+        <button
+          (click)="onSaveClick()"
+          type="submit"
+          class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out"
+        >
+          Save Changes
+        </button>
+        <button
+          type="button"
+          class="text-gray-600 hover:text-gray-700 px-4 py-2 rounded-md transition duration-300 ease-in-out"
+          (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -11,10 +11,14 @@ import { ApiService } from 'src/app/modules/company/services/api.service';
 })
 export class EmployeelistComponent implements OnInit {
   deleteConfirm:boolean=false
+  isEditFormVisible:boolean=false
   confirmationMessage: string = '';
   bodyText: string = '';
   employeeToDelete:string=''
-  employees!:any[]
+  employees!:any[];
+
+
+
   constructor(
     private http:HttpClient,
     private router:Router,
@@ -30,11 +34,8 @@ export class EmployeelistComponent implements OnInit {
     }
   })
  }
- 
- onCancelConfirmation(){
-  this.deleteConfirm=false
-  this.employeeToDelete=''
- }
+
+
 
  onDeleteButtonClick(employee:string){
   this.deleteConfirm=true
@@ -42,23 +43,17 @@ export class EmployeelistComponent implements OnInit {
   this.bodyText='Are you sure you want to delete?'
   this.employeeToDelete = employee 
  }
+ 
+ onCancelConfirmationDelete(){
+  this.deleteConfirm=false
+  this.employeeToDelete=''
+ }
 
- onConfirmation(){
+ onDeleteConfirmation(){
   this.deleteEmployee(this.employeeToDelete)
+  this.isEditFormVisible=true
   
  }
- 
- 
- addQuerry(empId:string){
-  const queryparam = {
-    selected:empId
-  }
-  this.router.navigate([],{
-    relativeTo:this.route,
-    queryParams:queryparam,
-  })
- }
-
 
  deleteEmployee(employeeID: any) {
   this.api.deletingEmployee(employeeID).subscribe({
@@ -77,4 +72,42 @@ export class EmployeelistComponent implements OnInit {
     }
   });
 }
+
+
+ editEmployee(employeeID:string){
+  this.addQuerry(employeeID)
+  this.isEditFormVisible=true
+}
+ addQuerry(empId:string){
+  const queryparam = {
+    selected:empId
+  }
+  this.router.navigate([],{
+    relativeTo:this.route,
+    queryParams:queryparam,
+  })
+ }
+
+
+ onEditCancelClicked(){
+  console.log('hello');
+  
+  this.isEditFormVisible=false
+
+  
+  //   this.router.navigate([], {
+  //     relativeTo: this.route, // Import ActivatedRoute and inject it in the constructor
+  //     queryParams: { selected: null }, // Specify the query parameter to be removed
+  //     queryParamsHandling: 'merge', // Keep existing query parameters
+  //   });    
+ }
+
+ onEditSaveclicked(){
+  this.isEditFormVisible=false
+ }
+
+
+
+
+
 }

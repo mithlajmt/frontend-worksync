@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
+import { EmployeeEditForm } from '../interfaces/employee-edit-form';
 
 
 
@@ -42,6 +43,15 @@ export class ApiService {
           throw error;  // Rethrow the error after logging
         })
       );
+  }
+
+  getEmployeeData(employeeID:string){
+    return this.http.get(`${this.userapi}/employee/${employeeID}`);
+  }
+
+
+  updateEmployee(employeeID:string,updateEmployeeData:EmployeeEditForm){
+    return this.http.put(`${this.userapi}/employee/${employeeID}`,updateEmployeeData);
   }
   
 }
