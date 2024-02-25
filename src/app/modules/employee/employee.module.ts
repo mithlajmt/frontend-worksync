@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CheckInComponent } from './components/check-in/check-in.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CheckInComponent
+  ],
   imports: [
     CommonModule
   ]

@@ -22,6 +22,8 @@ export class ApiService {
 
 
   addingEmployee(employee: any) {
+    console.log(employee.entries);
+    
     return this.http.post(`${this.userapi}/employee`, employee).pipe(
       catchError((error: any) => {
         console.error('API Error:', error);

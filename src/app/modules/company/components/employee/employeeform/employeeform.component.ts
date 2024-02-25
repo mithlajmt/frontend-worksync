@@ -2,56 +2,69 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
 
-interface Department {
-  name: string;
-}
-
-const emailPattern = '[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z]{2,6}';
-
 @Component({
   selector: 'app-employeeform',
   templateUrl: './employeeform.component.html',
   styleUrls: ['./employeeform.component.css']
 })
-export class EmployeeformComponent {
+export class EmployeeformComponent implements OnInit {
   reactiveForm!: FormGroup;
-  formData:any
+  selectedFile: File[] = [];
 
-  submitted = false;
+  constructor(private formBuilder: FormBuilder, private api: ApiService) {}
 
-
-
-  constructor(private formBuilder: FormBuilder, private api:ApiService) {
+  ngOnInit(): void {
     this.reactiveForm = this.formBuilder.group({
       employeeName: ['', [Validators.required, Validators.minLength(2)]],
       dateOfBirth: ['', Validators.required],
       gender: ['', Validators.required],
-      contactEmail: ['', [Validators.required, Validators.email]], // Use Validators.email for email validation
-      contactNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Validate for 10-digit phone number
+      contactEmail: ['', [Validators.required, Validators.email]],
+      contactNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       hireDate: ['', Validators.required],
       department: ['', [Validators.required, Validators.minLength(2)]],
       role: ['', [Validators.required, Validators.minLength(2)]],
-      identityProof: ['',],
+      identityProof: [''] // Add this line to define the control for identityProof
     });
   }
 
-  onSubmit(){
-    console.log(this.reactiveForm.value);
-    this.formData = this.reactiveForm.value
+  onSubmit() {
+    if (this.reactiveForm.valid) {
+      const formData = new FormData();
+      const value = this.reactiveForm.value;
 
-    this.api.addingEmployee(this.formData).subscribe({
-      next:(res)=>{
-        console.log(res);
-      },
-      error:(err)=>{
-        console.log(err);
-        
-      }
-    })
+      formData.append('employeeName', value.employeeName);
+      formData.append('dateOfBirth', value.dateOfBirth);
+      formData.append('gender', value.gender);
+      formData.append('contactEmail', value.contactEmail);
+      formData.append('contactNumber', value.contactNumber);
+      formData.append('hireDate', value.hireDate);
+      formData.append('department', value.department);
+      formData.append('role', value.role);
+      formData.append('identityProof', this.selectedFile[0]); // Use selectedFile
 
-    
-  }
-  
+
+      
+
+      this.api.addingEmployee(formData).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.reactiveForm.reset();
+          this.selectedFile = []; // Reset selectedFile array
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
-  
+  }
 
+  onFileSelected(event: any) {
+    const files = event.target.files;
+
+    if (files.length > 0) {
+      this.selectedFile = [files[0]]; // Update the selectedFile array
+    } else {
+      alert('YOU CAN CHOOSE ONLY ONE FILE');
+    }
+  }
+}
