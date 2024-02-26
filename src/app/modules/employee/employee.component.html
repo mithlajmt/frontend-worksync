@@ -1,0 +1,17 @@
+<div class="w-screen flex flex-row max-h-screen overflow-hidden max-w-full">
+    <!-- App Toolbar -->
+    <app-toolbar class=" text-white ">App Toolbar</app-toolbar>
+  
+    <!-- Main Content Area -->
+    <div class="flex flex-col flex-1 h-screen overflow-hidden">
+  
+        <!-- Top Bar -->
+        <app-topbar class="h-16 bg-blue-500 ">Top Bar</app-topbar>
+  
+        <!-- Scrollable Content Area -->
+        <div class="overflow-auto flex-1 p-4">
+            <router-outlet class="h-full bg-white shadow-md hover:shadow-lg transition"></router-outlet>
+        </div>
+    </div>
+  </div>
+  

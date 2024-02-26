@@ -5,11 +5,13 @@
     <div class="flex-1 white bg-red flex flex-col pr-2">
         <input type="" placeholder="Search" class="search-in-toolbar bg-white shadow-2xl self-center">
         <button *ngIf="isCompany" [routerLink]="['/company/employee']"  class="bg-blue-950 text-left h-10 rounded-r-3xl mt-3 pl-14 hover:bg-blue-850">Employees</button>
-        <button [routerLink]="['/company/dashboard']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Dashboard</button>
-        <button [routerLink]="['/company/departments']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Departments</button>
-        <button [routerLink]="['/company/notifications']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Notifications</button>
-        <button [routerLink]="['/company/addemployee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Recruitment</button>
-        <button [routerLink]="['/company/todo']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Todo</button>
+        <button *ngIf="isCompany" [routerLink]="['/company/dashboard']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Dashboard</button>
+        <button *ngIf="isCompany" [routerLink]="['/company/departments']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Departments</button>
+        <button *ngIf="isCompany" [routerLink]="['/company/notifications']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Notifications</button>
+        <button *ngIf="isCompany" [routerLink]="['/company/addemployee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Recruitment</button>
+        <button  [routerLink]="['/company/todo']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Todo</button>
+        <button *ngIf="isEmployee" [routerLink]="['/employee/checkIn']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">checkIN/checkOUT</button>
+
         <!-- <button [routerLink]="['/company/emoloyee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">employees</button> -->
         <button (click)="ji()" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">logout</button>
     </div>

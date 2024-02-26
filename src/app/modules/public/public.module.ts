@@ -37,7 +37,7 @@ VerificationOtpComponent
     PublicRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CompanyModule
+    // CompanyModule
 
   ],
   exports: [LandingpageComponent,NotfoundComponent] 

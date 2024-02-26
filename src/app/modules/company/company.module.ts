@@ -32,8 +32,6 @@ import { EditEmployeeDataComponent } from './components/employee/edit-employee-d
     CompanyRoutingModule,
     SharedModule,
     CompanyRoutingModule,
-
-
   ],
   exports:[
     companyComponent,

@@ -34,7 +34,9 @@ export class ApiService {
 
 
   deletingEmployee(employeeID:string){
-    return this.http.delete(`${this.userapi}/employee?selected=${employeeID}`);
+    console.log(employeeID);
+    
+    return this.http.delete(`${this.userapi}/employee/${employeeID}`);
   }
 
   addingDepartment(department: any) {

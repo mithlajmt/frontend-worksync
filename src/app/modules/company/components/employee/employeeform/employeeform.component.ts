@@ -48,7 +48,7 @@ export class EmployeeformComponent implements OnInit {
       this.api.addingEmployee(formData).subscribe({
         next: (res) => {
           console.log(res);
-          this.reactiveForm.reset();
+          // this.reactiveForm.reset();
           this.selectedFile = []; // Reset selectedFile array
         },
         error: (err) => {
@@ -60,7 +60,6 @@ export class EmployeeformComponent implements OnInit {
 
   onFileSelected(event: any) {
     const files = event.target.files;
-
     if (files.length > 0) {
       this.selectedFile = [files[0]]; // Update the selectedFile array
     } else {

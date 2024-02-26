@@ -9,25 +9,23 @@ import { TodoComponent } from '../shared/components/todo/todo.component';
 import { EmployeelistComponent } from './components/employee/employeelist/employeelist.component';
 
 const routes: Routes = [
-    {
-      path: 'company',
-      component:companyComponent,
-       children: [
-        { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-        { path: 'dashboard', component: DashboardComponent },
-        {path:'employee',component:EmployeelistComponent},
-        {path:'addemployee',component:EmployeeformComponent},
-        {path:'departments',component:DepartmentsComponent},
-        {path:'notifications',component:NotificationsComponent},
-        {path:'todo',component:TodoComponent}
-        
-      ],
-    },
-  ];
-  
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
-  })
-  export class CompanyRoutingModule {}
-  
+  {
+    path: '',
+    component: companyComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'employee', component: EmployeelistComponent },
+      { path: 'addemployee', component: EmployeeformComponent },
+      { path: 'departments', component: DepartmentsComponent },
+      { path: 'notifications', component: NotificationsComponent },
+      { path: 'todo', component: TodoComponent },
+    ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class CompanyRoutingModule {}

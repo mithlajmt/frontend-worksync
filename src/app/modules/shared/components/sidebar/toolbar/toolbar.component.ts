@@ -8,6 +8,9 @@ import { JwtService } from 'src/app/services/jwt.service';
 })
 export class ToolbarComponent implements OnInit {
   isCompany:boolean=false
+  isAdmin:boolean=false
+  isDepartmentHead:boolean=false
+  isEmployee:boolean=false
   constructor(private router:Router , private jwt:JwtService){}
 
   ngOnInit(): void {
@@ -16,9 +19,11 @@ export class ToolbarComponent implements OnInit {
     const decodedToken = this.jwt.decodeToken(token) 
     console.log(decodedToken.role);
     this.isCompany = decodedToken.role == 'companyAdmin'
+    this.isAdmin = decodedToken.role == 'admin'
+    this.isEmployee = decodedToken.role == 'employee'
+     this.isDepartmentHead = decodedToken.role == 'departmenthead'
   }
-
-
+  
   ji(){
     localStorage.clear()
     this.router.navigate(['signup'])

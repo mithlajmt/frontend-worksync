@@ -41,7 +41,9 @@ export class EmployeelistComponent implements OnInit {
   this.deleteConfirm=true
   this.confirmationMessage='Confirm Deletion'
   this.bodyText='Are you sure you want to delete?'
-  this.employeeToDelete = employee 
+  this.employeeToDelete = employee
+  console.log(this.employeeToDelete);
+  
  }
  
  onCancelConfirmationDelete(){
@@ -51,7 +53,7 @@ export class EmployeelistComponent implements OnInit {
 
  onDeleteConfirmation(){
   this.deleteEmployee(this.employeeToDelete)
-  this.isEditFormVisible=true
+  // this.isEditFormVisible=true
   
  }
 
@@ -60,8 +62,8 @@ export class EmployeelistComponent implements OnInit {
     next: (res: any) => {
       if (res.success) {
         console.log(res);
-        this.employeeToDelete = '';
         this.deleteConfirm = false;
+        this.employeeToDelete = '';
         // Remove the deleted employee from the local array
         this.employees = this.employees.filter(employee => employee.employeeID !== employeeID);
       }

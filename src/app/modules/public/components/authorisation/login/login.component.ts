@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {    
     this.loginForm = this.fb.group({
       userID:['',Validators.required],
-      password:['',Validators.minLength(7)],
+      password:['',Validators.minLength(6)],
       rememberMe:[false]
     })
   }
@@ -51,17 +51,23 @@ export class LoginComponent implements OnInit {
           this.jwt.setToken(res.token)
          const decodedToken= this.jwt.decodeToken(res.token)
          console.log(decodedToken.companyID,decodedToken.role);
+
          if(decodedToken.role === 'employee'){
+          this.router.navigate(['/employee/checkIn'])
+
          }
          else if(decodedToken.role === 'companyAdmin'){
           this.router.navigate(['/company/dashboard'])
          }
          else if(decodedToken.role === 'admin'){
+          this.router.navigate(['/admin/dashboard'])
+
           // this.router.navigate(['/company/dashboard'])
          }
          else if(decodedToken.role === 'departmentHead'){
+          this.router.navigate(['/departmentHead/checkIn'])
           // this.router.navigate(['/company/dashboard'])
-         }
+         } 
 
         }
       },
