@@ -81,6 +81,7 @@ export class EmployeelistComponent implements OnInit {
   this.isEditFormVisible=true
 }
  addQuerry(empId:string){
+
   const queryparam = {
     selected:empId
   }

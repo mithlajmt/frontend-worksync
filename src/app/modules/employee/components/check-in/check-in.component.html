@@ -1,42 +1,20 @@
-<div style="text-align:center">
-    <h1>
-      Ngx-Webcam Demo
-    </h1>
+<div   class="flex justify-center items-center h-full bg-gradient-to-r from-white to-gray-300 relative">
   
-    <div>
-      <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-              [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-              [videoOptions]="videoOptions"
-              [imageQuality]="1"
-              (cameraSwitched)="cameraWasSwitched($event)"
-              (initError)="handleInitError($event)"
-      ></webcam>
-      <br/>
-      <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-      <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
-      <br/>
-      <button class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
-      <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"><label for="cameraSwitchCheckbox">Allow Camera Switch</label>
-      <br/>
-      DeviceId: <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
-      <button (click)="showNextWebcam(deviceId);">Activate</button>
-    </div>
+  <div class="w-[600px]  h-[600px] grid place-items-center" >
+    <button  *ngIf="checkButVisibility"
+    (click)="onCheckIn()"
+    class="w-64 h-64 checkin-button text-black rounded-full border-2 border-gray-300
+    hover:border-gray-500 shadow-2xl transition-transform transform-gpu hover:scale-105
+     active:scale-95 active:bg-gray-400">
+     Check In
+    </button>
+    <app-camera
+      *ngIf="cameraVisibility"
+     (getPicture)="handleImage($event)"
+    class="">
+  </app-camera>
   </div>
-  
-  <div class="snapshot" *ngIf="webcamImage">
-    <h2>Nice one!</h2>
-    <img [src]="webcamImage.imageAsDataUrl"/>
-  </div>
-  
-  <h4 *ngIf="errors.length > 0">Messages:</h4>
-  <ul *ngFor="let error of errors">
-    <li>{{error | json}}</li>
-  </ul>
-  
-  <h2>Like this project on GitHub:</h2>
-  <ul class="links">
-    <li>
-      <h2><a target="_blank" rel="noopener" href="https://github.com/basst314/ngx-webcam">Ngx-Webcam / GitHub</a></h2>
-    </li>
-  </ul>
-  
+
+</div>
+
+

@@ -1,78 +1,52 @@
-import { Component,OnInit } from '@angular/core';
-import {Subject, Observable} from 'rxjs';
-import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { WebcamImage } from 'ngx-webcam';
 
 
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
-  styleUrls: ['./check-in.component.css']
+  styleUrls: ['./check-in.component.css'],
+  animations: [
+    trigger('hoverAnimation', [
+      state('initial', style({ transform: 'scale(1)' })),
+      state('hovered', style({ transform: 'scale(1.1)' })),
+      transition('initial => hovered', animate('300ms ease-in-out')),
+      transition('hovered => initial', animate('300ms ease-in-out')),
+    ]),
+  ],
 })
-export class CheckInComponent {
-    // toggle webcam on/off
-    public showWebcam = true;
-    public allowCameraSwitch = true;
-    public multipleWebcamsAvailable = false;
-    public deviceId!: string;
-    public videoOptions: MediaTrackConstraints = {
-      // width: {ideal: 1024},
-      // height: {ideal: 576}
-    };
-    public errors: WebcamInitError[] = [];
-  
-    // latest snapshot
-    public webcamImage:any
-  
-  
-      
-    // webcam snapshot trigger
-    private trigger: Subject<void> = new Subject<void>();
-    // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
-    private nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
-  
-    public ngOnInit(): void {
-      WebcamUtil.getAvailableVideoInputs()
-        .then((mediaDevices: MediaDeviceInfo[]) => {
-          this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
-        });
-      }
+export class CheckInComponent implements OnInit{
 
-      public triggerSnapshot(): void {
-        this.trigger.next();
-      }
-    
-      public toggleWebcam(): void {
-        this.showWebcam = !this.showWebcam;
-      }
-    
-      public handleInitError(error: WebcamInitError): void {
-        this.errors.push(error);
-      }
-    
-      public showNextWebcam(directionOrDeviceId: boolean|string): void {
-        // true => move forward through devices
-        // false => move backwards through devices
-        // string => move to device with given deviceId
-        this.nextWebcam.next(directionOrDeviceId);
-      }
-    
-      public handleImage(webcamImage: WebcamImage): void {
-        console.info('received webcam image', webcamImage);
-        this.webcamImage = webcamImage;
-      }
-    
-      public cameraWasSwitched(deviceId: string): void {
-        console.log('active device: ' + deviceId);
-        this.deviceId = deviceId;
-      }
-    
-      public get triggerObservable(): Observable<void> {
-        return this.trigger.asObservable();
-      }
-    
-      public get nextWebcamObservable(): Observable<boolean|string> {
-        return this.nextWebcam.asObservable();
-      }
-    
+  public hoverState = 'initial';
+  checkButVisibility:boolean=true
+  cameraVisibility:boolean=false
+  completeLoaded:boolean=false
+
+
+  ngOnInit(): void {
+
+  }
+
+
+
+  public onHover(): void {
+    this.hoverState = 'hovered';
+  }
+
+  public onLeave(): void {
+    this.hoverState = 'initial';
+  }
+
+  webcamImage:WebcamImage | undefined;
+
+  handleImage(webcamImage: WebcamImage | any){
+    this.webcamImage=webcamImage
+  }
+
+  onCheckIn(){
+    this.checkButVisibility=false
+    this.cameraVisibility=true 
+  }
 
 }

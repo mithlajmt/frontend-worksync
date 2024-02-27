@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthguardService } from 'src/app/services/authguard.service';
 import { JwtService } from 'src/app/services/jwt.service';
 @Component({
   selector: 'app-toolbar',
@@ -11,7 +12,7 @@ export class ToolbarComponent implements OnInit {
   isAdmin:boolean=false
   isDepartmentHead:boolean=false
   isEmployee:boolean=false
-  constructor(private router:Router , private jwt:JwtService){}
+  constructor(private router:Router , private jwt:JwtService, private authGuarService: AuthguardService){}
 
   ngOnInit(): void {
     const token:any = this.jwt.getTokenFromLocalStorage()
@@ -23,6 +24,10 @@ export class ToolbarComponent implements OnInit {
     this.isEmployee = decodedToken.role == 'employee'
      this.isDepartmentHead = decodedToken.role == 'departmenthead'
   }
+
+  passString(string: string): void {
+    this.authGuarService.shareTextBehaviourSubject.next(string);
+  } 
   
   ji(){
     localStorage.clear()

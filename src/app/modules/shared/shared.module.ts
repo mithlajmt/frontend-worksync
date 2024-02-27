@@ -7,6 +7,9 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoComponent } from './components/todo/todo.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CameraComponent } from './components/camera/camera.component';
+import { WebcamModule } from 'ngx-webcam';
+
 
 
 
@@ -17,12 +20,15 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     NotificationsComponent,
     TodoComponent,
     ConfirmationDialogComponent,
+    CameraComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    WebcamModule
+
   ],
-  exports:[TopbarComponent,ToolbarComponent,NotificationsComponent,ConfirmationDialogComponent]
+  exports:[TopbarComponent,ToolbarComponent,NotificationsComponent,ConfirmationDialogComponent,CameraComponent]
 })
 export class SharedModule { }

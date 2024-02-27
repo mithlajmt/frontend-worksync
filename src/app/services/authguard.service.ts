@@ -7,12 +7,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { SignupComponent } from '../modules/public/components/authorisation/signup/signup.component';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthguardService implements CanDeactivate<SignupComponent> {
+  shareTextBehaviourSubject = new BehaviorSubject<string>('');
   constructor() {}
 
   canDeactivate(
