@@ -1,16 +1,28 @@
 <div   class="flex justify-center items-center h-full bg-gradient-to-r from-white to-gray-300 relative">
   
   <div class="w-[600px]  h-[600px] grid place-items-center" >
-    <button  *ngIf="checkButVisibility"
-    (click)="onCheckIn()"
-    class="w-64 h-64 checkin-button text-black rounded-full border-2 border-gray-300
-    hover:border-gray-500 shadow-2xl transition-transform transform-gpu hover:scale-105
-     active:scale-95 active:bg-gray-400">
-     Check In
-    </button>
+    <div *ngIf="checkButVisibility">
+      <button
+      *ngIf="!checkedIn"
+      (click)="onCheckIn()"
+      class="w-64 h-64 checkin-button text-black rounded-full border-2 border-gray-300
+      hover:border-gray-500 shadow-2xl transition-transform transform-gpu hover:scale-105
+       active:scale-95 active:bg-gray-400">
+       Check In
+      </button>
+      <button
+        *ngIf="checkedIn"
+        (click)="onCheckOut()"
+        class="w-64 h-64 checkin-button text-black rounded-full border-2 border-gray-300
+        hover:border-gray-500 shadow-2xl transition-transform transform-gpu hover:scale-105
+         active:scale-95 active:bg-gray-400">
+         Check Out
+        </button>
+    </div>
+  
     <app-camera
       *ngIf="cameraVisibility"
-     (getPicture)="handleImage($event)"
+     (getResponse)="handleResponse($event)"
     class="">
   </app-camera>
   </div>

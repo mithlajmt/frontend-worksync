@@ -11,6 +11,8 @@ import { AttendenceService } from '../../services/attendence.service';
 export class CameraComponent implements OnInit {
   stream:any=null;
   @Output() getPicuture = new EventEmitter<WebcamImage>();
+  @Output() getResponse = new EventEmitter<any>();
+
   status:any=null
   trigger:Subject<void>=new Subject();
   previewImage!:any;
@@ -18,6 +20,7 @@ export class CameraComponent implements OnInit {
   cameraLoaded:boolean=false;
   showImage:boolean=false;
   capturedImage:any;
+  loading:boolean=false
 
 
 
@@ -73,6 +76,7 @@ export class CameraComponent implements OnInit {
 // Function to handle image upload
 uploadImage() {
   // Create a new FormData object to prepare the data for an HTTP request.
+  this.loading = true
   const formData = new FormData();
 
   // Extract the base64-encoded part of the previewImage (remove the data URI prefix).
@@ -93,15 +97,20 @@ uploadImage() {
   // Append the File object to the FormData under the key 'photo'.
   formData.append('photo', imageFile);
 
+
   // Make an HTTP POST request with the FormData to a service or API endpoint.
   this.attendence.postattendence(formData).subscribe({
     // Log the response if the request is successful.
     next: (res) => {
-      console.log(res);
+      this.loading = true
+      // console.log(res);
+      this.getResponse.emit(res)
     },
     // Log any errors that occur during the request.
     error: (err) => {
-      console.log(err);
+      // console.log(err);
+      this.getResponse.emit(err)
+
     }
   });
 }
@@ -148,14 +157,9 @@ dataURItoBlob(dataURI: string) {
     });
     this.stream = null;
     this.status = 'Camera turned off';
+    
     // this.btnLabel = 'Capture Image';
   }
-
-
-
-
-
-  
   }
   
 

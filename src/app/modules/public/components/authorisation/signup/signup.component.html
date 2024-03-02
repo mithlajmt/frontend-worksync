@@ -88,6 +88,22 @@
                     Please accept the terms and conditions.
                   </div>
                 </div>
+
+                <div class="mb-4">
+                  <label class="block text-sm font-medium text-gray-700" for="workingTime">Working Time</label>
+                  <select id="workingTimeStart" class="w-full px-3 py-2 border rounded-md" formControlName="workingHours">
+                    <option value="9:00-17:00">9 AM - 5 PM</option>
+                    <option value="9:30-17:30">9:30 AM - 5:30 PM</option>
+                    <option value="10:00-18:00">10 AM - 6 PM</option>
+                    <option value="10:30-17:30">10:30 AM - 6:30 PM</option>
+                    <option value="11:00-19:00">8 AM - 4 PM</option>
+                    <option value="11:30-19:30">8:30 AM - 4:30 PM</option>
+                    <!-- Add more options as needed -->
+                  </select>
+                  <div *ngIf="signupForm.get('workingTime')?.hasError('required') && (signupForm.get('workingTime')?.touched || isSubmitted)" class="tex">
+                    Working Time is required.
+                  </div>
+                </div>
   
                 <!-- Submit Button -->
                 <div class="flex justify-center">
