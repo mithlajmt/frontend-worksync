@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { WebcamImage, WebcamInitError, WebcamUtil, } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 import { AttendenceService } from '../../services/attendence.service';
@@ -12,8 +12,11 @@ export class CameraComponent implements OnInit {
   stream:any=null;
   @Output() getPicuture = new EventEmitter<WebcamImage>();
   @Output() getResponse = new EventEmitter<any>();
+  @Input()  action!:string;
+
 
   status:any=null
+  // action:string='dcs'
   trigger:Subject<void>=new Subject();
   previewImage!:any;
   btnLabel:string='captureImage';
@@ -99,7 +102,7 @@ uploadImage() {
 
 
   // Make an HTTP POST request with the FormData to a service or API endpoint.
-  this.attendence.postattendence(formData).subscribe({
+  this.attendence.postattendence(formData,this.action).subscribe({
     // Log the response if the request is successful.
     next: (res) => {
       this.loading = true

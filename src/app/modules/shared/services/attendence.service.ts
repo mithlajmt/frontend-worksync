@@ -9,8 +9,10 @@ export class AttendenceService {
 
   private userapi = 'http://localhost:4000/attendance';
 
-  postattendence(photo:any){
-    return this.http.post<any>(`${this.userapi}/checkIn`,photo);
+  postattendence(photo:any,action:string){
+    console.log(action);
+    
+    return this.http.post<any>(`${this.userapi}/${action}`,photo);
   }
 
   getAttendence(){

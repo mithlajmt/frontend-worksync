@@ -23,6 +23,7 @@
     <app-camera
       *ngIf="cameraVisibility"
      (getResponse)="handleResponse($event)"
+     [action]="logType"
     class="">
   </app-camera>
   </div>

@@ -22,6 +22,7 @@ export class CheckInComponent implements OnInit {
   cameraVisibility: boolean = false;
   completeLoaded: boolean = false;
   checkedIn: boolean = false;
+  logType:string='checkIN'
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -33,6 +34,7 @@ export class CheckInComponent implements OnInit {
       next:(res)=>{
         console.log(res);
         if(res.checkedIn){
+          this.logType='checkOut'
           this.checkedIn = true;
         }
       },
@@ -77,5 +79,6 @@ export class CheckInComponent implements OnInit {
   onCheckOut() {
     this.checkButVisibility = false;
     this.cameraVisibility = true;
+
   }
 }
