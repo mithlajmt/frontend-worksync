@@ -9,6 +9,9 @@ import { TodoComponent } from './components/todo/todo.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { CameraComponent } from './components/camera/camera.component';
 import { WebcamModule } from 'ngx-webcam';
+import { AttendencecalenderComponent } from './components/attendencecalender/attendencecalender.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -21,14 +24,18 @@ import { WebcamModule } from 'ngx-webcam';
     TodoComponent,
     ConfirmationDialogComponent,
     CameraComponent,
+    AttendencecalenderComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    WebcamModule
+    WebcamModule,
+    FullCalendarModule,
+
 
   ],
-  exports:[TopbarComponent,ToolbarComponent,NotificationsComponent,ConfirmationDialogComponent,CameraComponent]
+  exports:[TopbarComponent,ToolbarComponent,NotificationsComponent,ConfirmationDialogComponent,CameraComponent,AttendencecalenderComponent],
+  providers: [DatePipe]
 })
 export class SharedModule { }

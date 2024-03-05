@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotfoundComponent } from '../public/components/notfound/notfound.component';
 import { EmployeeComponent } from './employee.component';
 import { CheckInComponent } from './components/check-in/check-in.component';
+import { AttendencecalenderComponent } from '../shared/components/attendencecalender/attendencecalender.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'checkIn', component: CheckInComponent },
+      { path: 'Attendance', component: AttendencecalenderComponent },
 
     ]
   }

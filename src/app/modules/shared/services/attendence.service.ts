@@ -19,5 +19,9 @@ export class AttendenceService {
     return this.http.get<any>(`${this.userapi}/status`);
   }
 
+  attandanceCalendar(){
+    return this.http.get<any>(`${this.userapi}/type`);
+  }
+
 
 }
