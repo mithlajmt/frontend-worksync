@@ -1,19 +1,27 @@
-<div class="md:w-[270px] rounded-tr-[45px] min-h-screen flex flex-col shadow-2xl gap-8 text-[#76839A]">
-    <div>
-        <h1 class="font-sans font-bold text-2xl px-5 mt-10 text-black">"COMPANY NAME"</h1>
+<div class="md:w-[270px] rounded-tr-[45px] min-h-screen flex flex-col shadow-2xl  text-[#76839A]">
+    <div class="bg-gray-800 text-white py">
+        <h1 class="text-2xl font-bold p-2">COMPANY NAME</h1>
     </div>
-    <div class="flex-1 white bg-red flex flex-col pr-2">
-        <input type="" placeholder="Search" class="search-in-toolbar bg-white shadow-2xl self-center">
-        <button (click)="passString('Employees')" *ngIf="isCompany" [routerLink]="['/company/employee']"  class="bg-blue-950 text-left h-10 rounded-r-3xl mt-3 pl-14 hover:bg-blue-850">Employees</button>
-        <button (click)="passString('Dashboard')" *ngIf="isCompany" [routerLink]="['/company/dashboard']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Dashboard</button>
-        <button *ngIf="isCompany" [routerLink]="['/company/departments']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Departments</button>
-        <button *ngIf="isCompany" [routerLink]="['/company/notifications']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Notifications</button>
-        <button *ngIf="isCompany" [routerLink]="['/company/addemployee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Recruitment</button>
-        <button  [routerLink]="['/company/todo']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Todo</button>
-        <button *ngIf="isEmployee" [routerLink]="['/employee/checkIn']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">checkIN/checkOUT</button>
-        <button *ngIf="isEmployee" [routerLink]="['/employee/Attendance']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">Attendance</button>
+    <div class="bg-gray-900 text-white p-4 flex flex-col items-center min-h-screen">
+        <input type="text" placeholder="Search" class="bg-gray-700 text-white p-2 rounded shadow-md mb-4">
 
-        <!-- <button [routerLink]="['/company/emoloyee']" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">employees</button> -->
-        <button (click)="ji()" class="bg-blue-950 text-left h-10 rounded-r-3xl mt-1 pl-14 hover:bg-blue-850">logout</button>
+        <!-- Adding gap between buttons -->
+        <div class="grid gap-2 bg-yellow-100  w-full h-full  ">
+
+            <!-- Button styles with hover effect -->
+            <button (click)="passString('Employees')" *ngIf="isCompany" [routerLink]="['/company/employee']" class="btn btn-hover">Employees</button>
+            <button (click)="passString('Dashboard')" *ngIf="isCompany" [routerLink]="['/company/dashboard']" class="btn btn-hover">Dashboard</button>
+            <button *ngIf="isCompany" [routerLink]="['/company/departments']" class="btn btn-hover">Departments</button>
+            <button *ngIf="isCompany" [routerLink]="['/company/notifications']" class="btn btn-hover">Notifications</button>
+            <button *ngIf="isCompany" [routerLink]="['/company/addemployee']" class="btn btn-hover">Recruitment</button>
+            <button [routerLink]="['/company/todo']" class="btn btn-hover">Todo</button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/checkIn']" class="btn btn-hover">Check In/Check Out</button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/Attendance']" class="btn btn-hover">Attendance</button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/complaints']" class="btn btn-hover">Complaints</button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/leaveRequest']" class="btn btn-hover">Leave Request</button>
+            
+        </div>
+
+        <button (click)="ji()" class="btn btn-hover">Logout</button>
     </div>
 </div>

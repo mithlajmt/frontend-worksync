@@ -4,8 +4,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarOptions } from '@fullcalendar/core';
 import { AttendenceService } from '../../services/attendence.service';
-import { reduce } from 'rxjs';
-import { DatePipe } from '@angular/common';
 
 
 
@@ -18,21 +16,17 @@ import { DatePipe } from '@angular/common';
 export class AttendencecalenderComponent implements OnInit  {
   constructor(
     private attendance:AttendenceService,
-    private datepipe:DatePipe,
   ){}
   showCalendar:boolean=false;
 
 
-  eventsArray:any =[
-    // { title: 'event 1', date: '2024-03-04',color:'red' },
-    // { title: 'event 2', date: '2024-03-02', color:'red'}
-  ] 
+  eventsArray:any =[] 
   datas:any = []
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     dateClick: (arg) => this.handleDateClick(arg),
-    events: this.eventsArray
+    events: this.eventsArray,
   };
 
 
@@ -52,21 +46,9 @@ export class AttendencecalenderComponent implements OnInit  {
           res.data.map((el:any)=>{
             // this.eventsArray.push({ date: '2024-03-06', title: '', color:'red'});
             this.eventsArray.push(el)   
-            // this.eventsArray.title = el.title         
-            // this.eventsArray.date = el.date         
-            // this.eventsArray.color = el.color         
-
           })
           this.showCalendar=true
-          console.log(this.eventsArray);
-          this.datas.push(this.eventsArray)
-          console.log(this.datas,'gsga');
-          
         }
-        
-
-        
-
       },
       error:(err)=>{
 

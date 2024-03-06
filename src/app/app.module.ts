@@ -11,6 +11,7 @@ import { AuthInterceptor } from './services/AuthInterceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/shared/shared.module';
 import { EmployeeModule } from './modules/employee/employee.module';
+import { FormsModule } from '@angular/forms';
 // import { WebcamModule } from 'ngx-webcam';
 
 
@@ -28,6 +29,7 @@ PublicModule
     BrowserAnimationsModule,
     SharedModule,
     EmployeeModule,
+    FormsModule,
     // WebcamModule
   ],
   providers: [

@@ -1,0 +1,45 @@
+<form #complaintForm="ngForm" (ngSubmit)="submitComplaint()" class="mt-6 p-8 border rounded-md shadow-md bg-gradient-to-r from-blue-500 to-blue-700">
+
+    <div class="form-group mb-4">
+      <label for="title" class="text-white">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="complaint.title" required class="w-full rounded-md border p-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+    </div>
+    <div *ngIf="complaintForm.controls['title']?.hasError('required') && complaintForm.controls['title']?.touched">
+        Title is required.
+      </div>
+      
+  
+    <div class="form-group mb-4">
+      <label for="description" class="text-white">Complaint Description:</label>
+      <textarea id="description" name="description" minlength="10" maxlength="400" [(ngModel)]="complaint.description" required class="w-full rounded-md border p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"></textarea>
+    </div>
+    <div *ngIf="complaintForm.controls['description']?.hasError('required') && complaintForm.controls['description']?.touched">
+        provide description.
+      </div>
+  
+    <div class="form-group mb-4">
+      <label for="to" class="text-white">To:</label>
+      <select id="to" name="to" [(ngModel)]="complaint.to" required class="w-full rounded-md border p-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        <option value="" disabled>Select recipient</option>
+        <option value="companyAdmin">Company</option>
+        <option value="departmentHead">Department</option>
+      </select>
+    </div>
+    <div *ngIf="complaintForm.controls['to']?.hasError('required') && complaintForm.controls['to']?.touched">
+        please specify the recipients
+      </div>
+  
+    <div class="form-group mb-4">
+      <label for="attachment" class="text-white">Attachments:</label>
+      <input type="file" id="attachment" name="attachment" (change)="onAttachmentChange($event)" class="w-full border p-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+    </div>
+   
+  
+      <button type="submit"
+      
+      class="w-full py-2 px-4 rounded-md bg-gradient-to-r from-yellow-500 to-yellow-700 text-white font-medium hover:bg-gradient-to-r from-yellow-700 to-yellow-500 transition duration-500 ease-in-out"
+      [disabled]="complaintForm.invalid">
+      submit
+</button>  </form>
+  
+

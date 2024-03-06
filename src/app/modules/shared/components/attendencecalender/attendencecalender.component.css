@@ -1,0 +1,16 @@
+.events{
+    /* border-radius: 400px; */
+    height: 30px;
+}
+.rounded-event {
+    /* Adjust size and margin as needed */
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%; /* Set desired roundness */
+    background-color: red; /* Change background color as needed */
+    color: white; /* Adjust text color for contrast */
+    text-align: center;
+    padding: 5px; /* Adjust padding to fit text */
+  }
+  
