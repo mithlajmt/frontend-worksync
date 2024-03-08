@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './modules/shared/shared.module';
 import { EmployeeModule } from './modules/employee/employee.module';
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+
 // import { WebcamModule } from 'ngx-webcam';
 
 
@@ -30,6 +32,7 @@ PublicModule
     SharedModule,
     EmployeeModule,
     FormsModule,
+    MatIconModule,
     // WebcamModule
   ],
   providers: [

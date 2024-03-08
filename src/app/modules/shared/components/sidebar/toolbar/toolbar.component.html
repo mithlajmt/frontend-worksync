@@ -1,27 +1,64 @@
-<div class="md:w-[270px] rounded-tr-[45px] min-h-screen flex flex-col shadow-2xl  text-[#76839A]">
-    <div class="bg-gray-800 text-white py">
-        <h1 class="text-2xl font-bold p-2">COMPANY NAME</h1>
+<div class="md:w-[270px]  min-h-screen flex flex-col shadow-2xl text-[#76839A]">
+    <div class="bg-gray-900 text-white flex  flex-row justify-center items-center text-center h-16 gap-1 ">
+        <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home"></mat-icon>
+        <h1 class="font-bold hidden md:flex">
+            {{companyName}}
+        </h1>
     </div>
     <div class="bg-gray-900 text-white p-4 flex flex-col items-center min-h-screen">
-        <input type="text" placeholder="Search" class="bg-gray-700 text-white p-2 rounded shadow-md mb-4">
-
-        <!-- Adding gap between buttons -->
-        <div class="grid gap-2 bg-yellow-100  w-full h-full  ">
-
-            <!-- Button styles with hover effect -->
-            <button (click)="passString('Employees')" *ngIf="isCompany" [routerLink]="['/company/employee']" class="btn btn-hover">Employees</button>
-            <button (click)="passString('Dashboard')" *ngIf="isCompany" [routerLink]="['/company/dashboard']" class="btn btn-hover">Dashboard</button>
-            <button *ngIf="isCompany" [routerLink]="['/company/departments']" class="btn btn-hover">Departments</button>
-            <button *ngIf="isCompany" [routerLink]="['/company/notifications']" class="btn btn-hover">Notifications</button>
-            <button *ngIf="isCompany" [routerLink]="['/company/addemployee']" class="btn btn-hover">Recruitment</button>
-            <button [routerLink]="['/company/todo']" class="btn btn-hover">Todo</button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/checkIn']" class="btn btn-hover">Check In/Check Out</button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/Attendance']" class="btn btn-hover">Attendance</button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/complaints']" class="btn btn-hover">Complaints</button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/leaveRequest']" class="btn btn-hover">Leave Request</button>
-            
+        <div class="bg-gray-900 hidden md:flex">
+            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon> -->
+            <input type="text" placeholder="Search" class="bg-gray-700 text-white p-2 rounded shadow-md mb-4">
         </div>
+        <!-- Adding gap between buttons -->
+        <div class="grid gap-2 w-full h-full">
+            <!-- Button styles with hover effect -->
+            <button *ngIf="isCompany" [routerLink]="['/company/employee']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
+                <span class="md:block hidden">Employees</span>
+            </button>
+            <button *ngIf="isCompany" [routerLink]="['/company/dashboard']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dashboard"></mat-icon>
+                <span class="md:block hidden">Dashboard</span>
+            </button>
+            <button *ngIf="isCompany" [routerLink]="['/company/departments']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="store"></mat-icon>
+                <span class="md:block hidden">Departments</span>
+            </button>
+            <button *ngIf="isCompany" [routerLink]="['/company/notifications']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="notifications"></mat-icon>
+                <span class="md:block hidden">Notifications</span>
+            </button>
+            <button *ngIf="isCompany" [routerLink]="['/company/addemployee']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_add"></mat-icon>
+                <span class="md:block hidden">Recruitment</span>
+            </button>
+            <button [routerLink]="['/company/todo']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="checklist"></mat-icon>
+                <span class="md:block hidden">Todo</span>
+            </button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/checkIn']" class="btn btn-hover  bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="how_to_reg"></mat-icon>
+                <span class="md:block hidden">Check In/Check Out</span>
+            </button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/Attendance']" class="btn btn-hover   bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_ind"></mat-icon>
+                <span class="md:block hidden">Attendance</span>
+            </button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/complaints']" class="btn btn-hover  bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="contact_support"></mat-icon>
+                <span class="md:block hidden">Complaints</span>
+            </button>
+            <button *ngIf="isEmployee" [routerLink]="['/employee/leaveRequest']" class="btn btn-hover  hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
+                <span class="md:block hidden">Leave Request</span>
+            </button>
+            <button (click)="ji()" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Logout" fontIcon="exit_to_app"></mat-icon>
+                <span class="md:block hidden">Logout</span>
+            </button>
+        </div>
+        
 
-        <button (click)="ji()" class="btn btn-hover">Logout</button>
     </div>
 </div>

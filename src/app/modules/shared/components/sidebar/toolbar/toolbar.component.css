@@ -1,4 +1,4 @@
-.loader {
+/* .loader {
 	border-top-color: #3498db;
 	-webkit-animation: spinner 1.5s linear infinite;
 	animation: spinner 1.5s linear infinite;
@@ -20,4 +20,28 @@
 	100% {
 		transform: rotate(360deg);
 	}
+} */
+
+
+.btn{
+	/* background: blueviolet; */
+	opacity: 80%;
+	padding: 14px;
+	padding-left: 14%;
+	border-radius: 0px 10px 10px 0px;
+	display: flex;
+	align-items: center;
+	transition: background-color 0.3s, opacity 0.3s;
+
 }
+.btn:hover{
+	transform: scale(1.05); /* Adjust the scale factor for the hover effect */
+	opacity: 10;
+
+}
+
+h1{
+	margin: 0 !important;
+}
+
+
