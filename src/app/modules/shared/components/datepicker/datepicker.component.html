@@ -1,0 +1,13 @@
+<!-- <p>datepicker works!</p> -->
+<div class="mt-4 md:mt-0 grid md:place-items-center" >
+    <mat-form-field appearance="fill">
+      <mat-label class="text-white">Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker" [formGroup]="range" >
+        <input matStartDate formControlName="start" placeholder="Start date" id="start" (dateChange)="onDateSelection()" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-105">
+        <input matEndDate formControlName="end" placeholder="End date" id="end" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-105">
+      </mat-date-range-input>
+      <mat-hint class="text-white">MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>

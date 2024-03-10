@@ -24,7 +24,7 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {
     const token:any = this.jwt.getTokenFromLocalStorage()
-    this.common.geeUserDetails().subscribe({
+    this.common.getUserDetails().subscribe({
       next:(res:any)=>{
         console.log(res);
         this.companyName = res.data[0].companyName;

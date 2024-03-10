@@ -11,10 +11,19 @@ export class CommonService {
     private http:HttpClient
   ) { }
 
-  geeUserDetails(){
+  getUserDetails(){
     return this.http.get(`${this.userApi}/userData`)
   }
 
+ 
+  getListData(endpoint:string){
+    return this.http.get(`${this.userApi}/${endpoint}`)
+
+  }
+
+  postNotification(noty:any){
+    return this.http.post<any>(`${this.userApi}/notification`,noty)
+  }
 
    
 }

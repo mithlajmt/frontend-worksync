@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './components/sidebar/toolbar/toolbar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { RouterModule } from '@angular/router';
-import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NotificationsComponent } from '../departmenthead/components/notifications/notifications.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoComponent } from './components/todo/todo.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
@@ -19,6 +19,9 @@ import { ComplaintsComponent } from './components/complaints/complaints.componen
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MultiselectComponent } from './components/multiselect/multiselect.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 
 
@@ -38,6 +41,8 @@ import { MatIconModule } from '@angular/material/icon';
     AttendencecalenderComponent,
     LeaveRequestComponent,
     ComplaintsComponent,
+    MultiselectComponent,
+    DatepickerComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +56,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    NgMultiSelectDropDownModule,
+
 
 
   ],

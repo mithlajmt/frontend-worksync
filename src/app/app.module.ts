@@ -13,6 +13,8 @@ import { SharedModule } from './modules/shared/shared.module';
 import { EmployeeModule } from './modules/employee/employee.module';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 // import { WebcamModule } from 'ngx-webcam';
 
@@ -33,6 +35,7 @@ PublicModule
     EmployeeModule,
     FormsModule,
     MatIconModule,
+    // NgMultiSelectDropDownModule,
     // WebcamModule
   ],
   providers: [
