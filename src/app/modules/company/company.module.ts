@@ -10,6 +10,8 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { EditEmployeeDataComponent } from './components/employee/edit-employee-data/edit-employee-data.component';
+import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
+import { DepartmentheadModule } from '../departmenthead/departmenthead.module';
 
 
 
@@ -23,6 +25,7 @@ import { EditEmployeeDataComponent } from './components/employee/edit-employee-d
     DashboardComponent,
     DepartmentsComponent,
     EditEmployeeDataComponent,
+    DepartmentDetailsComponent,
 
   ],
   imports: [
@@ -32,6 +35,7 @@ import { EditEmployeeDataComponent } from './components/employee/edit-employee-d
     CompanyRoutingModule,
     SharedModule,
     CompanyRoutingModule,
+    DepartmentheadModule,
   ],
   exports:[
     companyComponent,

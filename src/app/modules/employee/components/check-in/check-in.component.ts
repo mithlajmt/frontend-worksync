@@ -79,6 +79,5 @@ export class CheckInComponent implements OnInit {
   onCheckOut() {
     this.checkButVisibility = false;
     this.cameraVisibility = true;
-
   }
 }

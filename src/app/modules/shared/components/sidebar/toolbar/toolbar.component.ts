@@ -56,4 +56,7 @@ export class ToolbarComponent implements OnInit {
     localStorage.clear()
     this.router.navigate(['signup'])
   }
+  navigate(link:string){
+    this.router.navigate([`/${this.role}/${link}`]);
+  }
 }

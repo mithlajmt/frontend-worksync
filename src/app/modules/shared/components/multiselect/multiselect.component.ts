@@ -11,7 +11,9 @@ import { map } from 'rxjs';
 })
 export class MultiselectComponent implements OnInit {
   @Input() apiUrl:string=''
-  @Output() selectedDepartment: EventEmitter<string[]> = new EventEmitter<string[]>();
+  @Output() selectedOption: EventEmitter<string[]> = new EventEmitter<string[]>();
+   @Input() singleSelection:Boolean=false;
+   @Input() placeholder:string = 'select department'
    dropdownList:any = [];
   selectedItems:any[] = [];
   dropdownSettings = {};
@@ -20,7 +22,7 @@ export class MultiselectComponent implements OnInit {
 
 //  ngDoCheck(): void {
   //  console.log(this.selectedItems);
-  // this.selectedDepartment.emit(this.selectedItems.map(items=>items.item_text))
+  // this.selectedOption.emit(this.selectedItems.map(items=>items.item_text))
 
 //  }
 
@@ -50,9 +52,8 @@ export class MultiselectComponent implements OnInit {
       }
     });
     
-
     this.dropdownSettings = {
-      singleSelection: false,
+      singleSelection: this.singleSelection,
       idField: 'item_id',
       textField: 'item_text',
       selectAllText: 'Select All',
@@ -64,23 +65,23 @@ export class MultiselectComponent implements OnInit {
   
 
   onDropDownClose(){
-    this.selectedDepartment.emit(this.selectedItems.map(items=>items.item_text));
+    this.selectedOption.emit(this.selectedItems.map(items=>items.item_text));
   }
 
   onItemSelect(item: any) {
     
     // this.selectedItems.push(item)
     // console.log(this.selectedItems,'k');
-    // this.selectedDepartment.emit(this.selectedItems.map(items=>items.item_text));
+    // this.selectedOption.emit(this.selectedItems.map(items=>items.item_text));
   }
 
   onSelectAll(items: any) {
     // console.log(items);
-    // this.selectedDepartment.emit(this.selectedItems.map(items=>items.item_text));
+    // this.selectedOption.emit(this.selectedItems.map(items=>items.item_text));
   }
 
   onItemDeSelect(){
-    // this.selectedDepartment.emit(this.selectedItems.map(items=>items.item_text));
+    // this.selectedOption.emit(this.selectedItems.map(items=>items.item_text));
   }
 
   

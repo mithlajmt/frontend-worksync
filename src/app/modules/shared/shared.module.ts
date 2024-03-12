@@ -69,7 +69,8 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     CameraComponent,
     AttendencecalenderComponent,
     LeaveRequestComponent,
-    ComplaintsComponent
+    ComplaintsComponent,
+    MultiselectComponent,
   ],
   // providers: [NativeDateAdapter()],
 

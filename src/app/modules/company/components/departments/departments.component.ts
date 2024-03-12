@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { map } from 'rxjs';
+
 
 @Component({
   selector: 'app-departments',
@@ -9,15 +11,7 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./departments.component.css']
 })
 export class DepartmentsComponent {
-  departments=[{
-    name:'minu'
-  },{
-    name:'minu'
-  },{
-    name:'minu'
-  },{
-    name:'minu'
-  },]
+  departments:any=[]
 
 
 
@@ -26,34 +20,63 @@ showAddDepartmentForm=false
 
 myForm!:FormGroup;
 
-  constructor(private fb: FormBuilder, private api:ApiService) {}
+  constructor(
+    private fb: FormBuilder,
+    private api:ApiService,
+    private router:Router,
+     ) {}
 
-  ngOnInit() {
-    this.myForm = this.fb.group({
-      departmentName: ['', Validators.required],
-      description: ['', Validators.required],
-      budgetAllocation: [0, Validators.required]
-    });
-  }
+     ngOnInit() {
 
 
-  addDepartment(){
-    const form = this.myForm.value
-    console.log(this.myForm.value);
-    this.api.addingDepartment(form).subscribe({
-      next:(res)=>{
-        console.log(res)
-      },
-      error:(err)=>{
-        console.log(err);
+      this.myForm = this.fb.group({
+        departmentName: ['', Validators.required],
+        description: ['', Validators.required],
+        budgetAllocation: [0, Validators.required]
+      });
+
+      this.api.getDepartments().pipe(
+        map((res: any) => res?.data ? res.data.map((summary: any) => ({ name: summary.departmentName,ID:summary.departmentID, totalEmployees: summary.totalEmployees, attendancesToday: summary.attendancesToday })) : [])
+
+      ).subscribe({
+        next: (departments: any[]) => {
+          // console.log(departments);
+          this.departments = departments;
+        },
+        error: (err) => {
+          console.log(err,'kidmanfdsAKJDajdslkADLKHalkjdhAKDSahdlAK');
+        }
+      });
+    }
+    
+    addDepartment(){
+      const form = this.myForm.value
+      console.log(this.myForm.value);
+      this.api.addingDepartment(form).subscribe({
+        next:(res)=>{
+          // console.log(res)
+          
+
+          this.myForm.reset()
+          this.showAddDepartmentForm=false;
+        },
+        error:(err)=>{
+          console.log(err);
       }
     })
 
   }
 
 
-  selectDepartment(mi:any){
-
+  selectDepartment(department: string) {
+    console.log(department);
+    
+    
+    const depID = department;  // Assuming 'department' represents the department ID
+    // console.log(depID);
+  
+    // Navigate to the department details route, passing the department ID as a parameter
+    this.router.navigate(['/company/departments', depID]);
   }
-
+  
 }

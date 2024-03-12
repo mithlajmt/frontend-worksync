@@ -33,23 +33,27 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_add"></mat-icon>
                 <span class="md:block hidden">Recruitment</span>
             </button>
+                <button *ngIf="isCompany || isDepartmentHead" [routerLink]="['/company/complaintsList']" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_late"></mat-icon>
+                <span class="md:block hidden">complaints</span>
+            </button>
             <button [routerLink]="['/company/todo']" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="checklist"></mat-icon>
                 <span class="md:block hidden">Todo</span>
             </button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/checkIn']" class="btn btn-hover  bg-gray-800 gap-5">
+            <button *ngIf="isEmployee || isDepartmentHead " (click)="navigate('checkIn')" class="btn btn-hover  bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="how_to_reg"></mat-icon>
                 <span class="md:block hidden">Check In/Check Out</span>
             </button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/Attendance']" class="btn btn-hover   bg-gray-800 gap-5">
+            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('Attendance')" class="btn btn-hover   bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_ind"></mat-icon>
                 <span class="md:block hidden">Attendance</span>
             </button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/complaints']" class="btn btn-hover  bg-gray-800 gap-5">
+            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('Complaints')" class="btn btn-hover  bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="contact_support"></mat-icon>
                 <span class="md:block hidden">Complaints</span>
             </button>
-            <button *ngIf="isEmployee" [routerLink]="['/employee/leaveRequest']" class="btn btn-hover  hover:bg-gray-800 gap-5">
+            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('leaveRequest')" class="btn btn-hover  hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
                 <span class="md:block hidden">Leave Request</span>
             </button>

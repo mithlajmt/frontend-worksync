@@ -57,5 +57,9 @@ export class ApiService {
   updateEmployee(employeeID:string,updateEmployeeData:EmployeeEditForm){
     return this.http.put(`${this.userapi}/employee/${employeeID}`,updateEmployeeData);
   }
+
+  getDepartments(){
+    return this.http.get(`${this.userapi}/department`)
+  }
   
 }

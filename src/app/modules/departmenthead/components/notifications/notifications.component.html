@@ -3,7 +3,7 @@
 <div class="bg-gray-900 max-w-screen m-0  md:p-4 gap-9 grid-flow-row">
     <h1 class="font-kanit text-3xl text-white font-bold mb-4">Create a New Event:</h1>
     <div class="form-container grid grid-cols-2  gap-4">
-        <form [formGroup]="eventForm" (ngSubmit)="createEvent()" class="grid grid-cols-2 gap-5">
+        <form [formGroup]="eventForm" (ngSubmit)="createEvent()" class="grid grid-cols-1 md:grid-cols-2 px-1 gap-5">
             <div class="">
                 <label for="title" class="block text-sm font-medium text-gray-200 mb-2">Title:</label>
                 <input type="text" id="title" formControlName="title" class="input-field bg-gray-700 text-white" placeholder="Event Title">
@@ -70,7 +70,7 @@
 
             <div class=" ">
                 <label for="" class="block mt-2 text-sm font-medium text-gray-200 mb-2">recipients:</label>
-                <app-multiselect [apiUrl]="api" (selectedDepartment)="handleSelectedDepartment($event)"></app-multiselect>
+                <app-multiselect [apiUrl]="api" (selectedOption)="handleSelectedDepartment($event)"></app-multiselect>
 
 
   
@@ -82,7 +82,7 @@
         </form>
     </div>
 
-    <div class="flex flex-col md:mt-8">
+    <div class="flex flex-col md:mt-8 p-1 flex-wrap">
         <h1 class="font-kanit text-3xl text-white font-bold mb-4">Upcoming Active Events:</h1>
         <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 sm:px-3 md:mt-4">
             <div class="event-card bg-gray-800 text-white p-4 rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">

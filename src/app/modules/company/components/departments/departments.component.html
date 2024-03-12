@@ -1,54 +1,57 @@
-<div class="bg-gradient-to-b from-blue-950 to-blue-700 md:m-6 grid md:grid-cols-3 p-3 sm:grid-cols-2 grid-cols-1 gap-5">
-    <!-- Add Department Form -->
-    <div class="bg-gradient-to-b from-yellow-200 to-yellow-300 min-h-72 rounded-md overflow-hidden relative transition duration-300 transform hover:scale-105 cursor-pointer"
-         (click)="showAddDepartmentForm = true">
-      <div class="p-4">
-        <h2 class="text-lg font-semibold text-gray-800">
-          <span class="text-3xl font-bold text-gray-800">+</span>
-          <span class="ml-2">Add Department</span>
-        </h2>
-      </div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-70 transition duration-300"></div>
-      <div class="absolute inset-0 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition duration-300">
-        <span class="text-2xl font-bold">Add Department</span>
-      </div>
-    </div>
-  
-    <!-- Existing Departments List -->
-    <div *ngFor="let department of departments" class="bg-gradient-to-b from-yellow-200 to-yellow-300 min-h-72 rounded-md overflow-hidden relative transition duration-300 transform hover:scale-105 cursor-pointer"
-         (click)="selectDepartment(department)">
-      <div class="p-4">
-        <h2 class="text-lg font-semibold text-gray-800">{{ department.name }}</h2>
-        <!-- Add other details if needed -->
-      </div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-70 transition duration-300"></div>
-      <div class="absolute inset-0 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition duration-300">
-        <span class="text-2xl font-bold">{{ department.name }}</span>
-      </div>
-    </div>
-  </div>
-  
+<div class="w-full h-full bg-gray-900">
+<div class="bg-gray-900  grid md:grid-cols-3 p-3 sm:grid-cols-2 grid-cols-1 gap-5">
   <!-- Add Department Form -->
-  <div *ngIf="showAddDepartmentForm" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="bg-white p-8 rounded-md">
-      <h2 class="text-2xl font-semibold mb-4">Add Department</h2>
-      <form [formGroup]="myForm" class="neon-form">
-        <label for="departmentName" class="block text-gray-700 font-semibold mb-2">Department Name:</label>
-        <input type="text" id="departmentName" formControlName="departmentName" placeholder="Enter department name"
-               class="border rounded-lg border-gray-300 p-2 w-full mb-4 focus:outline-none focus:border-blue-500">
-  
-        <label for="departmentDescription" class="block text-gray-700 font-semibold mb-2">Department Description:</label>
-        <textarea id="departmentDescription" formControlName="description" rows="5"
-                  placeholder="Describe the department"
-                  class="border rounded-lg border-gray-300 p-2 w-full mb-4 focus:outline-none focus:border-blue-500"></textarea>
-  
-        <label for="budgetAllocation" class="block text-gray-700 font-semibold mb-2">Budget Allocation:</label>
-        <input type="number" id="budgetAllocation" formControlName="budgetAllocation" placeholder="Enter budget allocation"
-               class="border rounded-lg border-gray-300 p-2 w-full mb-4 focus:outline-none focus:border-blue-500">
-  
-        <button type="submit" [disabled]="!myForm.valid" (click)="addDepartment()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Add</button>
-        <button type="button" (click)="showAddDepartmentForm = false" class="ml-2 text-gray-600">Cancel</button>
-      </form>
+  <div class="bg-gray-700 text-white min-h-72 rounded-md overflow-hidden relative transition duration-300 transform hover:scale-105 cursor-pointer"
+       (click)="showAddDepartmentForm = true">
+    <div class="p-4">
+      <h2 class="text-lg font-semibold text-gray-200">
+        <span class="text-3xl font-bold text-gray-200">+</span>
+        <span class="ml-2">Add Department</span>
+      </h2>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-70 transition duration-300"></div>
+    <div class="absolute inset-0 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition duration-300">
+      <span class="text-2xl font-bold">Add Department</span>
     </div>
   </div>
-  
+
+  <!-- Existing Departments List -->
+  <div *ngFor="let department of departments" class="bg-gray-700 text-white min-h-72 rounded-md overflow-hidden relative transition duration-300 transform hover:scale-105 cursor-pointer"
+       (click)="selectDepartment(department.ID)">
+    <div class="p-4">
+      <h2 class="text-lg font-semibold text-gray-200">{{ department.name }}</h2>
+      <!-- Add other details if needed -->
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 hover:opacity-70 transition duration-300"></div>
+    <div class="absolute inset-0 flex items-center justify-center flex-col text-white opacity-0 hover:opacity-100 transition duration-300  ">
+      <span class="text-2xl font-kanit ">Total Employees : {{ department.totalEmployees  }}</span>
+      <br>
+      <span class="text-2xl font-kanit">Total Present Employees : {{ department.attendancesToday  }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Add Department Form -->
+<div *ngIf="showAddDepartmentForm" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-8 rounded-md">
+    <h2 class="text-2xl font-semibold mb-4">Add Department</h2>
+    <form [formGroup]="myForm" class="neon-form">
+      <label for="departmentName" class="block text-gray-700 font-semibold mb-2">Department Name:</label>
+      <input type="text" id="departmentName" formControlName="departmentName" placeholder="Enter department name"
+             class="border rounded-lg border-gray-300 p-2 w-full mb-4 focus:outline-none focus:border-purple-500">
+
+      <label for="departmentDescription" class="block text-gray-700 font-semibold mb-2">Department Description:</label>
+      <textarea id="departmentDescription" formControlName="description" rows="5"
+                placeholder="Describe the department"
+                class="border rounded-lg border-gray-300 p-2 w-full mb-4 focus:outline-none focus:border-purple-500"></textarea>
+
+      <label for="budgetAllocation" class="block text-gray-700 font-semibold mb-2">Budget Allocation:</label>
+      <input type="number" id="budgetAllocation" formControlName="budgetAllocation" placeholder="Enter budget allocation"
+             class="border rounded-lg border-gray-300 p-2 w-full mb-4 focus:outline-none focus:border-purple-500">
+
+      <button type="submit" [disabled]="!myForm.valid" (click)="addDepartment()" class="bg-purple-500 text-white px-4 py-2 rounded-md">Add</button>
+      <button type="button" (click)="showAddDepartmentForm = false" class="ml-2 text-gray-600">Cancel</button>
+    </form>
+  </div>
+</div>
+</div>

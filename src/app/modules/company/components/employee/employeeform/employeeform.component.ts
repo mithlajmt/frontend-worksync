@@ -8,10 +8,15 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./employeeform.component.css']
 })
 export class EmployeeformComponent implements OnInit {
+  apiEnd:string = 'departmentNames' //for child
+  // MultiSelect:boolean = false ; //for child
   reactiveForm!: FormGroup;
   selectedFile: File[] = [];
 
   constructor(private formBuilder: FormBuilder, private api: ApiService) {}
+
+
+
 
   ngOnInit(): void {
     this.reactiveForm = this.formBuilder.group({
@@ -50,12 +55,22 @@ export class EmployeeformComponent implements OnInit {
           console.log(res);
           // this.reactiveForm.reset();
           this.selectedFile = []; // Reset selectedFile array
+          this.reactiveForm.reset()
         },
         error: (err) => {
           console.log(err);
         }
       });
     }
+  }
+
+  handleDepartmentSelection(event:any){
+    console.log(event);
+    this.reactiveForm.patchValue({
+      department:event[0]
+    })
+
+
   }
 
   onFileSelected(event: any) {

@@ -1,0 +1,20 @@
+<div class="bg-gray-700 ">
+
+    <div class="w-screen  flex flex-row max-h-screen overflow-hidden max-w-full  ">
+        <!-- App Toolbar -->
+        <app-toolbar class="  "></app-toolbar>
+      
+        <!-- Main Content Area -->
+        <div class="flex flex-col flex-1 h-screen overflow-hidden">
+      
+            <!-- Top Bar -->
+            <app-topbar class="h-16 "></app-topbar>
+      
+            <!-- Scrollable Content Area -->
+            <div class="overflow-auto p-2 flex-1">
+                <router-outlet class=""></router-outlet>
+            </div>
+        </div>
+      </div>
+    </div>
+      
