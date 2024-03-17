@@ -7,6 +7,7 @@ import { DepartmentheadComponent } from './departmenthead.component';
 import { DepartmentStatiscticsComponent } from './components/department-statisctics/department-statisctics.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApproveComplaintsComponent } from './components/approve-complaints/approve-complaints.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { ApproveComplaintsComponent } from './components/approve-complaints/appr
     DepartmentheadRoutingModule,
     SharedModule,
     HttpClientModule,
+    MatIconModule,
+
   ],
   exports:[DepartmentStatiscticsComponent,ApproveComplaintsComponent]
 })

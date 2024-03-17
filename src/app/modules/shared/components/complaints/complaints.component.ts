@@ -30,6 +30,7 @@ export class ComplaintsComponent {
     const files = event.target.files;
     if (files.length > 0) {
       this.selectedFile = [files[0]]; // Update the selectedFile array
+      
     } else {
       alert('YOU CAN CHOOSE ONLY ONE FILE');
     }
@@ -40,7 +41,7 @@ export class ComplaintsComponent {
     this.complaintForm.append('title',this.complaint.title);
     this.complaintForm.append('description',this.complaint.description);
     this.complaintForm.append('recipient',this.complaint.to);
-    this.complaintForm.append('attachment',this.selectedFile);
+    this.complaintForm.append('attachment',this.selectedFile[0]);
 
     this.complaints.registerComplaint(this.complaintForm).subscribe({
       next:(res)=>{

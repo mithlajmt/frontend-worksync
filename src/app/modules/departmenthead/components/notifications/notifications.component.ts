@@ -2,22 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/modules/shared/services/common.service';
 
-
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  styleUrls: ['./notifications.component.css'],
 })
+export class NotificationsComponent implements OnInit {
+  eventForm!: FormGroup;
+  formData!: FormData;
+  selectedDepartments: string[] = [];
+  selectedFile: any;
 
-export class  NotificationsComponent implements OnInit {
-  eventForm!:FormGroup;
-  formData!:FormData
-  selectedDepartments:string[]=[] 
-  selectedFile:any;
-
-  api:string='departmentNames'
-
- 
+  api: string = 'departmentNames';
 
   departments = [
     { name: 'Department 1', value: 'department1' },
@@ -28,43 +24,50 @@ export class  NotificationsComponent implements OnInit {
     { name: 'ALL EMPLOYEES', value: 'ALL' },
     { name: 'departmentHead', value: 'departmentHead' },
   ];
-  
 
-  dep:any[]=[];
+  dep: any[] = [];
 
-  constructor(
-    private fb: FormBuilder,
-    private serv:CommonService,
-    ) {}
+  constructor(private fb: FormBuilder, private serv: CommonService) {}
 
   ngOnInit(): void {
     // Initialize the form group with form controls and validators
     this.eventForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(4)]],
-      range:this.fb.group({
-        start:['',Validators.required],
-        end:[''],
-      }) ,
+      range: this.fb.group({
+        start: ['', Validators.required],
+        end: [''],
+      }),
       description: ['', [Validators.required, Validators.minLength(10)]],
       target: ['', [Validators.required]],
       recipients: ['', [Validators.required]],
-      eventType:['',Validators.required]
+      eventType: ['', Validators.required],
     });
   }
 
-
-  handleSelectedDepartment(event:any){
-    this.selectedDepartments = [...event]
+  handleSelectedDepartment(event: any) {
+    this.selectedDepartments = [...event];
     // console.log(this.selectedDepartments,);   //eg:   ['minu', 'sales accomodation']
     this.eventForm.patchValue({
-    recipients:this.selectedDepartments
-    })
-    
+      recipients: this.selectedDepartments,
+    });
   }
 
-  createEvent(): void {  //onSubmit()
+  onFileSelection(event: any) {
+    const files = event.target.files;
+    if (files.length > 0) {
+      this.selectedFile = files[0]; // Update the selectedFile array
+      console.log(this.selectedFile)
+      // this.formData?.append('attachment', this.selectedFile)
+      // alert('hu')
+    } else {
+      alert('YOU CAN CHOOSE ONLY ONE FILE');
+    }
+  }
+
+  createEvent(): void {
+    //onSubmit()
     this.formData = new FormData();
-    const data = this.eventForm.value
+    const data = this.eventForm.value;
     // console.log(this.eventForm.value);
     this.formData.append('title', data.title);
     this.formData.append('start', data.range.start);
@@ -73,29 +76,19 @@ export class  NotificationsComponent implements OnInit {
     this.formData.append('target', data.target);
     this.formData.append('recipients', data.recipients);
     this.formData.append('eventType', data.eventType);
-    this.formData.append('attachment',this.selectedFile);
+    this.formData.append('attachment', this.selectedFile);
 
     this.serv.postNotification(this.formData).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
         this.eventForm.reset();
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
-        
-      }
-        })
+      },
+    });
     // Reset the form after submission if needed
   }
 
-  onFileSelection(event: any) {
-    const files = event.target.files;
-    if (files.length > 0) {
-      this.selectedFile = [files[0]]; // Update the selectedFile array
-    } else {
-      alert('YOU CAN CHOOSE ONLY ONE FILE');
-    }
-    }
+  
 }
-
-

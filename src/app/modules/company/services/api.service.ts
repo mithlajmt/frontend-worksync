@@ -59,7 +59,10 @@ export class ApiService {
   }
 
   getDepartments(){
-    return this.http.get(`${this.userapi}/department`)
+    return this.http.get(`${this.userapi}/departments`)
   }
   
+  getDepartmentData(depID:string){
+    return this.http.get(`${this.userapi}/department/${depID}`)
+  }
 }

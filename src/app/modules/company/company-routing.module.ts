@@ -22,6 +22,7 @@ const routes: Routes = [
       { path: 'addemployee', component: EmployeeformComponent },
       { path: 'departments', component: DepartmentsComponent },
       { path: 'departments/:id', component: DepartmentDetailsComponent },
+      { path: 'departments/:id/employee', component: EmployeeformComponent },
       { path: 'notifications', component: NotificationsComponent },
       {path: 'complaintsList',component:ApproveComplaintsComponent},
       { path: 'todo', component: TodoComponent },

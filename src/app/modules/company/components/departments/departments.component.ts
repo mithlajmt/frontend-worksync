@@ -70,8 +70,6 @@ myForm!:FormGroup;
 
   selectDepartment(department: string) {
     console.log(department);
-    
-    
     const depID = department;  // Assuming 'department' represents the department ID
     // console.log(depID);
   

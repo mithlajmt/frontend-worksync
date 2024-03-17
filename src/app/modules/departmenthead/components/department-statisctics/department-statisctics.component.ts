@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiutitilityService } from '../../services/apiUtitility.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-department-statisctics',
@@ -12,11 +12,12 @@ export class DepartmentStatiscticsComponent implements OnInit {
   loaded:boolean = false
   constructor(
     private api:ApiutitilityService,
-    private active:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:Router,
   ){}
 
   ngOnInit(): void {
-    const ID = this.active.snapshot.paramMap.get('id') 
+    const ID = this.route.snapshot.paramMap.get('id') 
     this.api.getDepartmentData(ID).subscribe({
       next:(res:any)=>{
         this.departmentData = res.data[0]
@@ -30,4 +31,13 @@ export class DepartmentStatiscticsComponent implements OnInit {
       }
     })  
   }
+
+  onPresentClick() {
+    // Update the query parameter 'employee' to 'present' without navigating
+    this.router.navigate([], { 
+        relativeTo: this.route,
+        queryParams: { employee: 'present' }, 
+        queryParamsHandling: 'merge' 
+    });
+}
 }

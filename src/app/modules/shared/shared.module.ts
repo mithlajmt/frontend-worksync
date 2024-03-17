@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MultiselectComponent } from './components/multiselect/multiselect.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { TableListComponent } from './components/table-list/table-list.component';
 
 
 
@@ -43,6 +44,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     ComplaintsComponent,
     MultiselectComponent,
     DatepickerComponent,
+    TableListComponent,
   ],
   imports: [
     CommonModule,
@@ -71,6 +73,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     LeaveRequestComponent,
     ComplaintsComponent,
     MultiselectComponent,
+    TableListComponent
   ],
   // providers: [NativeDateAdapter()],
 

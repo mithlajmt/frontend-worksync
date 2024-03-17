@@ -13,4 +13,8 @@ export class ApiutitilityService {
   getDepartmentData(departmentID:any){
     return this.http.get(`${this.userapi}/department/${departmentID}`)
   }
+
+  getComplaintsList(){
+    return this.http.get('http://localhost:4000/complaintsList')
+  }
 }
