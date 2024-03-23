@@ -10,6 +10,10 @@ import { ComplaintsService } from '../../services/complaints.service';
   // providers: [provideNativeDateAdapter()],
 })
 export class ComplaintsComponent {
+
+  complaintsData:any[]=[]
+
+  
   complaint = {
     title: '',
     description: '',

@@ -16,6 +16,8 @@ export class EmployeelistComponent implements OnInit {
   bodyText: string = '';
   employeeToDelete:string=''
   employees!:any[];
+  addClicked=false
+
 
 
 
@@ -109,6 +111,9 @@ export class EmployeelistComponent implements OnInit {
   this.isEditFormVisible=false
  }
 
+ addClick(){
+  this.addClicked = true
+ }
 
 
 

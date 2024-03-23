@@ -6,6 +6,7 @@ import { CheckInComponent } from './components/check-in/check-in.component';
 import { AttendencecalenderComponent } from '../shared/components/attendencecalender/attendencecalender.component';
 import { LeaveRequestComponent } from '../shared/components/leave-request/leave-request.component';
 import { ComplaintsComponent } from '../shared/components/complaints/complaints.component';
+import { TodoComponent } from '../shared/components/todo/todo.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: 'checkIn', component: CheckInComponent },
       { path: 'Attendance', component: AttendencecalenderComponent },
       { path: 'leaveRequest', component: LeaveRequestComponent },
-      { path: 'Complaints', component: ComplaintsComponent },
+      { path: 'complaints', component: ComplaintsComponent },
+      { path: 'todo', component: TodoComponent },
 
     ]
   }

@@ -1,0 +1,83 @@
+<div class="w-full min-h-full bg-gray-900">
+    <div class="w-full bg-gray-900 h-full p-10 gap-0">
+        <div class="flex justify-center items-center flex-col img-container gap-2">
+            <!-- Display current profile image -->
+            <img class="md:w-36 w-24 h-24 md:h-36 object-cover  object-center overflow-hidden p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" [src]="profileImage"  alt="">
+            <!-- Button to trigger profile image change -->
+            <label for="profileImageInput" class="text-gray-300 hover:text-yellow-600 cursor-pointer">Change profile Image</label>
+            <!-- File input field hidden from view -->
+            <input type="file" id="profileImageInput" accept="image/*" (change)="onProfileImageSelected($event)" style="display: none;">
+          </div>
+        <form 
+        *ngIf="loaded"
+        [formGroup]="profileForm"
+         (ngSubmit)="onSubmit()"
+          class="bg-gray-900 shadow-sm shadow-gray-700 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 h-5/6 p-8 justify-center items-center gap-9 md:text-xl text-md">
+            <div class="text-white font-kanit flex flex-col">
+                <label for="name">Name:</label>
+                <input type="text" formControlName="name" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter your name">
+                <div *ngIf="f['name'].errors && (f['name'].dirty || f['name'].touched)" class="text-red-500 ">
+                    <div *ngIf="f['name'].errors['required']">Name is required</div>
+                </div>
+            </div>
+
+
+            <div class="text-white font-kanit flex flex-col">
+                <label for="email">Email:</label>
+                <input type="email" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="email" placeholder="Enter your email">
+                <div *ngIf="f['email'].errors && (f['email'].dirty || f['email'].touched)" class="text-red-500">
+                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                    <div *ngIf="f['email'].errors['email']">Invalid email format</div>
+                </div>
+            </div>
+
+            <div class="text-white font-kanit flex flex-col">
+                <label for="gender">Gender:</label>
+                <select class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="gender" placeholder="Select gender">
+                    <option value="" disabled>Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <div *ngIf="f['gender'].errors && (f['gender'].dirty || f['gender'].touched)" class="text-red-500">
+                    <div *ngIf="f['gender'].errors['required']">Gender is required</div>
+                </div>
+            </div>
+
+            <div class="text-white font-kanit flex flex-col">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="phoneNumber" placeholder="Enter your phone number">
+                <div *ngIf="f['phoneNumber'].errors && (f['phoneNumber'].dirty || f['phoneNumber'].touched)" class="text-red-500">
+                    <div *ngIf="f['phoneNumber'].errors['required']">Phone number is required</div>
+                    <div *ngIf="f['phoneNumber'].errors['pattern']">Invalid phone number format</div>
+                </div>
+            </div>
+
+            <div class="text-white font-kanit flex flex-col">
+                <label for="address">Address:</label>
+                <input type="text" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="address" placeholder="Enter your address">
+                <div *ngIf="f['address'].errors && (f['address'].dirty || f['address'].touched)" class="text-red-500">
+                    <div *ngIf="f['address'].errors['required']">Address is required</div>
+                </div>
+            </div>
+
+            <div class="text-white font-kanit flex flex-col">
+                <label for="secondPhoneNumber">Second Phone Number:</label>
+                <input type="tel" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="secondPhoneNumber" placeholder="Enter your second phone number">
+            </div>
+
+            <div class="text-white font-kanit flex flex-col">
+                <label for="bio">Bio:</label>
+                <input formControlName="bio" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter your bio">
+            </div>
+
+            <!-- <app-multiselect></app-multiselect> -->
+            <!-- Add UI for selecting skills here -->
+
+            <div class="md:justify-center md:items-end mt-5 self-end  grid">
+                <button type="submit" [disabled]="profileForm.invalid" class=" d:min-w-24 px-9 rounded-md bg-yellow-700  py-2 hover:bg-gray-600 text-white font-semibold  transition duration-300">Submit</button>
+            </div>
+            
+        </form>
+    </div>
+</div>

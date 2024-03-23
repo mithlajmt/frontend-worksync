@@ -10,14 +10,11 @@ export class TableListComponent implements OnInit ,OnChanges  {
   tableHead: string[] = []; // Specify type as string array
 
   ngOnInit(): void {
-
   }
-
-ngOnChanges(changes: SimpleChanges): void {
-
-      this.tableHead = Object.keys(this.tableData[0]);
-      console.log(this.tableData);
   
+  ngOnChanges(changes: SimpleChanges): void {
+    this.tableHead = Object.keys(this.tableData[0]);
+    console.log(this.tableData);
 }
 
 onRowClick(){

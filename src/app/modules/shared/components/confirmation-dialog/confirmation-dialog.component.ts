@@ -18,6 +18,5 @@ export class ConfirmationDialogComponent {
 
   onConfirmClick(){
     this.confirm.emit()
-
   }
 }

@@ -1,5 +1,5 @@
 <!-- notifications.component.html -->
-
+<div class="min-w-full min-h-full bg-gray-900 pb-5">
 <div class="bg-gray-900 max-w-screen m-0  md:p-4 gap-9 grid-flow-row">
     <h1 class="font-kanit text-3xl text-white font-bold mb-4">Create a New Event:</h1>
     <div class="form-container grid grid-cols-2  gap-4">
@@ -81,29 +81,8 @@
             </div>
         </form>
     </div>
-
-    <div class="flex flex-col md:mt-8 p-1 flex-wrap">
-        <h1 class="font-kanit text-3xl text-white font-bold mb-4">Upcoming Active Events:</h1>
-        <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 sm:px-3 md:mt-4">
-            <div class="event-card bg-gray-800 text-white p-4 rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                Event 1
-            </div>
-            <div class="event-card bg-gray-800 text-white p-4 rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                Event 2
-            </div>
-        </div>
-
-        <div class="flex flex-col col-span-2 md:mt-8">
-            <h1 class="font-kanit text-3xl text-white font-bold mb-4">All Announced Events:</h1>
-            <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 sm:px-3 md:mt-4">
-                <div class="event-card bg-gray-800 text-white p-4 rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                    Event 1
-                </div>
-                <div class="event-card bg-gray-800 text-white p-4 rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                    Event 2
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
+<app-notification-list></app-notification-list>
+
+</div>

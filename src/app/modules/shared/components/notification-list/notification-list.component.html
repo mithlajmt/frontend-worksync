@@ -1,0 +1,25 @@
+<div class="flex flex-col md:mt-8 p-1 flex-wrap">
+    <h1 class="font-kanit text-3xl text-white font-bold mb-4">Upcoming Active Events:</h1>
+    <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 sm:px-3 md:mt-4">
+        
+        <ng-container *ngIf="upcomingEvents.length > 0; else noUpcomingEvents">
+            <div *ngFor="let event of upcomingEvents" class=" flex font-kanit border border-yellow-800 justify-between event-card bg-gray-800 text-white p-4 rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <span class="text-2xl ">{{event.title}}</span>
+                <span class="text-xl text-yellow-800">{{ event.start | date: 'dd MMM yy' }}</span>
+                        </div>
+        </ng-container>
+        <ng-template #noUpcomingEvents>
+            <div class="text-red-500 text-center font-bold">No upcoming notifications</div>
+        </ng-template>
+    </div>
+
+    <div class="flex flex-col col-span-2 md:mt-8">
+        <h1 class="font-kanit text-3xl text-white font-bold mb-4">All Announced Events:</h1>
+        <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 sm:px-3 md:mt-4 font-kanit ">
+            <div *ngFor="let event of allEvents" class="event-card bg-gray-800 text-white p-4 md:max-h-14 flex justify-between rounded-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <span class="text-2xl text-gray-500">{{event.title}}</span>
+                <span class="text-xl text-yellow-800">{{ event.start | date: 'dd MMM yy' }}</span>
+            </div>
+        </div>
+    </div>
+</div>

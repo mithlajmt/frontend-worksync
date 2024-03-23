@@ -17,4 +17,10 @@ export class ApiutitilityService {
   getComplaintsList(){
     return this.http.get('http://localhost:4000/complaintsList')
   }
+
+  getNotificationList(role:string){
+    console.log(role);
+    
+    return this.http.get(`http://localhost:4000/${role}/notification`)
+  }
 }

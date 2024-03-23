@@ -25,5 +25,20 @@ export class CommonService {
     return this.http.post<any>(`${this.userApi}/notification`,noty)
   }
 
+  getProfile(){
+    return this.http.get<any>(`${this.userApi}/profile`,)
+  }
+
+  UpdateProfile(body:any){
+    return this.http.patch<any>(`${this.userApi}/profile`,body)
+  }
+  getUsernameAndProfile(){
+    return this.http.get<any>(`${this.userApi}/profileInfo`,)
+  }
+
+  
+  addTask(task:any){
+    return this.http.post(`${this.userApi}/task`,task)
+  }
    
 }

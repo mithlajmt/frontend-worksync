@@ -1,48 +1,34 @@
-<div
-  class="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-800 to-gray-700 text-gray-300"
->
-  <div
-    class="task-container w-full sm:w-3/4 lg:w-2/3 xl:w-1/2 font-sans bg-gray-900 p-8 rounded-lg shadow-lg"
-  >
-    <h1 class="text-4xl mb-6 text-center">Classy ToDo App</h1>
-    <div
-      *ngFor="let task of tasks"
-      class="task bg-blue-500 text-gray-100 border-none my-4 p-4 rounded-lg cursor-pointer transition-all duration-300 ease-in-out"
-      (click)="editTask(task)"
-    >
-      <p class="text-lg">
-        {{ task.title }} - {{ task.description }} - {{ task.status }}
-      </p>
-      <button
-        class="bg-green-500 text-gray-100 p-2 rounded cursor-pointer mr-2"
-        (click)="editTask(task)"
-      >
-        Edit
-      </button>
-      <button
-        class="bg-red-500 text-gray-100 p-2 rounded cursor-pointer"
-        (click)="deleteTask(task._id)"
-      >
-        Delete
-      </button>
-    </div>
+<div class="min-h-full max-full overflow-x-scroll bg-gray-900">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-semibold text-white mb-4">Todo App</h1>
     
-    <div class="add-task mt-8 flex flex-col items-center sm:flex-row">
-      <h2 class="text-2xl text-gray-100 mb-4 sm:mb-0 sm:mr-4">Add Task</h2>
-      <input
-        placeholder="Title"
-        class="p-2 mb-4 sm:mb-0 sm:mr-4 border border-gray-300 rounded"
-      />
-      <input
-        placeholder="Description"
-        class="p-2 mb-4 sm:mb-0 sm:mr-4 border border-gray-300 rounded"
-      />
-      <button
-        class="bg-green-500 text-gray-100 p-3 rounded cursor-pointer transition-all duration-300 ease-in-out"
-        (click)="addTask()"
-      >
-        Add Task
-      </button>
+    <!-- Todo Input -->
+    <form (ngSubmit)="addTask()" #todoForm="ngForm">
+      <div class="flex flex-col lg:flex-row items-center mb-4 gap-6 lg:gap-0">
+        <input type="text" name="title" class="w-full h-14 md:w-full px-4 py-2 mb-2 md:mb-0 mr-0 md:mr-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:border-yellow-500" placeholder="Enter title" [(ngModel)]="newTask.title" required>
+        <input type="text" name="description" class="w-full h-14 px-4 py-2 mb-2 md:mb-0 mr-0 md:mr-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:border-yellow-500" placeholder="Enter description" [(ngModel)]="newTask.description" required>
+        <button type="submit" class="px-4 md:w-3/6 w-full py-2 text-white md:mt-0 rounded-md bg-yellow-700 hover:bg-yellow-800 focus:outline-none" [disabled]="!todoForm.valid">Add</button>
+      </div>
+    </form>
+    
+    <!-- Todo List -->
+    <div>
+      <!-- Single Todo Item -->
+      <div class="flex items-center justify-between bg-gray-800 p-4 mb-4 rounded-md  hover:border hover:border-yellow-700 transition duration-100">
+        <div class="flex items-center">
+          <input type="checkbox" class="mr-4">
+          <div>
+            <h2 class="text-white font-semibold mb-2">Todo item 1</h2>
+            <p class="text-gray-400">This is a sample description for the todo item.</p>
+          </div>
+        </div>
+        <div>
+          <button class="px-8 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 focus:outline-none">Delete</button>
+        </div>
+      </div>
+      
+      <!-- Repeat this for each todo item -->
+      
     </div>
   </div>
 </div>

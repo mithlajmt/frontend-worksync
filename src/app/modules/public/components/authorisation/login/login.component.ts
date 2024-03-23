@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
          }
          else if(decodedToken.role === 'companyAdmin'){
-          this.router.navigate(['/company/dashboard'])
+          this.router.navigate(['/companyAdmin/dashboard'])
          }
          else if(decodedToken.role === 'admin'){
           this.router.navigate(['/admin/dashboard'])

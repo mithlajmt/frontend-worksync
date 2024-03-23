@@ -10,6 +10,8 @@ import { TodoComponent } from '../shared/components/todo/todo.component';
 import { EmployeelistComponent } from './components/employee/employeelist/employeelist.component';
 import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
 import { ApproveComplaintsComponent } from '../departmenthead/components/approve-complaints/approve-complaints.component';
+import { ChatSessionComponent } from '../shared/components/chat-session/chat-session.component';
+import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,8 @@ const routes: Routes = [
       { path: 'notifications', component: NotificationsComponent },
       {path: 'complaintsList',component:ApproveComplaintsComponent},
       { path: 'todo', component: TodoComponent },
+      { path: 'Messages', component:ChatSessionComponent },
+      { path: 'profile', component:ProfileFormComponent },
     ],
   },
 ];

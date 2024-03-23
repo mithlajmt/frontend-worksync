@@ -1,0 +1,29 @@
+.white-icon {
+    color: white; /* Set the color to white */
+    transform: scale(2);
+}
+
+.icon{
+    cursor: pointer;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards; /* Use keyframe animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Start with low opacity */
+        transform: scale(0.9); /* Initial scale */
+    }
+    50% {
+        opacity: 0.4; /* Start with low opacity */
+        transform: scale(0.9); /* Initial scale */
+    }
+    100% {
+        opacity: 1; /* Fully opaque */
+        transform: scale(1); /* Normal scale */
+    }
+}
+

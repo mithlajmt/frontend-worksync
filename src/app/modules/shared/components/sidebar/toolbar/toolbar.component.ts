@@ -57,6 +57,8 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['signup'])
   }
   navigate(link:string){
+    console.log(this.role);
+    
     this.router.navigate([`/${this.role}/${link}`]);
   }
 }

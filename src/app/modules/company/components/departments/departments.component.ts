@@ -74,7 +74,7 @@ myForm!:FormGroup;
     // console.log(depID);
   
     // Navigate to the department details route, passing the department ID as a parameter
-    this.router.navigate(['/company/departments', depID]);
+    this.router.navigate(['/companyAdmin/departments', depID]);
   }
   
 }

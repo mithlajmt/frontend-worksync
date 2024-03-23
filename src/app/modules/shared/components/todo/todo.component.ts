@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   selector: 'app-todo',
@@ -6,24 +7,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent {
-  tasks: any[] = [
-    { title: 'Task 1', description: 'Description 1', status: 'Pending', _id: '1' },
-    { title: 'Task 2', description: 'Description 2', status: 'Completed', _id: '2' },
-    // Add more tasks as needed
-  ];
+  constructor(
+    private common:CommonService
+  ){
+
+  }
+
+ 
+
+  tasks: any[] = [];
 
   newTask: any = {};
 
   addTask() {
-    this.tasks.push({ ...this.newTask, _id: `${Date.now()}` });
-    this.newTask = {};
-  }
+    const task = this.newTask
+    this.common.addTask(task).subscribe({
+      next:(res)=>{
 
-  editTask(task: any) {
-    // Implement editing functionality here
-  }
+      },
+      error:(err)=>{
+        console.log(err);
+        
+      }
+    })
+
+    }
+  
 
   deleteTask(id: string) {
-    this.tasks = this.tasks.filter((task) => task._id !== id);
+   
   }
+
+  updateTaskStatus(task: any) {
+    // Implement logic to update task status if needed
+  }
+
 }
