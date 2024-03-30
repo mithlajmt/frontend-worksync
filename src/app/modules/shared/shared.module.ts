@@ -26,6 +26,7 @@ import { TableListComponent } from './components/table-list/table-list.component
 import { NotificationListComponent } from './components/notification-list/notification-list.component';
 import { ChatSessionComponent } from './components/chat-session/chat-session.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
 
 
 
@@ -51,6 +52,7 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
     NotificationListComponent,
     ChatSessionComponent,
     ProfileFormComponent,
+    ChatListComponent,
   ],
   imports: [
     CommonModule,

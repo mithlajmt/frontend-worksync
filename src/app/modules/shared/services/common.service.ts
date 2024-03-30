@@ -12,33 +12,45 @@ export class CommonService {
   ) { }
 
   getUserDetails(){
-    return this.http.get(`${this.userApi}/userData`)
+    return this.http.get(`${this.userApi}/userData`);
   }
 
  
   getListData(endpoint:string){
-    return this.http.get(`${this.userApi}/${endpoint}`)
+    return this.http.get(`${this.userApi}/${endpoint}`);
 
   }
 
   postNotification(noty:any){
-    return this.http.post<any>(`${this.userApi}/notification`,noty)
+    return this.http.post<any>(`${this.userApi}/notification`,noty);
   }
 
   getProfile(){
-    return this.http.get<any>(`${this.userApi}/profile`,)
+    return this.http.get<any>(`${this.userApi}/profile`,);
   }
 
   UpdateProfile(body:any){
-    return this.http.patch<any>(`${this.userApi}/profile`,body)
+    return this.http.patch<any>(`${this.userApi}/profile`,body);
   }
   getUsernameAndProfile(){
-    return this.http.get<any>(`${this.userApi}/profileInfo`,)
+    return this.http.get<any>(`${this.userApi}/profileInfo`,);
   }
 
   
   addTask(task:any){
-    return this.http.post(`${this.userApi}/task`,task)
+    return this.http.post(`${this.userApi}/todo`,task);
   }
-   
+
+  getTasks(){
+    return this.http.get(`${this.userApi}/todo`);
+  }
+
+  getchatList(){
+    return this.http.get(`${this.userApi}/chatlist`);
+  }
+
+  getReciever(id:any){
+    return this.http.get(`${this.userApi}/RecieverProfile/${id}`);
+  }
+ 
 }

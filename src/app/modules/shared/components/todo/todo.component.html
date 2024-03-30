@@ -1,4 +1,6 @@
-<div class="min-h-full max-full overflow-x-scroll bg-gray-900">
+<div class="min-h-full max-h-full overflow-scroll">
+
+<div class=" min-h-full max-h-full   bg-gray-900">
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-semibold text-white mb-4">Todo App</h1>
     
@@ -11,15 +13,19 @@
       </div>
     </form>
     
+
+    
     <!-- Todo List -->
-    <div>
+    <div class="flex-col-reverse flex">
       <!-- Single Todo Item -->
-      <div class="flex items-center justify-between bg-gray-800 p-4 mb-4 rounded-md  hover:border hover:border-yellow-700 transition duration-100">
+      <div 
+      *ngFor="let task of tasks"
+      class="flex items-center  justify-between bg-gray-800 p-4 mb-4 rounded-md  hover:border hover:border-yellow-700 transition duration-100">
         <div class="flex items-center">
           <input type="checkbox" class="mr-4">
-          <div>
-            <h2 class="text-white font-semibold mb-2">Todo item 1</h2>
-            <p class="text-gray-400">This is a sample description for the todo item.</p>
+          <div >
+            <h2 class="text-white font-semibold mb-2">{{task.title}}</h2>
+            <p class="text-gray-400">{{task.description}}</p>
           </div>
         </div>
         <div>
@@ -31,4 +37,5 @@
       
     </div>
   </div>
+</div>
 </div>
