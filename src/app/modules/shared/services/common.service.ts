@@ -52,5 +52,9 @@ export class CommonService {
   getReciever(id:any){
     return this.http.get(`${this.userApi}/RecieverProfile/${id}`);
   }
+
+  getFullEmployeeData(id:any){
+    return this.http.get(`${this.userApi}/employee/${id}`);
+  }
  
 }

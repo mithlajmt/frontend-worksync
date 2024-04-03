@@ -43,9 +43,9 @@ export class EditEmployeeDataComponent implements OnInit {
 
     ngOnInit(): void {
 
+      const employeeId = this.route.snapshot.params['id'];
+      this.selectedEmployee = employeeId
       
-      this.route.queryParams.subscribe((params) => {
-        this.selectedEmployee = params['selected'];
         this.api.getEmployeeData(this.selectedEmployee).subscribe({
           next: (res:any) => {
             if(res.success){
@@ -61,7 +61,7 @@ export class EditEmployeeDataComponent implements OnInit {
             // Handle the error, e.g., show an error message to the user
           }
         });
-      });
+      
     
     }
 

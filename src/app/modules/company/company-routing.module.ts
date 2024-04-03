@@ -12,6 +12,7 @@ import { DepartmentDetailsComponent } from './components/department-details/depa
 import { ApproveComplaintsComponent } from '../departmenthead/components/approve-complaints/approve-complaints.component';
 import { ChatSessionComponent } from '../shared/components/chat-session/chat-session.component';
 import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
+import { EmployeeDataProfileComponent } from '../shared/components/employee-data-profile/employee-data-profile.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'employee', component: EmployeelistComponent },
+      { path: 'employee/:id', component: EmployeeDataProfileComponent },
       { path: 'addemployee', component: EmployeeformComponent },
       { path: 'departments', component: DepartmentsComponent },
       { path: 'departments/:id', component: DepartmentDetailsComponent },

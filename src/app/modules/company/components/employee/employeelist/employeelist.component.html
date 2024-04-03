@@ -1,6 +1,7 @@
 <div class="container bg-gray-900 min-h-full max-h-full border border-yellow-800  overflow-scroll" style="overflow-x: hidden;">
-    <div 
-    *ngIf="!addClicked"
+ <div
+     
+        *ngIf="!addClicked"
     class="flex flex-row-reverse">
         <button 
         (click)="addClick()"
@@ -12,11 +13,11 @@
         <app-employeeform></app-employeeform>
     </div>
     <div>
-        <div>
+
+        <!-- <div> 
             <h1 class="font-kanit font-semibold text-2xl mt-4 text-white">EMPLOYEES </h1>
         </div>
         <div class=" pb-32">
-            <!-- Rounded table with shadow and extended animation -->
             <table class="mt-4 w-full border-collapse  bg-white rounded-md shadow-lg overflow-hidden custom-table-animation relative">
                 <thead>
                     <tr class="bg-gradient-to-r from-gray-800 to-gray-900 text-white">
@@ -25,12 +26,13 @@
                         <th class="p-2 border border-r border-black">UserID</th>
                         <th class="p-2 border border-r border-black">Role</th>
                         <th class="p-2 border border-r border-black">Department</th>
-                        <!-- Increased space for future buttons -->
                         <th class="p-2 border w-36"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-gray-700">
-                    <tr *ngFor="let employee of employees let i = index" class="hover:bg-gray-800 hover:scale-[1.01] transition duration-300 ">
+                    <tr
+                    (click)="onEmployeeClick(employee.employeeID)"
+                    *ngFor="let employee of employees let i = index" class="hover:bg-gray-800 hover:scale-[1.01] transition duration-300 ">
                         <td class="p-2 border border-gray-950 text-gray-300 ">{{i+1}}</td>
                         <td class="p-2 border border-gray-950 text-gray-300 ">{{employee.employeeName}}</td>
                         <td class="p-2 border border-gray-950 text-gray-300 ">{{employee.employeeID}}</td>
@@ -52,12 +54,24 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-    <app-confirmation-dialog [isVisible]="deleteConfirm" [confirmationMessage]="confirmationMessage" [bodyText]="bodyText"
-        (cancel)="onCancelConfirmationDelete()" (confirm)="onDeleteConfirmation()">
-    </app-confirmation-dialog>
+        </div> -->
+        <app-table-list
+        [keyID]="'userID'"
+        (clickData)="onRowClick($event)"
+         [tableData]="employees"
+         ></app-table-list>
 
-    <app-edit-employee-data *ngIf="isEditFormVisible" (cancelClicked)="onEditCancelClicked()" (saveEditClicked)="onEditSaveclicked()">
+    </div>
+    <!-- <app-confirmation-dialog 
+    [isVisible]="deleteConfirm" 
+    [confirmationMessage]="confirmationMessage"
+     [bodyText]="bodyText"
+    (cancel)="onCancelConfirmationDelete()"
+     (confirm)="onDeleteConfirmation()">
+    </app-confirmation-dialog> -->
+
+    <!-- <app-edit-employee-data *ngIf="isEditFormVisible" (cancelClicked)="onEditCancelClicked()" (saveEditClicked)="onEditSaveclicked()">
     </app-edit-employee-data>
-</div>
+</div> -->
+
+

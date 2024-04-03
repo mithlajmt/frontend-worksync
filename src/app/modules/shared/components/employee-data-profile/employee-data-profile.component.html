@@ -1,0 +1,84 @@
+<div
+*ngIf="showTable"
+class="w-full h-full overflow-scroll scroll-smooth bg-gray-900">
+
+    <div class="p-8">
+        <div class="p-8 bg-gray-900 shadow mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+            
+            <!-- User stats -->
+            <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+                <div>
+                    <p class="font-bold text-gray-700 text-xl">{{employeeData.salary }} 0</p>
+                    <p class="text-gray-400">Salary</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-700 text-xl">{{employeeData.totalAttendance}}</p>
+                    <p class="text-gray-400">Total Present Days</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-700 text-xl">{{employeeData.totalLeave}}</p>
+                    <p class="text-gray-400">Total Leave</p>
+                </div>
+            </div>
+            
+            <!-- User profile image -->
+            <div class="">
+                <div class="w-48 h-48 bg-indigo-100 object-cover mx-auto rounded-full shadow-2xl  inset-x-0 top-0 -mt-24 flex text-indigo-500">
+                    <!-- <div class=" " > -->
+                        <img class="flex-1 rounded-full object-cover"
+                        [src]="employeeData.photo" alt="">
+
+                    <!-- </div> -->
+                </div>
+            </div>
+            
+            <!-- Connect and Message buttons -->
+            <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+                <button
+                (click)="editEmployee()"
+                 class="text-white py-2 px-8 uppercase rounded bg-gray-700 hover:bg-yellow-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Edit </button>
+                <button 
+                (click)="onDeleteButtonClick()"
+                class="text-white py-2 px-4 uppercase rounded bg-gray-800 hover:bg-red-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Terminate</button>
+            </div>
+            
+        </div>
+        
+        <!-- User information section -->
+        <div class="mt-20 text-center border-b pb-12">
+            <h1 class="text-4xl font-medium text-gray-300">{{employeeData.employeeName}} <span class="font-light text-gray-500"></span></h1>
+            <p class="font-light text-gray-400 mt-3">{{employeeData.contactEmail}}</p>
+            <p class="mt-2 text-gray-500">{{employeeData.department }} Department </p>
+            <p class="mt-8 text-gray-500">{{employeeData.role}}</p>
+            <p class="mt-8 text-gray-400">{{employeeData.contactNumber}}</p>
+        </div>
+        
+        <!-- User bio section -->
+        <div class="mt-12 flex flex-col justify-center">
+            <p class="text-gray-600 text-center font-light lg:px-16">{{employeeData.bio}}</p>
+            <button class="text-indigo-500 py-2 px-4 font-medium mt-4">Show more</button>
+        </div>
+    </div>
+</div>
+
+    </div>
+    
+
+    <app-confirmation-dialog 
+    [isVisible]="deleteConfirm" 
+    [confirmationMessage]="confirmationMessage"
+     [bodyText]="bodyText"
+    (cancel)="onCancelConfirmationDelete()"
+     (confirm)="onDeleteConfirmation()">
+    </app-confirmation-dialog>
+
+
+
+    <!-- <app-edit-employee-data 
+    *ngIf="isEditFormVisible"
+     (cancelClicked)="onEditCancelClicked()"
+      (saveEditClicked)="onEditSaveclicked()">
+    </app-edit-employee-data> -->
+
+ 

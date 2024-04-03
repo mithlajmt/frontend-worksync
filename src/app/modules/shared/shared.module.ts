@@ -27,6 +27,8 @@ import { NotificationListComponent } from './components/notification-list/notifi
 import { ChatSessionComponent } from './components/chat-session/chat-session.component';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { EmployeeDataProfileComponent } from './components/employee-data-profile/employee-data-profile.component';
+import { CompanyModule } from '../company/company.module';
 
 
 
@@ -53,6 +55,7 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
     ChatSessionComponent,
     ProfileFormComponent,
     ChatListComponent,
+    EmployeeDataProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +70,7 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
     MatInputModule,
     MatIconModule,
     NgMultiSelectDropDownModule,
+    // CompanyModule,
 
 
 
@@ -83,7 +87,8 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
     MultiselectComponent,
     TableListComponent,
     ChatSessionComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    EmployeeDataProfileComponent
   ],
   // providers: [NativeDateAdapter()],
 

@@ -95,7 +95,6 @@ export class EmployeelistComponent implements OnInit {
 
 
  onEditCancelClicked(){
-  console.log('hello');
   
   this.isEditFormVisible=false
 
@@ -116,6 +115,10 @@ export class EmployeelistComponent implements OnInit {
  }
 
 
+
+onRowClick(id:any){
+  this.router.navigate(['.',id ], { relativeTo: this.route });
+}
 
 
 }

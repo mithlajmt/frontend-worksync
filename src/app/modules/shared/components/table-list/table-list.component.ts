@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input,Output, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Emitter } from '@fullcalendar/core/internal';
 
 @Component({
   selector: 'app-table-list',
@@ -7,7 +8,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class TableListComponent implements OnInit ,OnChanges  {
   @Input() tableData: any[] = [];
+  @Input() keyID:any;
+  @Output() clickData: EventEmitter<any> = new EventEmitter<any>();
   tableHead: string[] = []; // Specify type as string array
+  
 
   ngOnInit(): void {
   }
@@ -17,7 +21,7 @@ export class TableListComponent implements OnInit ,OnChanges  {
     console.log(this.tableData);
 }
 
-onRowClick(){
-  alert('item clicked setup redirecting')
+onRowClick(keyID:any){
+  this.clickData.emit(keyID)
 }
 }

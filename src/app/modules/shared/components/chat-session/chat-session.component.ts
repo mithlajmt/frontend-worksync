@@ -12,7 +12,8 @@ export class ChatSessionComponent implements OnInit {
   inputMessage:string=''
   showChat=false
   profileData:any;
-  previousMessage = []
+  previousMessage:any[] = []
+  userID:any=''
   // senterData = []
  
 
@@ -21,9 +22,16 @@ export class ChatSessionComponent implements OnInit {
     private common:CommonService
     ) { }
 
+    isOwnMessage(senderID:string | number){
+      return this.userID == senderID ? true : false
+    }
+
   ngOnInit(): void {
     this.common.getUsernameAndProfile().subscribe({
       next:(res)=>{
+        this.userID = res.data[0]._id
+        
+                
 
             },
       error:(err)=>{
@@ -46,7 +54,7 @@ export class ChatSessionComponent implements OnInit {
     this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
       next:(res)=>{
         // console.log(res);
-        this.previousMessage=res.data[0];
+        this.previousMessage=res.data;
         console.log(this.previousMessage)
       },
 
