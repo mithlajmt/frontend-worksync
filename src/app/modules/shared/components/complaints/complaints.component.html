@@ -52,6 +52,34 @@
     Previous Complaints :
   </div>
 
+  <div class="columns-1 md:columns-2 md:gap-4  space-y-9 md:space-y-4 mt-4 ">
+    <div *ngFor="let complaint of complaintsData" class="rounded-lg shadow-md overflow-hidden bg-gray-800 hover:shadow-lg">
+  <div class="flex items-center p-4 cursor-pointer"
+   (click)="toggleExpand(complaint)">
+      <img *ngIf="complaint.employeedata[0]" [src]="complaint.employeedata[0].photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
+    <div class="flex flex-col text-left gap-0 ">
+      <h2 class="text-xl font-semibold text-gray-200">AUTHOR : {{ complaint?.employeedata[0]?.employeeName | uppercase }}</h2>
+      <h3 class="text-lg font-medium text-gray-400"> TITLE : {{ complaint.title | uppercase}}</h3>
+      <div class="flex flex-col items-center text-sm  text-gray-500 justify-around w-full  ">
+        <h4 class="mr-2"> STATUS : <span [ngStyle]="getStatusColor(complaint.status)">  {{ complaint.status |uppercase }}</span></h4>
+        <h5 class="">{{ complaint.postDate | date:'medium' }}</h5>
+    </div>
+    </div>
+</div>
+  <div class="p-4 overflow-hidden transition-max-h duration-300 ease-in-out" [class.max-h-0]="!complaint.expanded">
+    <div [hidden]="!complaint.expanded">
+        <div class="bg-gray-900 p-4 rounded-lg">
+        <p class="text-lg font-semibold text-gray-300 mb-2">Description:</p>
+        <p class="text-gray-400">{{ complaint.description }}</p>
+      </div>
+      <div class="bg-gray-900 p-4 mt-4 rounded-lg">
+        <p class="text-lg font-semibold text-gray-400 mb-2">Attachment:</p>
+        <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="complaint.attachment" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </div>
 
 <!-- <app-table-list

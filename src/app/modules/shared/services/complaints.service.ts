@@ -12,10 +12,12 @@ export class ComplaintsService {
     private http:HttpClient,
   ) { }
 
-  registerComplaint(complaint:any) {
-    console.log(complaint,'alfjlka');
-    
-    return this.http.post(this.userApi,complaint)
+  registerComplaint(complaint:any) {    
+    return this.http.post(`${this.userApi}`,complaint)
+  }
+  
+  getComplaints(){
+    return  this.http.get(`${this.userApi}`)
   }
 
 

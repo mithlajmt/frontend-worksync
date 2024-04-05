@@ -11,7 +11,7 @@ import { ComplaintsService } from '../../services/complaints.service';
 })
 export class ComplaintsComponent implements OnInit {
 
-  complaintsData:any[]=[]
+  complaintsData:any
 
   complaint = {
     title: '',
@@ -30,7 +30,14 @@ export class ComplaintsComponent implements OnInit {
     ){}
 
   ngOnInit(): void {
-    
+    this.complaints.getComplaints().subscribe({
+      next:(res:any)=>{
+        this.complaintsData=res.data
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
   }
 
 
@@ -62,4 +69,21 @@ export class ComplaintsComponent implements OnInit {
     })
     }
 
+    getStatusColor(status: string) {
+
+      switch (status.toLowerCase()) {
+        case 'pending':
+          return { color: 'green' };
+        case 'closed':
+          return { color: 'red' };
+        case 'inaction':
+          return { color: 'yellow' };
+        default:
+          return {};
+      }
+    }
+    
+    toggleExpand(complaint:any) {
+      complaint.expanded = !complaint.expanded;
+  }
 }
