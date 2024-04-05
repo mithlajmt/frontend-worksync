@@ -12,6 +12,7 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { EditEmployeeDataComponent } from './components/employee/edit-employee-data/edit-employee-data.component';
 import { DepartmentDetailsComponent } from './components/department-details/department-details.component';
 import { DepartmentheadModule } from '../departmenthead/departmenthead.module';
+import { ApproveLeaveComponent } from './components/approve-leave/approve-leave.component';
 
 
 
@@ -26,6 +27,7 @@ import { DepartmentheadModule } from '../departmenthead/departmenthead.module';
     DepartmentsComponent,
     EditEmployeeDataComponent,
     DepartmentDetailsComponent,
+    ApproveLeaveComponent,
 
   ],
   imports: [

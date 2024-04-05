@@ -27,5 +27,12 @@ export class AttendenceService {
     return this.http.post<any>(`${this.userapi}/leaveRequest`,leaveRequest)
   }
 
+  getLeaveStatus(){
+    return this.http.get<any>(`${this.userapi}/leaveRequest`);
+
+  }
+
+
+
 
 }

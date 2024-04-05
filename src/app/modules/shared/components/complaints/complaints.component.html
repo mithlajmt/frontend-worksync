@@ -1,6 +1,8 @@
-<div>
-
-  <form #complaintForm="ngForm" (ngSubmit)="submitComplaint()" class=" p-8 border rounded-md shadow-md bg-gray-900 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="w-full min-h-full bg-gray-900 p-5">
+  <div class="text-gray-300 font-kanit text-2xl mb-2">
+    COMPLAINTS :
+  </div>
+  <form #complaintForm="ngForm" (ngSubmit)="submitComplaint()" class=" p-8 border border-yellow-700 rounded-md shadow-md bg-gray-900 grid grid-cols-1 md:grid-cols-2 gap-4 hover:border-purple-700">
     
     <div class="form-group mb-4">
     <label for="title" class="text-white">Title:</label>
@@ -45,9 +47,16 @@
 </div>
 </form>
 
-<app-table-list
+<div class="pt-3">
+  <div class="text-gray-300 font-kanit text-2xl mb-2">
+    Previous Complaints :
+  </div>
+
+</div>
+
+<!-- <app-table-list
 [tableData]="complaintsData"
-></app-table-list>
+></app-table-list> -->
 </div>
 
 

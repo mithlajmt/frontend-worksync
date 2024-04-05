@@ -13,6 +13,8 @@ import { ApproveComplaintsComponent } from '../departmenthead/components/approve
 import { ChatSessionComponent } from '../shared/components/chat-session/chat-session.component';
 import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
 import { EmployeeDataProfileComponent } from '../shared/components/employee-data-profile/employee-data-profile.component';
+import { LeaveRequestComponent } from '../shared/components/leave-request/leave-request.component';
+import { ApproveLeaveComponent } from './components/approve-leave/approve-leave.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,7 @@ const routes: Routes = [
       { path: 'departments/:id/employee', component: EmployeeformComponent },
       { path: 'notifications', component: NotificationsComponent },
       {path: 'complaintsList',component:ApproveComplaintsComponent},
+      {path: 'leaveRequest',component:ApproveLeaveComponent},
       { path: 'todo', component: TodoComponent },
       { path: 'Messages', component:ChatSessionComponent },
       { path: 'profile', component:ProfileFormComponent },

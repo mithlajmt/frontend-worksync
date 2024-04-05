@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../services/common.service';
 import { AttendenceService } from '../../services/attendence.service';
+import { ApiService } from 'src/app/modules/company/services/api.service';
 
 interface Leave {
   title: string;
@@ -20,6 +21,7 @@ export class LeaveRequestComponent implements OnInit {
   leaveFormData!:FormData;
   leaveForm!: FormGroup;
   selectedFile:any;
+  leaveRequests:any[]=[]
 
   constructor(
     private fb: FormBuilder,
@@ -41,6 +43,19 @@ export class LeaveRequestComponent implements OnInit {
         end: ['', Validators.required]
       }),
     });
+
+   this.attendance.getLeaveStatus().subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        
+        this.leaveRequests = [...res?.data]   
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+
+
   }
 
   onSubmit() {
@@ -52,11 +67,13 @@ export class LeaveRequestComponent implements OnInit {
     this.leaveFormData.append('end',recievedData.range.end);
     this.leaveFormData.append('attachment',this.selectedFile);
 
-
     this.attendance.registerLeave(this.leaveFormData).subscribe({
       next:(res)=>{
         console.log(res);
         
+            },
+      error:(err)=>{
+        console.log(err);   
       }
     })
   }
@@ -70,4 +87,23 @@ export class LeaveRequestComponent implements OnInit {
       alert('YOU CAN CHOOSE ONLY ONE FILE');
     }
     }
+
+    getStatusColor(status: string) {
+
+      switch (status.toLowerCase()) {
+        case 'pending':
+          return { color: 'green' };
+        case 'approved':
+          return { color: 'red' };
+        case 'declined':
+          return { color: 'yellow' };
+        default:
+          return {};
+      }
+    }
+
+    toggleExpand(request: any): void {
+      request.expanded = !request.expanded; // Toggle the expanded state
+    }
+    
 }

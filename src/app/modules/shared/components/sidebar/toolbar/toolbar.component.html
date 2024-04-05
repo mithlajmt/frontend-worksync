@@ -57,7 +57,7 @@
                 <span class="md:block hidden">Messages</span>
             </button>
             
-            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('leaveRequest')" class="btn btn-hover hover:bg-gray-800 gap-5">
+            <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
                 <span class="md:block hidden">Leave Request</span>
             </button>

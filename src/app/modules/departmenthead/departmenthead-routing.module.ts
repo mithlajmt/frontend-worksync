@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: 'checkIn', component: CheckInComponent },
       { path: 'attendance', component: AttendencecalenderComponent },
       { path: 'leaveRequest', component: LeaveRequestComponent },
-      { path: 'Complaints', component: ComplaintsComponent },
+      { path: 'complaints', component: ComplaintsComponent },
       { path: 'complaintsList', component: ApproveComplaintsComponent  },
       { path: 'Messages', component: ChatSessionComponent },
       { path: 'profile', component: ProfileFormComponent },

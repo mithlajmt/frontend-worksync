@@ -65,4 +65,12 @@ export class ApiService {
   getDepartmentData(depID:string){
     return this.http.get(`${this.userapi}/department/${depID}`)
   }
+
+  getLeaveRequests(){
+    return this.http.get(`${this.userapi}/leaveRequests`)
+  }
+
+  updateLeaveRequest(id:string,status:string){
+    return this.http.patch(`${this.userapi}/leaveRequests/${id}`,{status})
+  }
 }

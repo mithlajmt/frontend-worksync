@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ComplaintsService } from '../../services/complaints.service';
 // import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -9,11 +9,10 @@ import { ComplaintsService } from '../../services/complaints.service';
   styleUrls: ['./complaints.component.css'],
   // providers: [provideNativeDateAdapter()],
 })
-export class ComplaintsComponent {
+export class ComplaintsComponent implements OnInit {
 
   complaintsData:any[]=[]
 
-  
   complaint = {
     title: '',
     description: '',
@@ -29,6 +28,11 @@ export class ComplaintsComponent {
     private complaints: ComplaintsService,
     // private privater:privateN
     ){}
+
+  ngOnInit(): void {
+    
+  }
+
 
   onAttachmentChange(event: any) {
     const files = event.target.files;

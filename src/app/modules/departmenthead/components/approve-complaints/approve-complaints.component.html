@@ -1,6 +1,6 @@
 <div class="w-full min-h-full p-6 bg-slate-900 overflow-scroll ">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="columns-1 md:columns-2 md:gap-4  space-y-9 md:space-y-4 ">
         <div *ngFor="let complaint of complaints" class="rounded-lg shadow-md overflow-hidden bg-gray-800 hover:shadow-lg">
       <div class="flex items-center p-4 cursor-pointer"
        (click)="toggleExpand(complaint)">
