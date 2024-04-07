@@ -88,7 +88,7 @@ import { CompanyModule } from '../company/company.module';
     TableListComponent,
     ChatSessionComponent,
     ProfileFormComponent,
-    EmployeeDataProfileComponent
+    EmployeeDataProfileComponent,
   ],
   // providers: [NativeDateAdapter()],
 

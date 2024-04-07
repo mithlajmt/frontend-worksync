@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { Token } from '@angular/compiler';
+import { JwtService } from 'src/app/services/jwt.service';
 
 @Component({
   selector: 'app-department-details',
@@ -11,17 +13,42 @@ import { ActivatedRoute } from '@angular/router';
 export class DepartmentDetailsComponent implements OnInit {
 
   employeeData:any;
+  ID:any
 
 
   constructor(
     private api:ApiService,
-    private active:ActivatedRoute
+    private active:ActivatedRoute,
+    private jwt:JwtService
   ){}
 
   ngOnInit(): void {
-    const ID = this.active.snapshot.params['id'];
-  
-    this.api.getDepartmentData(ID).subscribe({
+
+    const Token = this.jwt.getTokenFromLocalStorage();
+    const decTok = this.jwt.decodeToken(Token)
+    
+    if(decTok.role=='departmentHead'){
+
+      this.api.getDepID().subscribe({
+        next:(res:any)=>{
+          this.ID = res.data.departmentID    
+          this.getData()    
+        },
+        error:(err)=>{
+          console.log(err);     
+        }
+      })
+
+    }
+    else{
+      this.ID = this.active.snapshot.params['id'];
+      this.getData()
+    }
+
+  }
+
+  getData(){
+    this.api.getDepartmentData(this.ID).subscribe({
       next: (res: any) => {
         // console.log(res, 'Response from API');
   

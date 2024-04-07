@@ -22,7 +22,6 @@ export class ApiService {
 
 
   addingEmployee(employee: any) {
-    console.log(employee.entries);
     
     return this.http.post(`${this.userapi}/employee`, employee).pipe(
       catchError((error: any) => {
@@ -34,7 +33,6 @@ export class ApiService {
 
 
   deletingEmployee(employeeID:string){
-    console.log(employeeID);
     
     return this.http.delete(`${this.userapi}/employee/${employeeID}`);
   }
@@ -72,5 +70,9 @@ export class ApiService {
 
   updateLeaveRequest(id:string,status:string){
     return this.http.patch(`${this.userapi}/leaveRequests/${id}`,{status})
+  }
+
+  getDepID(){
+    return this.http.get(`http://localhost:4000/DepartmentID`)
   }
 }

@@ -9,6 +9,9 @@ import { ChatSessionComponent } from '../shared/components/chat-session/chat-ses
 import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
 import { ApproveComplaintsComponent } from './components/approve-complaints/approve-complaints.component';
 import { TodoComponent } from '../shared/components/todo/todo.component';
+import { DepartmentDetailsComponent } from '../company/components/department-details/department-details.component';
+import { TaskCreateComponent } from './components/task-create/task-create.component';
+import { LeadsComponent } from './components/leads/leads.component';
 
 const routes: Routes = [
   {
@@ -20,10 +23,13 @@ const routes: Routes = [
       { path: 'attendance', component: AttendencecalenderComponent },
       { path: 'leaveRequest', component: LeaveRequestComponent },
       { path: 'complaints', component: ComplaintsComponent },
+      { path: 'departments/:id', component: DepartmentDetailsComponent },
+      { path: 'departments', component: DepartmentDetailsComponent },
       { path: 'complaintsList', component: ApproveComplaintsComponent  },
       { path: 'Messages', component: ChatSessionComponent },
       { path: 'profile', component: ProfileFormComponent },
       { path: 'todo', component: TodoComponent },
+      { path: 'Leads', component:LeadsComponent },
 
     ]
   }

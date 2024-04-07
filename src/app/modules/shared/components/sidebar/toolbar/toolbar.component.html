@@ -19,9 +19,9 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dashboard"></mat-icon>
                 <span class="md:block hidden">Dashboard</span>
             </button>
-            <button *ngIf="isCompany" (click)="navigate('departments')" class="btn btn-hover hover:bg-gray-800 gap-5">
+            <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('departments')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="store"></mat-icon>
-                <span class="md:block hidden">Departments</span>
+                <span class="md:block hidden">Department</span>
             </button>
             <button *ngIf="isCompany" (click)="navigate('notifications')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="notifications"></mat-icon>
@@ -34,10 +34,6 @@
             <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('complaintsList')"class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_late"></mat-icon>
                 <span class="md:block hidden">reviews</span>
-            </button>
-            <button (click)="navigate('todo')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="checklist"></mat-icon>
-                <span class="md:block hidden">Todo</span>
             </button>
             <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('checkIn')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="how_to_reg"></mat-icon>
@@ -52,16 +48,27 @@
                 <span class="md:block hidden">Complaints</span>
             </button>
 
-            <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="insert_comment"></mat-icon>
-                <span class="md:block hidden">Messages</span>
-            </button>
             
             <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
                 <span class="md:block hidden">Leave Request</span>
             </button>
+
+            <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Leads')" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
+                <span class="md:block hidden">Leads</span>
+            </button>
             
+            <button (click)="navigate('todo')" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="checklist"></mat-icon>
+                <span class="md:block hidden">Todo</span>
+            </button>
+            
+            <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="insert_comment"></mat-icon>
+                <span class="md:block hidden">Messages</span>
+            </button>
+
             <button (click)="ji()" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Logout" fontIcon="exit_to_app"></mat-icon>
                 <span class="md:block hidden">Logout</span>

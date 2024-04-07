@@ -8,13 +8,17 @@ import { DepartmentStatiscticsComponent } from './components/department-statisct
 import { HttpClientModule } from '@angular/common/http';
 import { ApproveComplaintsComponent } from './components/approve-complaints/approve-complaints.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TaskCreateComponent } from './components/task-create/task-create.component';
+import { LeadsComponent } from './components/leads/leads.component';
 
 
 @NgModule({
   declarations: [
     DepartmentheadComponent,
     DepartmentStatiscticsComponent,
-    ApproveComplaintsComponent
+    ApproveComplaintsComponent,
+    TaskCreateComponent,
+    LeadsComponent
   ],
   imports: [
     CommonModule,

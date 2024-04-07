@@ -22,7 +22,7 @@ export class JwtService {
     localStorage.clear()
   }
 
-  decodeToken(token:string):any{
+  decodeToken(token:any):any{
     try{
       return jwtDecode(token);
     }catch(error){
