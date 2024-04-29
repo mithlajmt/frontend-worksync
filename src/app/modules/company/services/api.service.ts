@@ -73,6 +73,6 @@ export class ApiService {
   }
 
   getDepID(){
-    return this.http.get(`http://localhost:4000/DepartmentID`)
+    return this.http.get(`https://3.110.131.124/DepartmentID`)
   }
 }

@@ -20,12 +20,12 @@ export class ApiutitilityService {
 
   updateComplaint(id:string,status:string){
     alert(status)
-    return this.http.patch(`http://localhost:4000/complaintsList/${id}`,{status:status});
+    return this.http.patch(`https://3.110.131.124/complaintsList/${id}`,{status:status});
   }
 
   getNotificationList(role:string){
     console.log(role);
     
-    return this.http.get(`http://localhost:4000/${role}/notification`)
+    return this.http.get(`https://3.110.131.124/${role}/notification`)
   }
 }
