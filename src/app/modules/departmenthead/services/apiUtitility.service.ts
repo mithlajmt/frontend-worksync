@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiutitilityService {
-  private userapi = 'http://localhost:4000/departmentHead';
+  private userapi = 'https://3.110.131.124/departmentHead';
   constructor(
     private http:HttpClient,
   ) { }
@@ -15,7 +15,7 @@ export class ApiutitilityService {
   }
 
   getComplaintsList(){
-    return this.http.get('http://localhost:4000/complaintsList')
+    return this.http.get('https://3.110.131.124/complaintsList')
   }
 
   updateComplaint(id:string,status:string){

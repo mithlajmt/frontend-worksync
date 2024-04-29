@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AttendenceService {
   constructor( private http:HttpClient) { }
 
-  private userapi = 'http://localhost:4000/attendance';
+  private userapi = 'https://3.110.131.124/attendance';
 
   postattendence(photo:any,action:string){
     console.log(action);

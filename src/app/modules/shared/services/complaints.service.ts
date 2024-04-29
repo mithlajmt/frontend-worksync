@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ComplaintsService {
-  private userApi = 'http://localhost:4000/complaints';
+  private userApi = 'https://3.110.131.124/complaints';
 
 
   constructor(

@@ -18,9 +18,9 @@ const httpOptions = {
   
   
   export class ApiService {
-    apiUrl='http://localhost:4000'
+    apiUrl='https://3.110.131.124'
     
-    private userapi = 'http://localhost:4000';
+    private userapi = 'https://3.110.131.124';
   
     constructor( private http:HttpClient) { }
     

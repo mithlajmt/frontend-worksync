@@ -10,7 +10,7 @@ import { EmployeeEditForm } from '../interfaces/employee-edit-form';
 })
 export class ApiService {
 
-  private userapi = 'http://localhost:4000/companyAdmin';
+  private userapi = 'https://3.110.131.124/companyAdmin';
 
   constructor(private http: HttpClient) { }
 

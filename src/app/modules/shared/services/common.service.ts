@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CommonService {
-  private userApi = 'http://localhost:4000';
+  private userApi = 'https://3.110.131.124';
 
   constructor(
     private http:HttpClient
