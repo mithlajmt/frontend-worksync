@@ -11,6 +11,13 @@ export class SocketService {
 
   constructor(private http: HttpClient) {
     this.socket = io('http://localhost:5000');
+    this.registerOnlineStatus()
+  }
+
+
+  registerOnlineStatus(){
+    const token= localStorage.getItem('authToken')
+    this.socket.emit('setUserID',token)
   }
 
   welcomer() {
@@ -20,17 +27,21 @@ export class SocketService {
       console.log( );
       
       // this.socket.emit('token',token )
-      console.log('Received request:', data);
+      // console.log('Received request:', data);
     });
   }  
 
   onSend(data:any) {
-    
     const token = localStorage.getItem("authToken");
     const packet={...data};
     packet.token=token
     this.socket.emit('onMessageSend',packet)
 
+    return new Observable<any>((observer)=>{
+      this.socket.on('sentedMessage', (res: any)=>{
+        observer.next(res)
+    })
+    })
 }
 
 
@@ -40,14 +51,14 @@ getPreviuosMessages(reciever:string):Observable<any> {
 }
 
 
-getmessage(): Observable<any> {
-  return new Observable<any>(observer => {
-    this.socket.on('getmessage', (res) => {
-      console.log(res, 'kilo');
-      observer.next(res);
-    });
-  });
-}
+// getmessage(): Observable<any> {
+//   return new Observable<any>(observer => {
+//     this.socket.on('sentedMessage', (res:any) => {
+//       console.log(res);
+//       observer.next(res);
+//     });
+//   });
+// }
 }
 
 

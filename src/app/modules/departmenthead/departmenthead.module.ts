@@ -10,6 +10,7 @@ import { ApproveComplaintsComponent } from './components/approve-complaints/appr
 import { MatIconModule } from '@angular/material/icon';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { LeadsComponent } from './components/leads/leads.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,8 @@ import { LeadsComponent } from './components/leads/leads.component';
     SharedModule,
     HttpClientModule,
     MatIconModule,
+    FormsModule,
+    
 
   ],
   exports:[DepartmentStatiscticsComponent,ApproveComplaintsComponent]

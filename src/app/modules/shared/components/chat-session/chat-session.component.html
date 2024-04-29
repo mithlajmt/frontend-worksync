@@ -43,14 +43,14 @@ class="flex flex-row max-h-full min-h-full ">
   <div
   id="messages" class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
 <div
-class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+class="flex flex-col space-y-4 p-3  scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch "
 *ngFor="let message of previousMessage" 
 >
 
-     <div class="chat-message"
+     <div class="chat-message bg"
      *ngIf="isOwnMessage(message.sender)"
       >
-        <div class="flex items-end justify-end">
+        <div class="flex items-end justify-end ">
            <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
               <div><span class="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">{{message.content}}</span></div>
            </div>
@@ -105,7 +105,7 @@ class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollba
               </svg>
            </button>
            <button
-           (click)="emitThatShit()"
+           (click)="onMessageSent()"
             type="button" class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
               <span class="font-bold">Send</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 ml-2 transform rotate-90">
