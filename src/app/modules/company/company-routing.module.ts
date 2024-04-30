@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: 'addemployee', component: EmployeeformComponent },
       { path: 'departments', component: DepartmentsComponent },
       { path: 'departments/:id', component: DepartmentDetailsComponent },
-      { path: 'departments/:id/employee', component: EmployeeformComponent },
+      { path: 'departments/:id/:id', component: EmployeeDataProfileComponent },
       { path: 'notifications', component: NotificationsComponent },
       {path: 'complaintsList',component:ApproveComplaintsComponent},
       {path: 'leaveRequest',component:ApproveLeaveComponent},

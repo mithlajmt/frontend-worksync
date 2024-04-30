@@ -2,7 +2,14 @@
     <div class="pt-5">
   <app-department-statisctics></app-department-statisctics>
     </div>
-    <div>
-      <app-table-list [tableData]="employeeData"></app-table-list>
+    <div> 
+      <h1 class="text-gray-200 font-kanit text-lg pl-4 pt-3"> Employee List : </h1>
+      <app-table-list 
+      [keyID]="'employeeID'"
+      (clickData)="onRowClick($event)"
+      [tableData]="employeeData"
+  ></app-table-list>
+      
+      <div *ngIf="message" class="text-red-600 font-mono  text-xl text-center mt-2">*{{message}}</div>
     </div>
 </div>

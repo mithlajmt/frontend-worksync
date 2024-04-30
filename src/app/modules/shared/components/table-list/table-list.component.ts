@@ -14,6 +14,8 @@ export class TableListComponent implements OnInit ,OnChanges  {
   
 
   ngOnInit(): void {
+    console.log(this.keyID);
+    
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -22,6 +24,8 @@ export class TableListComponent implements OnInit ,OnChanges  {
 }
 
 onRowClick(keyID:any){
+  console.log(keyID);
+  
   this.clickData.emit(keyID)
 }
 }

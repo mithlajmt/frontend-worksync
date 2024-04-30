@@ -54,14 +54,28 @@ myForm!:FormGroup;
       console.log(this.myForm.value);
       this.api.addingDepartment(form).subscribe({
         next:(res)=>{
-          // console.log(res)
-          
-
+          this.api.getDepartments().pipe(
+            map((res: any) => res?.data ? res.data.map((summary: any) => ({ name: summary.departmentName,ID:summary.departmentID, totalEmployees: summary.totalEmployees, attendancesToday: summary.attendancesToday })) : [])
+    
+          ).subscribe({
+            next: (departments: any[]) => {
+              // console.log(departments);
+              this.departments = departments;
+              this.showAddDepartmentForm=false;
+              alert('department Added Successfully')
+          this.myForm.reset()
+              
+            },
+            error: (err) => {
+              console.log(err);
+            }
+          });
           this.myForm.reset()
           this.showAddDepartmentForm=false;
         },
         error:(err)=>{
           console.log(err);
+          alert(err.error['message'])
       }
     })
 

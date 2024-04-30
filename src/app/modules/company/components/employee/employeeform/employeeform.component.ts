@@ -8,6 +8,9 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./employeeform.component.css']
 })
 export class EmployeeformComponent implements OnInit {
+  result:boolean = false;
+  message = ''
+  s:any
   apiEnd:string = 'departmentNames' //for child
   // MultiSelect:boolean = false ; //for child
   reactiveForm!: FormGroup;
@@ -28,6 +31,7 @@ export class EmployeeformComponent implements OnInit {
       hireDate: ['', Validators.required],
       department: ['', [Validators.required, Validators.minLength(2)]],
       role: ['', [Validators.required, Validators.minLength(2)]],
+      salary: [0, [Validators.required, Validators.minLength(2)]],
       identityProof: [''] // Add this line to define the control for identityProof
     });
   }
@@ -40,6 +44,7 @@ export class EmployeeformComponent implements OnInit {
       formData.append('employeeName', value.employeeName);
       formData.append('dateOfBirth', value.dateOfBirth);
       formData.append('gender', value.gender);
+      formData.append('salary', value.gender);
       formData.append('contactEmail', value.contactEmail);
       formData.append('contactNumber', value.contactNumber);
       formData.append('hireDate', value.hireDate);
@@ -51,14 +56,19 @@ export class EmployeeformComponent implements OnInit {
       
 
       this.api.addingEmployee(formData).subscribe({
-        next: (res) => {
+        next: (res:any) => {
           console.log(res);
+          this.result = true
+          this.message = res.message
+
           // this.reactiveForm.reset();
           this.selectedFile = []; // Reset selectedFile array
           this.reactiveForm.reset()
         },
         error: (err) => {
           console.log(err);
+          this.result = true
+          this.message = err.error.message
         }
       });
     }
@@ -80,5 +90,9 @@ export class EmployeeformComponent implements OnInit {
     } else {
       alert('YOU CAN CHOOSE ONLY ONE FILE');
     }
+  }
+
+  onAdding(){
+    this.result = false
   }
 }

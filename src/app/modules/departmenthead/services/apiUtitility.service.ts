@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiutitilityService {
-  private userapi = 'https://3.110.131.124/departmentHead';
+  private userapi = 'https://worksync.illuminatespark.com/departmentHead';
   constructor(
     private http:HttpClient,
   ) { }
@@ -15,17 +15,17 @@ export class ApiutitilityService {
   }
 
   getComplaintsList(){
-    return this.http.get('https://3.110.131.124/complaintsList')
+    return this.http.get('https://worksync.illuminatespark.com/complaintsList')
   }
 
   updateComplaint(id:string,status:string){
     alert(status)
-    return this.http.patch(`https://3.110.131.124/complaintsList/${id}`,{status:status});
+    return this.http.patch(`https://worksync.illuminatespark.com/complaintsList/${id}`,{status:status});
   }
 
   getNotificationList(role:string){
     console.log(role);
     
-    return this.http.get(`https://3.110.131.124/${role}/notification`)
+    return this.http.get(`https://worksync.illuminatespark.com/${role}/notification`)
   }
 }

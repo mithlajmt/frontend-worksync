@@ -1,11 +1,11 @@
-<div class=" mx-auto max-w-screen-xl hidden lg:block ">
+<div class=" mx-auto max-w-screen-xl hidden lg:block  ">
     <table class="table-auto w-full rounded shadow overflow-hidden">
         <thead class="bg-gray-800 text-white">
             <tr>
                 <th class="px-4 py-2 text-left" *ngFor="let head of tableHead">{{ head }}</th>
             </tr>
         </thead>
-        <tbody class="text-white">
+        <tbody class="text-white cursor-pointer">
             <ng-container *ngFor="let data of tableData">
                 <tr 
                 class="hover:bg-gray-700 border-b border-gray-700 hover:text-gray-200 transform transition-transform duration-300" (click)="onRowClick(data[keyID])">

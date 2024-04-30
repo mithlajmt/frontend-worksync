@@ -4,13 +4,13 @@ import { catchError } from 'rxjs';
 import { EmployeeEditForm } from '../interfaces/employee-edit-form';
 
 
-
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private userapi = 'https://3.110.131.124/companyAdmin';
+  private userapi = 'https://worksync.illuminatespark.com/companyAdmin';
 
   constructor(private http: HttpClient) { }
 
@@ -73,6 +73,6 @@ export class ApiService {
   }
 
   getDepID(){
-    return this.http.get(`https://3.110.131.124/DepartmentID`)
+    return this.http.get(`https://worksync.illuminatespark.com/DepartmentID`)
   }
 }
