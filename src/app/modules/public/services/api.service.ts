@@ -18,9 +18,9 @@ const httpOptions = {
   
   
   export class ApiService {
-    apiUrl='https://worksync.illuminatespark.com'
+    apiUrl='http://worksyncback.illuminatespark.com'
     
-    private userapi = 'https://worksync.illuminatespark.com';
+    private userapi = 'http://worksyncback.illuminatespark.com';
   
     constructor( private http:HttpClient) { }
     
