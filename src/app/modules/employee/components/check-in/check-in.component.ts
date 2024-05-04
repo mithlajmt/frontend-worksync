@@ -66,8 +66,14 @@ export class CheckInComponent implements OnInit {
       this.checkedIn = true;
       // this.cdr.detectChanges(); // Trigger change detection
       console.log(res);
+      this.logType = 'checkOut'
+      setTimeout(() => {
+        alert(`${this.logType} Successfull`)
+      }, 1000);
     } else {
-      console.log(res, 'jijiiji');
+      setTimeout(() => {
+        alert(`${res.error.message}`);
+      }, 1000);
     }
   }
 

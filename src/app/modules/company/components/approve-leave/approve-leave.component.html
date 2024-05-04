@@ -1,6 +1,14 @@
 
 <div class="min-h-full w-full bg-gray-900 p-8">
-    <div class="text-white text-xl mb-4">LEAVE REQUESTS :</div>
+    <div class="text-white text-xl mb-4">LEAVE REQUESTS:</div>
+
+    <ng-container *ngIf="leaveRequests.length === 0">
+        <div class="flex justify-center items-center h-full md:text-xl">
+          <p class="text-red-900">*No leave requests found at the Moment.</p>
+        </div>
+      </ng-container>
+      
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div *ngFor="let request of leaveRequests" class="card-container bg-gray-800 h-[200px] sm:overflow-hidden overflow-scroll sm:h-[300px]">
             <div class="card rounded-lg shadow-md overflow-hidden bg-gray-800" [class.flipped]="request.expanded" (click)="toggleExpand(request)">

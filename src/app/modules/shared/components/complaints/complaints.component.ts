@@ -59,11 +59,22 @@ export class ComplaintsComponent implements OnInit {
     this.complaintForm.append('attachment',this.selectedFile[0]);
 
     this.complaints.registerComplaint(this.complaintForm).subscribe({
-      next:(res)=>{
+      next:(res:any)=>{
         console.log(res);  
+        alert(res.message)
+        this.complaints.getComplaints().subscribe({
+          next:(res:any)=>{
+            this.complaintsData=res.data
+          },
+          error:(err)=>{
+            console.log(err);
+          }
+        })
       },
       error:(err)=>{
         console.log(err);
+        alert(err.error.message)
+
         
       }
     })

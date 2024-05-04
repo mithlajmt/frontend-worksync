@@ -58,4 +58,18 @@ export class TodoComponent implements OnInit {
   updateTaskStatus(task: any) {
     // Implement logic to update task status if needed
   }
+
+  handleCheckboxChange(event:any,id:any){
+    if (event.target.checked) {
+      console.log(id);
+      
+      alert("Checkbox is checked");
+
+    } else {
+      // Do something when the checkbox is unchecked
+      alert("Checkbox is unchecked");
+    }
+  }
+
+
 }

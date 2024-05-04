@@ -22,7 +22,7 @@
       *ngFor="let task of tasks"
       class="flex items-center  justify-between bg-gray-800 p-4 mb-4 rounded-md  hover:border hover:border-yellow-700 transition duration-100">
         <div class="flex items-center">
-          <input type="checkbox" class="mr-4">
+          <input type="checkbox" class="mr-4" (change)="handleCheckboxChange($event,task._id)">
           <div >
             <h2 class="text-white font-semibold mb-2">{{task.title}}</h2>
             <p class="text-gray-400">{{task.description}}</p>

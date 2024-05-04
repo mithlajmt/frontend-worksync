@@ -18,7 +18,6 @@ export class ApproveComplaintsComponent implements OnInit {
     this.api.getComplaintsList().subscribe({
       next:(res:any)=>{
         this.complaints=res.data
-          
       },
       error:(err)=>{
         console.log(err);

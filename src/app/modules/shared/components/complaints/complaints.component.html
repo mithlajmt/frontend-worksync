@@ -34,7 +34,7 @@
   
   <div class="form-group mb-4 ">
     <label for="attachment" class="text-white">Attachments:</label>
-    <input type="file" id="attachment" name="attachment" (change)="onAttachmentChange($event)" placeholder="Attach File" class="w-full  p-2 focus:outline-none focus:ring-1 focus:ring-purple-500 bg-gray-700 text-white">
+    <input type="file" id="attachment" name="attachment" (change)="onAttachmentChange($event)" placeholder="Attach File" class="w-full p-2 focus:outline-none focus:ring-1 focus:ring-purple-500 bg-gray-700 text-white" accept="image/*">
   </div>
 
   <div class="justify-end flex items-center ">
@@ -49,37 +49,41 @@
 
 <div class="pt-3">
   <div class="text-gray-300 font-kanit text-2xl mb-2">
-    Previous Complaints :
+    Previous Complaints:
   </div>
 
-  <div class="columns-1 md:columns-2 md:gap-4  space-y-9 md:space-y-4 mt-4 ">
+  <div class="columns-1 md:columns-2 md:gap-4  space-y-9 md:space-y-4 mt-4 " *ngIf="complaintsData && complaintsData.length > 0">
     <div *ngFor="let complaint of complaintsData" class="rounded-lg shadow-md overflow-hidden bg-gray-800 hover:shadow-lg">
-  <div class="flex items-center p-4 cursor-pointer"
-   (click)="toggleExpand(complaint)">
-      <img *ngIf="complaint.employeedata[0]" [src]="complaint.employeedata[0].photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
-    <div class="flex flex-col text-left gap-0 ">
-      <h2 class="text-xl font-semibold text-gray-200">AUTHOR : {{ complaint?.employeedata[0]?.employeeName | uppercase }}</h2>
-      <h3 class="text-lg font-medium text-gray-400"> TITLE : {{ complaint.title | uppercase}}</h3>
-      <div class="flex flex-col items-center text-sm  text-gray-500 justify-around w-full  ">
-        <h4 class="mr-2"> STATUS : <span [ngStyle]="getStatusColor(complaint.status)">  {{ complaint.status |uppercase }}</span></h4>
-        <h5 class="">{{ complaint.postDate | date:'medium' }}</h5>
-    </div>
-    </div>
-</div>
-  <div class="p-4 overflow-hidden transition-max-h duration-300 ease-in-out" [class.max-h-0]="!complaint.expanded">
-    <div [hidden]="!complaint.expanded">
-        <div class="bg-gray-900 p-4 rounded-lg">
-        <p class="text-lg font-semibold text-gray-300 mb-2">Description:</p>
-        <p class="text-gray-400">{{ complaint.description }}</p>
+      <div class="flex items-center p-4 cursor-pointer" (click)="toggleExpand(complaint)">
+        <img *ngIf="complaint.employeedata[0]" [src]="complaint.employeedata[0].photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
+        <div class="flex flex-col text-left gap-0 ">
+          <h2 class="text-xl font-semibold text-gray-200">AUTHOR: {{ complaint?.employeedata[0]?.employeeName | uppercase }}</h2>
+          <h3 class="text-lg font-medium text-gray-400"> TITLE: {{ complaint.title | uppercase}}</h3>
+          <div class="flex flex-col items-center text-sm  text-gray-500 justify-around w-full  ">
+            <h4 class="mr-2"> STATUS: <span [ngStyle]="getStatusColor(complaint.status)">  {{ complaint.status | uppercase }}</span></h4>
+            <h5 class="">{{ complaint.postDate | date:'medium' }}</h5>
+          </div>
+        </div>
       </div>
-      <div class="bg-gray-900 p-4 mt-4 rounded-lg">
-        <p class="text-lg font-semibold text-gray-400 mb-2">Attachment:</p>
-        <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="complaint.attachment" alt="">
+      <div class="p-4 overflow-hidden transition-max-h duration-300 ease-in-out" [class.max-h-0]="!complaint.expanded">
+        <div [hidden]="!complaint.expanded">
+          <div class="bg-gray-900 p-4 rounded-lg">
+            <p class="text-lg font-semibold text-gray-300 mb-2">Description:</p>
+            <p class="text-gray-400">{{ complaint.description }}</p>
+          </div>
+          <div class="bg-gray-900 p-4 mt-4 rounded-lg">
+            <p class="text-lg font-semibold text-gray-400 mb-2">Attachment:</p>
+            <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="complaint.attachment" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+
+  <!-- Display "No Data Available" message if complaintsData is empty -->
+  <div class="text-red-900 font-kanit md:text-2xl  text-center" *ngIf="!complaintsData || complaintsData.length === 0">
+    *No Complaints Raised To show
+  </div>
 </div>
 
 <!-- <app-table-list

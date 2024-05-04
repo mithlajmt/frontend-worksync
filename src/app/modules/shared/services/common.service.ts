@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CommonService {
-  private userApi = 'https://worksyncback.illuminatespark.com';
+  private userApi = 'http://localhost:4000';
 
   constructor(
     private http:HttpClient

@@ -10,7 +10,7 @@ import { EmployeeEditForm } from '../interfaces/employee-edit-form';
 })
 export class ApiService {
 
-  private userapi = 'https://worksyncback.illuminatespark.com/companyAdmin';
+  private userapi = 'http://localhost:4000/companyAdmin';
 
   constructor(private http: HttpClient) { }
 
@@ -73,6 +73,6 @@ export class ApiService {
   }
 
   getDepID(){
-    return this.http.get(`https://worksyncback.illuminatespark.com/DepartmentID`)
+    return this.http.get(`http://localhost:4000/DepartmentID`)
   }
 }
