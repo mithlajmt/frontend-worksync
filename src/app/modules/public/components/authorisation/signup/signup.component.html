@@ -90,3 +90,83 @@
       </form>
   </div>
 </section>
+
+
+
+
+
+<section class="w-full min-h-full bg-gradient-to-br from-indigo-900 to-purple-800 py-12 flex justify-center items-center">
+  <div class="max-w-4xl w-full bg-white rounded-lg shadow-lg p-8">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Create an Account</h2>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-6" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div>
+        <div class="mb-4">
+          <label for="companyName" class="block text-gray-700 font-semibold mb-2">Company Name</label>
+          <input type="text" id="companyName" placeholder="Enter Company Name" class="form-input w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="companyName">
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('companyName')?.hasError('required') && signupForm.get('companyName')?.touched">Company Name is required.</p>
+        </div>
+        <div class="mb-4">
+          <label for="industry" class="block text-gray-700 font-semibold mb-2">Industry</label>
+          <input type="text" id="industry" placeholder="Enter Your Industry" class="form-input w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="industry">
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('industry')?.hasError('required') && signupForm.get('industry')?.touched">Industry is required.</p>
+        </div>
+        <div class="mb-4">
+          <label for="contactEmail" class="block text-gray-700 font-semibold mb-2">Contact Email</label>
+          <input type="email" id="contactEmail" placeholder="Enter Your Email Address" class="form-input w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="contactEmail">
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('contactEmail')?.hasError('required') && signupForm.get('contactEmail')?.touched">Email is required.</p>
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('contactEmail')?.hasError('email') && signupForm.get('contactEmail')?.touched">Invalid email format.</p>
+        </div>
+        <div class="mb-4">
+          <label for="contactNumber" class="block text-gray-700 font-semibold mb-2">Contact Number</label>
+          <input type="tel" id="contactNumber" placeholder="Enter Your Contact Number" class="form-input w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="contactNumber" pattern="[0-9]{10,}">
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('contactNumber')?.hasError('required') && signupForm.get('contactNumber')?.touched">Contact Number is required.</p>
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('contactNumber')?.hasError('pattern') && signupForm.get('contactNumber')?.touched">Invalid phone number.</p>
+        </div>
+      </div>
+      <div>
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+          <input type="password" id="password" placeholder="Enter Your Password" class="form-input w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched">Password is required.</p>
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('password')?.hasError('pattern') && signupForm.get('password')?.touched">Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.</p>
+        </div>
+        <div class="mb-4">
+          <label for="confirmPassword" class="block text-gray-700 font-semibold mb-2">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Enter Your Password Again For Confirmation" class="form-input w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="confirmPassword">
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('confirmPassword')?.hasError('required') && signupForm.get('confirmPassword')?.touched">Confirm Password is required.</p>
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('confirmPassword')?.hasError('mismatchedPasswords') && signupForm.get('confirmPassword')?.touched">Passwords do not match.</p>
+        </div>
+        <div class="mb-4">
+          <label for="workingTime" class="block text-gray-700 font-semibold mb-2">Working Time</label>
+          <select id="workingTimeStart" class="form-select w-full px-4 py-2 rounded-md bg-gray-200 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" formControlName="workingHours">
+            <option selected disabled value="">Select Your Working Time</option>
+            <option value="9:00-17:00">9 AM - 5 PM</option>
+            <option value="9:30-17:30">9:30 AM - 5:30 PM</option>
+            <option value="10:00-18:00">10 AM - 6 PM</option>
+            <option value="10:30-17:30">10:30 AM - 6:30 PM</option>
+            <option value="11:00-19:00">8 AM - 4 PM</option>
+            <option value="11:30-19:30">8:30 AM - 4:30 PM</option>
+          </select>
+          <p class="text-red-500 text-sm mt-1" *ngIf="signupForm.get('workingTime')?.hasError('required') && (signupForm.get('workingTime')?.touched || isSubmitted)">Working Time is required.</p>
+        </div>
+        <div class="mb-4 flex items-center">
+          <input type="checkbox" formControlName="terms" class="form-checkbox h-5 w-5 text-indigo-600 focus:ring-indigo-500" />
+          <label for="terms" class="ml-2 text-gray-700 font-semibold">I agree to the terms and conditions</label>
+          <div *ngIf="signupForm.get('terms')?.hasError('requiredTrue') && signupForm.get('terms')?.touched" class="text-red-500 text-sm ml-2">
+            Please accept the terms and conditions.
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 md:col-span-2 flex justify-end">
+        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-md" [disabled]="signupForm.invalid">
+          Register
+        </button>
+      </div>
+      <div class="md:col-span-2 text-center mt-4">
+        <p class="text-gray-600">Already have an account? <a routerLink="/login" class="text-indigo-600 font-semibold">Login here</a></p>
+      </div>
+    </form>
+
+    <app-verification-otp *ngIf="showOtpComp" [companyData]="signupForm"></app-verification-otp>
+  </div>
+</section>

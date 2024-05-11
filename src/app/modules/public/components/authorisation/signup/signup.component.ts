@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../../services/api.service';
 import { Component } from '@angular/core';
 import { Signup } from '../../../interfaces/signup';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sigup',
@@ -20,6 +21,7 @@ export class SignupComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
+    private router:Router,
   ) {
     this.signupForm = this.fb.group({
       companyName: ['', [Validators.required]], 
@@ -52,6 +54,18 @@ export class SignupComponent {
   canExit(){
     if(this.signupForm.dirty){
       return confirm('you have unsaved changes do you really want to navigate away ?')
+    }
+    else{
+      return true
+    }
+  }
+
+  public canEnter(){
+    const token = localStorage.getItem('authToken')
+
+    if(token){
+      this.router.navigate(['/lili'])
+      return false
     }
     else{
       return true

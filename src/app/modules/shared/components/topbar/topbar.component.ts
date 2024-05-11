@@ -41,6 +41,10 @@ export class TopbarComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
+  onLogout(){
+    localStorage.clear()
+  }
+
 
   
 

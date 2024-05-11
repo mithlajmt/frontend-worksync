@@ -63,6 +63,11 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="checklist"></mat-icon>
                 <span class="md:block hidden">Todo</span>
             </button>
+
+            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('profile')" class="btn btn-hover hover:bg-gray-800 gap-5">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
+                <span class="md:block hidden">Profile Session</span>
+            </button>
             
             <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="insert_comment"></mat-icon>

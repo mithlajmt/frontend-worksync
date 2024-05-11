@@ -12,11 +12,13 @@ import { TodoComponent } from '../shared/components/todo/todo.component';
 import { DepartmentDetailsComponent } from '../company/components/department-details/department-details.component';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { LeadsComponent } from './components/leads/leads.component';
+import { AuthGuard } from 'src/app/guards/departmentHead.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DepartmentheadComponent,
+    canActivateChild:[AuthGuard],
     children: [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'checkIn', component: CheckInComponent },

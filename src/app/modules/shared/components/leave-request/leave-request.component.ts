@@ -69,6 +69,7 @@ export class LeaveRequestComponent implements OnInit {
 
     this.attendance.registerLeave(this.leaveFormData).subscribe({
       next:(res)=>{
+        this.leaveRequests.push(res.data)
         alert(res.message)
         this.leaveForm.reset()
         

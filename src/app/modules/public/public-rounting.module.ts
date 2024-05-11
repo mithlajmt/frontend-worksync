@@ -9,12 +9,25 @@ import { EmployeeformComponent } from '../company/components/employee/employeefo
 import { companyComponent } from '../company/company.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DepartmentsComponent } from '../company/components/departments/departments.component';
+import { LoggedAuthGuard } from 'src/app/guards/LoggedIn.guard';
 
 
 const routes: Routes = [
-  { path: '', component: LandingpageComponent }, // Redirect root path to 'homepage'
-  { path: 'signup', component: SignupComponent , canDeactivate:[(comp:SignupComponent)=>{return comp.canExit()}]}, // Route for /signup path
-  { path: 'login', component: LoginComponent ,}, // Route for /signup path
+  { path: '',
+  component: LandingpageComponent,
+  canActivate: [LoggedAuthGuard],
+},
+  { path: 'login',
+   component: LoginComponent ,
+   canActivate: [LoggedAuthGuard],
+  }, 
+  { 
+    path: 'signup',
+    component: SignupComponent,
+    canActivate: [LoggedAuthGuard],
+    canDeactivate:[(comp:SignupComponent)=>{return comp.canExit()}], // Route for /signup path
+  },
+  
 
 ];
 

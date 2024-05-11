@@ -7,11 +7,15 @@ import { AttendencecalenderComponent } from '../shared/components/attendencecale
 import { LeaveRequestComponent } from '../shared/components/leave-request/leave-request.component';
 import { ComplaintsComponent } from '../shared/components/complaints/complaints.component';
 import { TodoComponent } from '../shared/components/todo/todo.component';
+import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
+import { ChatSessionComponent } from '../shared/components/chat-session/chat-session.component';
+import { EmployeeGuard } from 'src/app/guards/employee.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: EmployeeComponent,
+    canActivateChild:[EmployeeGuard],
     children: [
       { path: '', redirectTo: 'checkIn', pathMatch: 'full' },
       { path: 'checkIn', component: CheckInComponent },
@@ -19,12 +23,18 @@ const routes: Routes = [
       { path: 'leaveRequest', component: LeaveRequestComponent },
       { path: 'complaints', component: ComplaintsComponent },
       { path: 'todo', component: TodoComponent },
+      {path:'profile',component:ProfileFormComponent},
+      {path:'Messages',component:ChatSessionComponent},
+
     ]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[
+    EmployeeGuard
+  ]
 })
 export class EmployeeRoutingModule { }

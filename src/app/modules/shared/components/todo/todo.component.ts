@@ -51,25 +51,48 @@ export class TodoComponent implements OnInit {
     });
   }
 
-  deleteTask(id: string) {
-    // Implement logic to delete task by ID if needed
-  }
+ 
+    deleteTask(id: string) {
 
-  updateTaskStatus(task: any) {
-    // Implement logic to update task status if needed
-  }
 
-  handleCheckboxChange(event:any,id:any){
-    if (event.target.checked) {
-      console.log(id);
-      
-      alert("Checkbox is checked");
-
-    } else {
-      // Do something when the checkbox is unchecked
-      alert("Checkbox is unchecked");
+      // Call the common service method to delete the task
+      this.common.deleteTask(id).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          // Remove the deleted task from the tasks array
+          this.tasks = this.tasks.filter(task => task._id !== id);
+        },
+        error: (err: any) => {
+          console.error(err);
+          // Handle error gracefully, e.g., show an alert message
+          alert('Failed to delete task. Please try again.');
+        }
+      });
     }
+
+
+  updateTaskStatus(event: any, taskId: string) {
+    const status = event.target.checked ? 'done' : 'pending';
+    this.common.updateTaskStatus(taskId, status).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        // Find the index of the updated task in the tasks array
+        const updatedTaskIndex = this.tasks.findIndex(task => task._id === taskId);
+        // Update the status of the task in the tasks array
+        if (updatedTaskIndex !== -1) {
+          this.tasks[updatedTaskIndex].status = status;
+        }
+      },
+      error: (err: any) => {
+        console.error(err);
+        // Handle error gracefully, e.g., show an alert message
+        alert('Failed to update task status. Please try again.');
+      }
+    });
   }
+  
+
+
 
 
 }

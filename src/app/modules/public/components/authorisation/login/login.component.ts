@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { JwtService } from 'src/app/services/jwt.service';
+import { userData } from 'src/app/services/userData.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     private http:HttpClient,
     private router:Router,
     private api:ApiService,
-    private jwt:JwtService
+    private jwt:JwtService,
+    private user:userData
     ) { }
  
   ngOnInit(): void {    
@@ -53,18 +55,26 @@ export class LoginComponent implements OnInit {
          console.log(decodedToken.companyID,decodedToken.role);
 
          if(decodedToken.role === 'employee'){
+          this.user.role = 'employee'
+          
           this.router.navigate(['/employee/checkIn'])
+
 
          }
          else if(decodedToken.role === 'companyAdmin'){
+          this.user.role = 'companyAdmin'
+
           this.router.navigate(['/companyAdmin/dashboard'])
          }
          else if(decodedToken.role === 'admin'){
+          this.user.role = 'admin'
+
           this.router.navigate(['/admin/dashboard'])
 
           // this.router.navigate(['/company/dashboard'])
          }
          else if(decodedToken.role === 'departmentHead'){
+          this.user.role = 'departmentHead'
           this.router.navigate(['/departmentHead/checkIn'])
           // this.router.navigate(['/company/dashboard'])
          } 

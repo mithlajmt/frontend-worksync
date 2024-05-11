@@ -15,11 +15,13 @@ import { ProfileFormComponent } from '../shared/components/profile-form/profile-
 import { EmployeeDataProfileComponent } from '../shared/components/employee-data-profile/employee-data-profile.component';
 import { LeaveRequestComponent } from '../shared/components/leave-request/leave-request.component';
 import { ApproveLeaveComponent } from './components/approve-leave/approve-leave.component';
+import { companyAuthGuard } from 'src/app/guards/companyAdmin.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: companyComponent,
+    canActivateChild:[companyAuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },

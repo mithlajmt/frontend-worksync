@@ -52,23 +52,47 @@ export class ApproveLeaveComponent implements OnInit {
       this.api.updateLeaveRequest(id,"Approved").subscribe({
         next:(res)=>{
           console.log(res);
+          alert('leaveApproved successfully')
+          this.api.getLeaveRequests().subscribe({
+            next:(res:any)=>{
+              this.leaveRequests = [...res?.data]   
+            console.log(this.leaveRequests);
+                     },
+            error:(err)=>{
+              console.log(err);    
+            }
+          })
           
         },
         error:(err)=>{
+          alert('leaveApprove failed')
 
         }
       })
         }
 
-    onDecline(id:string){
-      this.api.updateLeaveRequest(id,"denied").subscribe({
-        next:(res)=>{
-          console.log(res);
-        },
-        error:(err)=>{
-
+        onDecline(_id: string){
+          alert(_id)
+          this.api.updateLeaveRequest(_id,"denied").subscribe({
+            next:(res)=>{
+              console.log(res);
+              alert("Leave request declined successfully")
+              this.api.getLeaveRequests().subscribe({
+                next:(res:any)=>{
+                  this.leaveRequests = [...res?.data]   
+                console.log(this.leaveRequests);
+                         },
+                error:(err)=>{
+                  console.log(err);    
+                }
+              })
+            },
+            error:(err)=>{
+              console.log(err);
+              alert("Failed to Decline the leave request");
+            }
+          })
         }
-      })
-    }
+        
 
 }

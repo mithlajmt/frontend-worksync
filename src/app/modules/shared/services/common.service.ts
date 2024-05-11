@@ -40,7 +40,14 @@ export class CommonService {
   addTask(task:any){
     return this.http.post(`${this.userApi}/todo`,task);
   }
-
+  
+  updateTaskStatus(id:any,status:any){
+    return this.http.patch(`${this.userApi}/todo`,{id,status})
+  }
+  
+  deleteTask(id:any){
+    return this.http.delete(`${this.userApi}/todo/${id}`,);
+  }
   getTasks(){
     return this.http.get(`${this.userApi}/todo`);
   }
@@ -56,5 +63,6 @@ export class CommonService {
   getFullEmployeeData(id:any){
     return this.http.get(`${this.userApi}/employee/${id}`);
   }
+
  
 }

@@ -54,33 +54,34 @@ export class ProfileFormComponent implements AfterContentInit {
   }
 
   onSubmit() {
-        // Append each form control value to the FormData object manually
-    this.updateProfile.append('name', this.profileForm.value.name);
-    this.updateProfile.append('age', this.profileForm.value.age);
-    this.updateProfile.append('email', this.profileForm.value.email);
-    this.updateProfile.append('gender', this.profileForm.value.gender);
-    this.updateProfile.append('phoneNumber', this.profileForm.value.phoneNumber);
-    this.updateProfile.append('secondPhoneNumber', this.profileForm.value.secondPhoneNumber);
-    this.updateProfile.append('bio', this.profileForm.value.bio);
-    this.updateProfile.append('address', this.profileForm.value.address);
+    const formValue = this.profileForm.value;
 
-    // Assuming skills is an array of strings
-    // this.profileForm.value.skills.forEach((skill: string, index: number) => {
-    //   this.updateProfile.append(`skills[${index}]`, skill);
-    // });
-  
+    // Convert 'bio' to a string if it's an array
+    const bioValue = Array.isArray(formValue.bio) ? formValue.bio[0] : formValue.bio;
+
+    this.updateProfile.append('name', formValue.name);
+    this.updateProfile.append('age', formValue.age || ''); // Ensure 'age' is sent as a single value or an empty string
+    this.updateProfile.append('email', formValue.email);
+    this.updateProfile.append('gender', formValue.gender);
+    this.updateProfile.append('phoneNumber', formValue.phoneNumber);
+    this.updateProfile.append('secondPhoneNumber', formValue.secondPhoneNumber || ''); // Ensure 'secondPhoneNumber' is sent as a single value or an empty string
+    this.updateProfile.append('bio', bioValue); // Use the converted bio value
+    this.updateProfile.append('address', formValue.address);
+
     console.log(this.updateProfile);
     
     this.serv.UpdateProfile(this.updateProfile).subscribe({
-      next:(res)=>{
+        next: (res) => {
+            // Handle success response
+            alert('Profile updated successfully');
+        },
+        error: (err) => {
+            console.log(err); 
+        }
+    });
+}
 
-      },
-      error:(err)=>{
-        console.log(err); 
-      }
-    })
 
-  }
 
 
   onProfileImageSelected(event: any) {

@@ -21,15 +21,16 @@
       <div 
       *ngFor="let task of tasks"
       class="flex items-center  justify-between bg-gray-800 p-4 mb-4 rounded-md  hover:border hover:border-yellow-700 transition duration-100">
-        <div class="flex items-center">
-          <input type="checkbox" class="mr-4" (change)="handleCheckboxChange($event,task._id)">
-          <div >
-            <h2 class="text-white font-semibold mb-2">{{task.title}}</h2>
-            <p class="text-gray-400">{{task.description}}</p>
-          </div>
-        </div>
+      <div class="flex items-center">
+        <input type="checkbox" class="mr-4" (change)="updateTaskStatus($event, task._id)" [checked]="task.status === 'done'">
         <div>
-          <button class="px-8 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 focus:outline-none">Delete</button>
+          <h2 class="text-white font-semibold mb-2  " [class.line-through]="task.status === 'done'" [class.text-yellow-500]="task.status == 'done'">{{ task.title }}</h2>
+          <p class="text-gray-400">{{ task.description }}</p>
+        </div>
+      </div>
+      
+        <div>
+          <button class="px-8 py-2 bg-red-600 text-white rounded-md hover:bg-red-800 focus:outline-none" (click)="deleteTask(task._id)">Delete</button>
         </div>
       </div>
       
