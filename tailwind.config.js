@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
-        'landingphoto':"url('https://img.freepik.com/free-photo/speaker-giving-presentation-meeting-room_155003-26343.jpg?w=1060&t=st=1706715255~exp=1706715855~hmac=666ee71de927a7ffa44e39a64622f5ce3c8820f1c20938f50ee55d048d2b1f64')"
+        'landingphoto':"url('https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
       },
         fontFamily: {
           sans: ['Poppins', 'sans-serif'],

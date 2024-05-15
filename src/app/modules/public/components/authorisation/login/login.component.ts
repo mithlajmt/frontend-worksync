@@ -18,6 +18,7 @@ import { userData } from 'src/app/services/userData.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loginData!:Login;
+  error=''
   
 
   constructor(
@@ -83,6 +84,7 @@ export class LoginComponent implements OnInit {
       },
       error:(err)=>{
         console.log(err);
+        this.error=err.error.message
         
       }
     })

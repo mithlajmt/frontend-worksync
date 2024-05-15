@@ -62,14 +62,6 @@ export class SignupComponent {
 
   public canEnter(){
     const token = localStorage.getItem('authToken')
-
-    if(token){
-      this.router.navigate(['/lili'])
-      return false
-    }
-    else{
-      return true
-    }
   }
 
 

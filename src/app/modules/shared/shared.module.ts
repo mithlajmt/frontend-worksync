@@ -29,6 +29,7 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { EmployeeDataProfileComponent } from './components/employee-data-profile/employee-data-profile.component';
 import { CompanyModule } from '../company/company.module';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -56,6 +57,7 @@ import { CompanyModule } from '../company/company.module';
     ProfileFormComponent,
     ChatListComponent,
     EmployeeDataProfileComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,

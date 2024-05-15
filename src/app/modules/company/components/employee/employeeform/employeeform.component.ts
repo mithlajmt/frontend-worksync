@@ -10,6 +10,7 @@ import { ApiService } from '../../../services/api.service';
 export class EmployeeformComponent implements OnInit {
   result:boolean = false;
   message = ''
+  note=''
   s:any
   apiEnd:string = 'departmentNames' //for child
   // MultiSelect:boolean = false ; //for child
@@ -44,7 +45,7 @@ export class EmployeeformComponent implements OnInit {
       formData.append('employeeName', value.employeeName);
       formData.append('dateOfBirth', value.dateOfBirth);
       formData.append('gender', value.gender);
-      formData.append('salary', value.gender);
+      formData.append('salary', value.salary);
       formData.append('contactEmail', value.contactEmail);
       formData.append('contactNumber', value.contactNumber);
       formData.append('hireDate', value.hireDate);
@@ -60,6 +61,7 @@ export class EmployeeformComponent implements OnInit {
           console.log(res);
           this.result = true
           this.message = res.message
+          this.note = res.note
 
           // this.reactiveForm.reset();
           this.selectedFile = []; // Reset selectedFile array

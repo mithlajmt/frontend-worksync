@@ -38,6 +38,7 @@ import { ApproveLeaveComponent } from './components/approve-leave/approve-leave.
     SharedModule,
     CompanyRoutingModule,
     DepartmentheadModule,
+
   ],
   exports:[
     companyComponent,

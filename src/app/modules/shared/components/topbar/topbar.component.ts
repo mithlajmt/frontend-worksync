@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthguardService } from 'src/app/services/authguard.service';
 import { CommonService } from '../../services/common.service';
+import { Router } from '@angular/router';
+import { userData } from 'src/app/services/userData.service';
 
 @Component({
   selector: 'app-topbar',
@@ -13,7 +15,9 @@ export class TopbarComponent {
   showPro = false
   constructor(
     private authGuardService: AuthguardService,
-    private common:CommonService
+    private common:CommonService,
+    private router:Router,
+    private user:userData
     ) 
     {}
 
@@ -23,13 +27,23 @@ export class TopbarComponent {
         console.log(res)
         this.profile=res.data[0].photo;
         this.name=res.data[0].name;
+
+        if(this.user.role == 'companyAdmin'){
+
+          this.showPro = false
+        }else{
+          this.showPro = true
+        }
+
         
-        this.showPro = true
         
       },
       error:(err)=>{
         console.log(err);
-        
+        alert(err.error.message)
+        localStorage.clear()
+        this.router.navigate(['/login'])
+      
       }
     })
   }

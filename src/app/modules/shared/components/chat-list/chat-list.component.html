@@ -1,4 +1,4 @@
-<div class="py-10 h-full bg-gray-900 px-2">
+<!-- <div class="py-10 h-full bg-gray-900 px-2">
     <div class="max-w-md mx-auto bg-gray-900 shadow-lg rounded-lg overflow-hidden md:max-w-lg">
         <div class="relative">
             <input type="text" class="w-full h-12 rounded focus:outline-none px-3 focus:shadow-md bg-white placeholder-gray-400" placeholder="Search...">
@@ -21,4 +21,32 @@
             </li>
         </ul>
     </div>
+</div> -->
+
+
+<div class="py-10 h-full bg-gray-900 px-2">
+    <div class="max-w-md mx-auto bg-gray-900 shadow-lg rounded-lg overflow-hidden md:max-w-lg">
+        <div class="relative">
+            <input type="text" class="w-full h-12 rounded focus:outline-none px-3 focus:shadow-md bg-white placeholder-gray-400" placeholder="Search...">
+            <i class="fa fa-search absolute right-3 top-4 text-gray-300"></i>
+        </div>
+        <ul *ngIf="contacts.length > 0; else noContacts">
+            <li class="flex justify-between items-center bg-gray-700 mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition" *ngFor="let user of contacts">
+                <div (click)="onContactClick(user)" class="flex ml-2">
+                    <img [src]="user.photo ? user.photo : 'https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?t=st=1711626492~exp=1711630092~hmac=13886b4779e3616cfdb6860e9e1c97d15166ecb0af5b2259dbc3acbe38ee60cd&w=740'" 
+                    class="rounded-full object-cover object-center w-[50px] h-[50px]">
+                    <div class="flex flex-col ml-2">
+                        <span class="font-medium text-gray-300">{{ user.userName}}</span>
+                        <span class="text-sm text-gray-900 truncate w-32">{{ user.department }}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ng-template #noContacts>
+            <div class="flex justify-center items-center mt-4">
+                <span class="text-gray-300">No Contacts Available To chat !</span>
+            </div>
+        </ng-template>
+    </div>
 </div>
+
