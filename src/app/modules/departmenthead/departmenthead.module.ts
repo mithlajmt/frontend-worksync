@@ -12,7 +12,6 @@ import { TaskCreateComponent } from './components/task-create/task-create.compon
 import { LeadsComponent } from './components/leads/leads.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     DepartmentheadComponent,

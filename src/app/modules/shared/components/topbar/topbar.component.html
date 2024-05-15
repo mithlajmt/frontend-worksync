@@ -18,7 +18,7 @@
     <div *ngIf="isMenuOpen" class="bg-gray-800  text-gray-400 rounded-md py-2 px-4 absolute z-30 right-12 mt-2 w-60 top-[70px] shadow-lg show fade-in">
         <div (click)="onLogout()" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white"  routerLink="/login">Logout</div>
         <div class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white" routerLink="profile" >Profile</div>
-        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">Support</a>
-        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">About</a>
+        <div routerLink="support" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">Support</div>
+        <div routerLink="about" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">About</div>
     </div>
 </div>

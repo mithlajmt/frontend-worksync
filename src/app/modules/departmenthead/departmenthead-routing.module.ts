@@ -13,6 +13,9 @@ import { DepartmentDetailsComponent } from '../company/components/department-det
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { LeadsComponent } from './components/leads/leads.component';
 import { AuthGuard } from 'src/app/guards/departmentHead.guard';
+import { FeaturespageComponent } from '../public/components/publichomepage/landingpage/featurespage/featurespage.component';
+import { SupportComponent } from '../shared/components/support/support.component';
+import { EmployeeDataProfileComponent } from '../shared/components/employee-data-profile/employee-data-profile.component';
 
 const routes: Routes = [
   {
@@ -25,13 +28,15 @@ const routes: Routes = [
       { path: 'attendance', component: AttendencecalenderComponent },
       { path: 'leaveRequest', component: LeaveRequestComponent },
       { path: 'complaints', component: ComplaintsComponent },
-      { path: 'departments/:id', component: DepartmentDetailsComponent },
+      { path: 'departments/:id', component: EmployeeDataProfileComponent },
       { path: 'departments', component: DepartmentDetailsComponent },
       { path: 'complaintsList', component: ApproveComplaintsComponent  },
       { path: 'Messages', component: ChatSessionComponent },
       { path: 'profile', component: ProfileFormComponent },
       { path: 'todo', component: TodoComponent },
       { path: 'Leads', component:LeadsComponent },
+      { path: 'about', component:FeaturespageComponent },
+      { path: 'support', component:SupportComponent },
 
     ]
   }

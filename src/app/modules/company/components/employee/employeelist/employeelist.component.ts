@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { ApiService } from 'src/app/modules/public/services/api.service';
 import { ApiService } from 'src/app/modules/company/services/api.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-employeelist',
@@ -25,14 +26,17 @@ export class EmployeelistComponent implements OnInit {
     private http:HttpClient,
     private router:Router,
     private route:ActivatedRoute,
-    private api:ApiService
+    private api:ApiService,
+    private Loading:LoadingService,
   ) { }
 
  ngOnInit(): void {
+  this.Loading.show()
   this.api.getEmployees().subscribe({
     next:(res:any)=>{
       console.log(res);
       this.employees = res
+      this.Loading.hide()
     }
   })
  }

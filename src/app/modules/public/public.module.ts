@@ -40,7 +40,7 @@ VerificationOtpComponent
     // CompanyModule
 
   ],
-  exports: [LandingpageComponent,NotfoundComponent] 
+  exports: [LandingpageComponent,NotfoundComponent,FeaturespageComponent] 
 
 })
 export class PublicModule { }

@@ -35,6 +35,7 @@ PublicModule
     EmployeeModule,
     FormsModule,
     MatIconModule,
+    PublicModule
     // NgMultiSelectDropDownModule,
     // WebcamModule
   ],

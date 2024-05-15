@@ -10,6 +10,8 @@ import { TodoComponent } from '../shared/components/todo/todo.component';
 import { ProfileFormComponent } from '../shared/components/profile-form/profile-form.component';
 import { ChatSessionComponent } from '../shared/components/chat-session/chat-session.component';
 import { EmployeeGuard } from 'src/app/guards/employee.guard';
+import { FeaturespageComponent } from '../public/components/publichomepage/landingpage/featurespage/featurespage.component';
+import { SupportComponent } from '../shared/components/support/support.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,8 @@ const routes: Routes = [
       { path: 'todo', component: TodoComponent },
       {path:'profile',component:ProfileFormComponent},
       {path:'Messages',component:ChatSessionComponent},
+      { path: 'about', component:FeaturespageComponent},
+      { path: 'support', component:SupportComponent},
 
     ]
   }

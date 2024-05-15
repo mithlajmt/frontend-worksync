@@ -30,6 +30,9 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { EmployeeDataProfileComponent } from './components/employee-data-profile/employee-data-profile.component';
 import { CompanyModule } from '../company/company.module';
 import { LoadingComponent } from './components/loading/loading.component';
+import { AboutComponent } from './components/about/about.component';
+import { SupportComponent } from './components/support/support.component';
+import { PublicModule } from '../public/public.module';
 
 
 
@@ -58,6 +61,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ChatListComponent,
     EmployeeDataProfileComponent,
     LoadingComponent,
+    AboutComponent,
+    SupportComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +77,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     MatInputModule,
     MatIconModule,
     NgMultiSelectDropDownModule,
+    PublicModule,
     // CompanyModule,
 
 
@@ -91,6 +97,10 @@ import { LoadingComponent } from './components/loading/loading.component';
     ChatSessionComponent,
     ProfileFormComponent,
     EmployeeDataProfileComponent,
+    LoadingComponent,
+    AboutComponent,
+    SupportComponent,
+
   ],
   // providers: [NativeDateAdapter()],
 

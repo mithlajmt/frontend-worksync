@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-employeeform',
@@ -17,7 +18,11 @@ export class EmployeeformComponent implements OnInit {
   reactiveForm!: FormGroup;
   selectedFile: File[] = [];
 
-  constructor(private formBuilder: FormBuilder, private api: ApiService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+     private api: ApiService,
+     private loading:LoadingService
+    ) {}
 
 
 
@@ -54,11 +59,11 @@ export class EmployeeformComponent implements OnInit {
       formData.append('identityProof', this.selectedFile[0]); // Use selectedFile
 
 
-      
+      this.loading.show()
 
       this.api.addingEmployee(formData).subscribe({
         next: (res:any) => {
-          console.log(res);
+      this.loading.hide()
           this.result = true
           this.message = res.message
           this.note = res.note
@@ -68,6 +73,7 @@ export class EmployeeformComponent implements OnInit {
           this.reactiveForm.reset()
         },
         error: (err) => {
+      this.loading.hide()
           console.log(err);
           this.result = true
           this.message = err.error.message
