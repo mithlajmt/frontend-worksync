@@ -33,6 +33,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { AboutComponent } from './components/about/about.component';
 import { SupportComponent } from './components/support/support.component';
 import { PublicModule } from '../public/public.module';
+import { ShoweventsComponent } from './components/showevents/showevents.component';
 
 
 
@@ -63,6 +64,7 @@ import { PublicModule } from '../public/public.module';
     LoadingComponent,
     AboutComponent,
     SupportComponent,
+    ShoweventsComponent,
   ],
   imports: [
     CommonModule,
@@ -100,7 +102,7 @@ import { PublicModule } from '../public/public.module';
     LoadingComponent,
     AboutComponent,
     SupportComponent,
-
+    ShoweventsComponent,
   ],
   // providers: [NativeDateAdapter()],
 

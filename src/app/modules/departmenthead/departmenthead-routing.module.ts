@@ -16,6 +16,8 @@ import { AuthGuard } from 'src/app/guards/departmentHead.guard';
 import { FeaturespageComponent } from '../public/components/publichomepage/landingpage/featurespage/featurespage.component';
 import { SupportComponent } from '../shared/components/support/support.component';
 import { EmployeeDataProfileComponent } from '../shared/components/employee-data-profile/employee-data-profile.component';
+import { NotificationListComponent } from '../shared/components/notification-list/notification-list.component';
+import { ShoweventsComponent } from '../shared/components/showevents/showevents.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,7 @@ const routes: Routes = [
       { path: 'Leads', component:LeadsComponent },
       { path: 'about', component:FeaturespageComponent },
       { path: 'support', component:SupportComponent },
+      { path: 'notifications', component:ShoweventsComponent },
 
     ]
   }

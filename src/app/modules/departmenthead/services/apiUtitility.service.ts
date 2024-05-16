@@ -23,9 +23,7 @@ export class ApiutitilityService {
     return this.http.patch(`http://localhost:4000/complaintsList/${id}`,{status:status});
   }
 
-  getNotificationList(role:string){
-    console.log(role);
-    
+  getNotificationList(role:string){    
     return this.http.get(`http://localhost:4000/${role}/notification`)
   }
 }

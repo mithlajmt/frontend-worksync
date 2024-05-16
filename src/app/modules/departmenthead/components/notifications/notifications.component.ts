@@ -81,9 +81,11 @@ export class NotificationsComponent implements OnInit {
     this.serv.postNotification(this.formData).subscribe({
       next: (res) => {
         console.log(res);
+        alert(res.message)
         this.eventForm.reset();
       },
       error: (err) => {
+        alert(err.error.message)
         console.log(err);
       },
     });

@@ -23,7 +23,8 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="store"></mat-icon>
                 <span class="md:block hidden">Department</span>
             </button>
-            <button *ngIf="isCompany" (click)="navigate('notifications')" class="btn btn-hover hover:bg-gray-800 gap-5">
+            <button *ngIf="isCompany || isDepartmentHead || isEmployee
+            " (click)="navigate('notifications')" class="btn btn-hover hover:bg-gray-800 gap-5">
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="notifications"></mat-icon>
                 <span class="md:block hidden">Notifications</span>
             </button>
