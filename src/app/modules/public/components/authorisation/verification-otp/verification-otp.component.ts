@@ -59,7 +59,7 @@ export class VerificationOtpComponent  implements OnInit {
         const role = decodedtoken?.role;
         const companyID = decodedtoken?.companyID
         console.log(role,companyID);
-        this.router.navigate(['/companyAdmin'])
+        this.router.navigate(['/companyAdmin/dashboard'])
         
         
         // this.router.navigate(['/company'])
