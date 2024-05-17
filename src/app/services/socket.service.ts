@@ -47,7 +47,7 @@ export class SocketService {
 
 
 getPreviuosMessages(reciever:string):Observable<any> {
-  return this.http.get(`http://localhost:4000/messages/${reciever}`)
+  return this.http.get(`https://worksync.illuminatespark.com/messages/${reciever}`)
 }
 
 

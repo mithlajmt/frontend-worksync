@@ -18,9 +18,9 @@ const httpOptions = {
   
   
   export class ApiService {
-    apiUrl='http://localhost:4000'
+    apiUrl='https://worksync.illuminatespark.com'
     
-    private userapi = 'http://localhost:4000';
+    private userapi = 'https://worksync.illuminatespark.com';
   
     constructor( private http:HttpClient) { }
     

@@ -12,6 +12,7 @@ import { ChatSessionComponent } from '../shared/components/chat-session/chat-ses
 import { EmployeeGuard } from 'src/app/guards/employee.guard';
 import { FeaturespageComponent } from '../public/components/publichomepage/landingpage/featurespage/featurespage.component';
 import { SupportComponent } from '../shared/components/support/support.component';
+import { ShoweventsComponent } from '../shared/components/showevents/showevents.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path:'Messages',component:ChatSessionComponent},
       { path: 'about', component:FeaturespageComponent},
       { path: 'support', component:SupportComponent},
+      { path: 'notifications', component:ShoweventsComponent},
 
     ]
   }
