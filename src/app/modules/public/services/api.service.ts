@@ -18,16 +18,16 @@ const httpOptions = {
   
   
   export class ApiService {
-    apiUrl='https://worksync.illuminatespark.com'
+    apiUrl='https://worksync.illuminatesparks.com'
     
-    private userapi = 'https://worksync.illuminatespark.com';
+    private userapi = 'https://worksync.illuminatesparks.com';
   
     constructor( private http:HttpClient) { }
     
   
   
   
-    userSignupPost(data:Signup){
+    userSignupPost(data:any ){
       return this.http.post(`${this.userapi}/signup`,data,httpOptions)
     }
 
