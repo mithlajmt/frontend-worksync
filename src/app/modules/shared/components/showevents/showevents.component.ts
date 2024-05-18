@@ -27,6 +27,7 @@ export class ShoweventsComponent implements OnInit {
   ngOnInit(): void {
     this.common.getEventsCalendarData().subscribe({
       next:(res:any)=>{
+        console.log(res)
         res.data.forEach((element:any) => {
           this.eventsArray.push(element)
         });

@@ -24,8 +24,8 @@ export class NotificationListComponent implements OnInit {
     
     this.api.getNotificationList(urlParts[1]).subscribe({
       next:(res:any)=>{
-        console.log(res);
-        console.log(res.upcomingNotifications);
+        console.log(res,'juju');
+        // console.log(res.upcomingNotifications);
         this.allEvents = [...res.previousOrAllNotifications]
         this.upcomingEvents = [...res.upcomingNotifications]
         
