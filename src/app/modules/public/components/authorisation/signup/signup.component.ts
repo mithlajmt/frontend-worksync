@@ -2,7 +2,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../../services/api.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Signup } from '../../../interfaces/signup';
 import { Router } from '@angular/router';
 
@@ -12,11 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   showOtpComp:Boolean=false;
   errorMessage:any
   isSubmitted:boolean=false
+
+  ngOnInit(){
+    alert('please move to login page for demo use')
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +53,6 @@ export class SignupComponent {
 
   signupFormData!:Signup;
 
-  ngOnInit(): void {}
 
   canExit(){
     if(this.signupForm.dirty){

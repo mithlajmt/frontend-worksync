@@ -58,6 +58,8 @@ export class CheckInComponent implements OnInit {
     this.webcamImage = webcamImage;
   }
 
+  
+
   handleResponse(res: any) {
     this.cameraVisibility = false;
     this.checkButVisibility = true;
