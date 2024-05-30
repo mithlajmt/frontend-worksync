@@ -16,13 +16,13 @@ export class SocketService {
 
 
   registerOnlineStatus(){
-    const token= localStorage.getItem('authToken')
+    const token= localStorage.getItem('yourToken')
     this.socket.emit('setUserID',token)
   }
 
   welcomer() {
 
-    // const token = localStorage.getItem("authToken");
+    // const token = localStorage.getItem("yourToken");
     this.socket.on('welcome', (data: any) => {
       console.log( );
       
@@ -32,7 +32,7 @@ export class SocketService {
   }  
 
   onSend(data:any) {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("yourToken");
     const packet={...data};
     packet.token=token
     this.socket.emit('onMessageSend',packet)
@@ -47,7 +47,7 @@ export class SocketService {
 
 
 getPreviuosMessages(reciever:string):Observable<any> {
-  return this.http.get(`https://worksyncback.illuminatespark.com/messages/${reciever}`)
+  return this.http.get(`http://localhost:4000/messages/${reciever}`)
 }
 
 

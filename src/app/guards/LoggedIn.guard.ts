@@ -14,7 +14,7 @@ export class LoggedAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('yourToken');
     const role = this.user.role
 
     if (token) {

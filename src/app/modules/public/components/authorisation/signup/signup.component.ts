@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
   }
 
   public canEnter(){
-    const token = localStorage.getItem('authToken')
+    const token = localStorage.getItem('yourToken')
   }
 
 

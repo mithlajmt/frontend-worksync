@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'frontend-worksyc';
   isLoading$ = this.loadingService.isLoading$; 
 
-  token = localStorage.getItem('authToken')
+  token = localStorage.getItem('yourToken')
   constructor(
     private jwt: JwtService,
     private user:userData,

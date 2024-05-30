@@ -11,11 +11,11 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class JwtService {
   setToken(token: string) {
-    localStorage.setItem('authToken',token)
+    localStorage.setItem('yourToken',token)
   }
 
   getTokenFromLocalStorage(): string | null {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('yourToken');
   }
 
   deleteToken(){

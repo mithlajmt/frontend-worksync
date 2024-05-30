@@ -16,11 +16,10 @@ const httpOptions = {
   
   
   
-  
   export class ApiService {
-    apiUrl='https://worksyncback.illuminatespark.com'
+    apiUrl='http://localhost:4000'
     
-    private userapi = 'https://worksyncback.illuminatespark.com';
+    private userapi = 'http://localhost:4000';
   
     constructor( private http:HttpClient) { }
     
@@ -36,7 +35,6 @@ const httpOptions = {
   
     verifyOtp(otp:any){
       console.log('request generaated');
-      
       return this.http.post<any>(`${this.userapi}/verify-otp`,{otp},httpOptions)
     }
   
