@@ -43,4 +43,5 @@ const httpOptions = {
     login(data:Login){
       return this.http.post<any>(`${this.apiUrl}/login`,data,httpOptions)
     }
+    
  }

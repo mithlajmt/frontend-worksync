@@ -38,6 +38,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  get f() {
+    return this.loginForm.controls;
+  }
+
 
   onSubmit(): void {
     this.loginData=this.loginForm.value

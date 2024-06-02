@@ -1,6 +1,6 @@
 <div
 *ngIf="showTable"
-class="w-full h-full overflow-scroll scroll-smooth bg-gray-900">
+class="w-full h-full  bg-gray-900">
 
     <div class="p-8">
         <div class="p-8 bg-gray-900 shadow mt-24">
@@ -57,10 +57,17 @@ class="w-full h-full overflow-scroll scroll-smooth bg-gray-900">
         <!-- User bio section -->
         <div class="mt-12 flex flex-col justify-center">
             <p class="text-gray-600 text-center font-light lg:px-16">{{employeeData.bio}}</p>
-            <button class="text-indigo-500 py-2 px-4 font-medium mt-4">Show more</button>
+            <button class="text-indigo-500 py-2 px-4 font-medium mt-4" (click)="showMore()">Show more</button>
         </div>
     </div>
 </div>
+<!-- This is the target div -->
+<div *ngIf="onShowMore" #showMoreSection id="show-more" class="w-full min-h-full bg-gray-900">
+
+    <app-employee-attendance-detaildata></app-employee-attendance-detaildata>
+    </div>
+
+
 
     </div>
     

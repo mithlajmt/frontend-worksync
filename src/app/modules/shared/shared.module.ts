@@ -34,6 +34,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SupportComponent } from './components/support/support.component';
 import { PublicModule } from '../public/public.module';
 import { ShoweventsComponent } from './components/showevents/showevents.component';
+import { EmployeeAttendanceDetaildataComponent } from './components/employee-attendance-detaildata/employee-attendance-detaildata.component';
 
 
 
@@ -65,6 +66,7 @@ import { ShoweventsComponent } from './components/showevents/showevents.componen
     AboutComponent,
     SupportComponent,
     ShoweventsComponent,
+    EmployeeAttendanceDetaildataComponent,
   ],
   imports: [
     CommonModule,

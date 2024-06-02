@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from '../../services/common.service';
 import { ApiService } from 'src/app/modules/company/services/api.service';
@@ -9,13 +9,16 @@ import { ApiService } from 'src/app/modules/company/services/api.service';
   styleUrls: ['./employee-data-profile.component.css']
 })
 export class EmployeeDataProfileComponent implements OnInit {
+  @ViewChild('showMoreSection', { static: false }) showMoreSection!: ElementRef;
   deleteConfirm:boolean=false
   isEditFormVisible:boolean=false
   confirmationMessage: string = '';
   bodyText: string = '';
   employeeToDelete:string=''
   employees!:any[];
-  addClicked=false
+  addClicked=false;
+  showTable: boolean = true;
+  onShowMore: boolean = false;
 
 
   constructor(
@@ -24,10 +27,7 @@ export class EmployeeDataProfileComponent implements OnInit {
     private api:ApiService,
     private router:Router
   ) { }
-
   employeeData:any
-  showTable:boolean = false
-
   ngOnInit(): void {
     // Get the route parameter 'id' using ActivatedRoute
     const employeeId = this.activatedRoute.snapshot.params['id'];
@@ -63,6 +63,7 @@ export class EmployeeDataProfileComponent implements OnInit {
       },
       error: (err: any) => {
         console.error('Error deleting employee:', err);
+        alert(err.error.message)
         // Handle the error, e.g., show a notification or log it
       }
     });
@@ -98,6 +99,20 @@ export class EmployeeDataProfileComponent implements OnInit {
     const employeeId = this.activatedRoute.snapshot.params['id'];
     this.isEditFormVisible=true
   }
+
+
+  showMore() {
+    this.onShowMore = true;
+    // setTimeout(() => {
+    //   this.scrollToShowMore();
+    // }, 100); // Timeout to ensure the div is rendered
+  }
+
+  // scrollToShowMore() {
+  //   if (this.showMoreSection) {
+  //     this.showMoreSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // }
 
   
   

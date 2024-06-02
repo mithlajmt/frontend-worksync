@@ -67,4 +67,8 @@ export class CommonService {
   getEventsCalendarData(){
     return this.http.get(`${this.userApi}/events`);
   }
+
+  getEmployeeAttendance(empID:any){
+    return this.http.get(`${this.userApi}/attendance/${empID}`);
+  }
 }
