@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class AttendenceService {
   constructor( private http:HttpClient) { }
 
-  private userapi = 'https://worksyncback.illuminatespark.com/attendance';
+  private userapi = `${environment.apiUrl}/attendance`;
 
   postattendence(photo:any,action:string){
     console.log(action);

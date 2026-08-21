@@ -2,15 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
 import { EmployeeEditForm } from '../interfaces/employee-edit-form';
+import { environment } from 'src/environments/environment';
 
-
- 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private userapi = 'https://worksyncback.illuminatespark.com/companyAdmin';
+  private userapi = `${environment.apiUrl}/companyAdmin`;
 
   constructor(private http: HttpClient) { }
 
@@ -73,6 +72,6 @@ export class ApiService {
   }
 
   getDepID(){
-    return this.http.get(`https://worksyncback.illuminatespark.com/DepartmentID`)
+    return this.http.get(`${environment.apiUrl}/DepartmentID`)
   }
 }

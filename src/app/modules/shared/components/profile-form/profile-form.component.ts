@@ -12,7 +12,8 @@ export class ProfileFormComponent implements AfterContentInit {
   profileData: any;
   updateProfile!:FormData;
   loaded = false;
-  profileImage = ''
+  profileImage = '';
+  profileFormError: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -53,57 +54,115 @@ export class ProfileFormComponent implements AfterContentInit {
     return this.profileForm.controls;
   }
 
-  onSubmit() {
-    const formValue = this.profileForm.value;
+  selectedImageFile: File | null = null;
 
-    // Convert 'bio' to a string if it's an array
+  onSubmit() {
+    if (this.profileForm.invalid) {
+      this.profileForm.markAllAsTouched();
+      const errors: string[] = [];
+      if (this.f['name']?.invalid) errors.push('Name is required');
+      if (this.f['email']?.invalid) {
+        if (this.f['email'].errors?.['required']) errors.push('Email is required');
+        else if (this.f['email'].errors?.['email']) errors.push('Invalid email format');
+      }
+      if (this.f['gender']?.invalid) errors.push('Gender selection is required');
+      if (this.f['phoneNumber']?.invalid) {
+        if (this.f['phoneNumber'].errors?.['required']) errors.push('Phone number is required');
+        else if (this.f['phoneNumber'].errors?.['pattern']) errors.push('Phone number must be 10 digits');
+      }
+      if (this.f['address']?.invalid) errors.push('Address is required');
+
+      this.profileFormError = `Cannot submit: ${errors.join(', ')}.`;
+      return;
+    }
+
+    this.profileFormError = '';
+    const formValue = this.profileForm.value;
     const bioValue = Array.isArray(formValue.bio) ? formValue.bio[0] : formValue.bio;
 
-    this.updateProfile.append('name', formValue.name);
-    this.updateProfile.append('age', formValue.age || ''); // Ensure 'age' is sent as a single value or an empty string
-    this.updateProfile.append('email', formValue.email);
-    this.updateProfile.append('gender', formValue.gender);
-    this.updateProfile.append('phoneNumber', formValue.phoneNumber);
-    this.updateProfile.append('secondPhoneNumber', formValue.secondPhoneNumber || ''); // Ensure 'secondPhoneNumber' is sent as a single value or an empty string
-    this.updateProfile.append('bio', bioValue); // Use the converted bio value
-    this.updateProfile.append('address', formValue.address);
+    const formData = new FormData();
+    formData.append('name', formValue.name);
+    formData.append('email', formValue.email);
+    formData.append('gender', formValue.gender);
+    formData.append('phoneNumber', formValue.phoneNumber);
+    formData.append('secondPhoneNumber', formValue.secondPhoneNumber || '');
+    formData.append('bio', bioValue || '');
+    formData.append('address', formValue.address);
 
-    console.log(this.updateProfile);
-    
-    this.serv.UpdateProfile(this.updateProfile).subscribe({
+    if (this.selectedImageFile) {
+      formData.append('image', this.selectedImageFile);
+    }
+
+    this.serv.UpdateProfile(formData).subscribe({
         next: (res) => {
-            // Handle success response
             alert('Profile updated successfully');
         },
         error: (err) => {
             console.log(err); 
+            this.profileFormError = err.error?.message || 'Failed to update profile. Please try again.';
         }
     });
-}
+  }
 
 
 
+
+  changePasswordForm: FormGroup = this.fb.group({
+    currentPassword: ['', [Validators.required, Validators.minLength(6)]],
+    newPassword: ['', [Validators.required, Validators.minLength(6)]],
+    confirmNewPassword: ['', [Validators.required, Validators.minLength(6)]],
+  });
+  passwordErrorMessage: string = '';
+
+  onChangePassword() {
+    if (this.changePasswordForm.invalid) {
+      this.changePasswordForm.markAllAsTouched();
+      const errors: string[] = [];
+      const cp = this.changePasswordForm.controls['currentPassword'];
+      const np = this.changePasswordForm.controls['newPassword'];
+      const cnp = this.changePasswordForm.controls['confirmNewPassword'];
+
+      if (cp.invalid) errors.push('Current password is required (min 6 characters)');
+      if (np.invalid) errors.push('New password is required (min 6 characters)');
+      if (cnp.invalid) errors.push('Confirm password is required (min 6 characters)');
+
+      this.passwordErrorMessage = `Cannot submit: ${errors.join(', ')}.`;
+      return;
+    }
+
+    const { currentPassword, newPassword, confirmNewPassword } = this.changePasswordForm.value;
+    if (newPassword !== confirmNewPassword) {
+      this.passwordErrorMessage = 'New password and confirm password do not match.';
+      return;
+    }
+    this.passwordErrorMessage = '';
+    this.serv.changePassword({ currentPassword, newPassword }).subscribe({
+      next: (res: any) => {
+        if (res.success) {
+          alert('Password changed successfully!');
+          this.changePasswordForm.reset();
+        } else {
+          this.passwordErrorMessage = res.message || 'Failed to change password.';
+        }
+      },
+      error: (err: any) => {
+        this.passwordErrorMessage = err.error?.message || 'Current password is incorrect or failed to update.';
+        console.error(err);
+      }
+    });
+  }
 
   onProfileImageSelected(event: any) {
-    // Check if any files are selected
     if (event.target.files && event.target.files.length > 0) {
-        // Get the first file (assuming it's an image)
-        const selectedImage = event.target.files[0];
+        const selectedFile: File = event.target.files[0];
+        this.selectedImageFile = selectedFile;
         
-        this.updateProfile.append('image',selectedImage)
-        
-        // Create a file reader object to read the selected image
         const reader = new FileReader();
-        
-        // Define a callback function to execute when the file is loaded
         reader.onload = (e) => {
-            // Update the profileImage variable with the data URL of the selected image
-            this.profileImage = e.target?.result?.toString() || ''; // Convert the data URL to string
+            this.profileImage = e.target?.result?.toString() || '';
         };
-        
-        // Read the selected image as a data URL
-        reader.readAsDataURL(selectedImage);
+        reader.readAsDataURL(selectedFile);
     }
-}
+  }
 
 }

@@ -16,36 +16,49 @@ export class userData{
    ){}
 
 
-    role:string=''
-    token = localStorage.getItem('yourToken')
-    decodedToken:any= this.jwt.decodeToken(this.token);
+  private _role: string = '';
 
+  get role(): string {
+    if (this._role) {
+      return this._role;
+    }
+    const token = localStorage.getItem('yourToken');
+    if (!token) return '';
+    const decoded = this.jwt.decodeToken(token);
+    return decoded?.role || '';
+  }
 
+  set role(val: string) {
+    this._role = val;
+  }
 
- isLoggedIn() {
-   if(!this.token){
+  get token(): string | null {
+    return localStorage.getItem('yourToken');
+  }
+
+  get decodedToken(): any {
+    const token = this.token;
+    return token ? this.jwt.decodeToken(token) : null;
+  }
+
+  isLoggedIn() {
+    if (!this.token) {
       return true;
-   }
-   else{
-      this.router.navigate([`/${this.role}`])
+    } else {
+      this.router.navigate([`/${this.role}`]);
       return false;
-   }
-
+    }
   }
 
   isEmployee() {
-   const type = this.role ? this.role === 'employee':false;
-   return type
+    return this.role === 'employee' || this.role === 'departmentHead' || this.role === 'intern';
   }
 
   isDepartmentHead() {
-   return this.role ? this.decodedToken.role==='departmentHead':false;
-
+    return this.role === 'departmentHead';
   }
 
   isCompanyAdmin() {
-   return this.role ? this.decodedToken.role==='companyAdmin':false;
-}
-
-
+    return this.role === 'companyAdmin';
+  }
 }

@@ -91,16 +91,16 @@ export class LeaveRequestComponent implements OnInit {
     }
 
     getStatusColor(status: string) {
-
-      switch (status.toLowerCase()) {
+      switch (status?.toLowerCase()) {
         case 'pending':
-          return { color: 'green' };
+          return { color: '#eab308', fontWeight: 'bold' };
         case 'approved':
-          return { color: 'red' };
+          return { color: '#22c55e', fontWeight: 'bold' };
+        case 'denied':
         case 'declined':
-          return { color: 'yellow' };
+          return { color: '#ef4444', fontWeight: 'bold' };
         default:
-          return {};
+          return { color: '#9ca3af' };
       }
     }
 

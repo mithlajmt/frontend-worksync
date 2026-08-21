@@ -11,9 +11,9 @@ export class AuthGuard implements CanActivateChild {
   constructor(private userDataService: userData, private router: Router) {}
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const userDat = this.userDataService.role === 'departmentHead';
+    const isDeptHead = this.userDataService.isDepartmentHead();
     
-    if (userDat) {
+    if (isDeptHead) {
       return true;
     } else {
       this.router.navigate(['/restricted']);

@@ -11,9 +11,9 @@ export class companyAuthGuard implements CanActivateChild {
   constructor(private userDataService: userData, private router: Router) {}
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const userDat = this.userDataService.role === 'companyAdmin';
+    const isCompanyAdmin = this.userDataService.isCompanyAdmin();
     
-    if (userDat) {
+    if (isCompanyAdmin) {
       return true;
     } else {
       this.router.navigate(['/restricted']);

@@ -21,6 +21,59 @@ export class LoginComponent implements OnInit {
   error=''
   
 
+  quotes = [
+    {
+      text: "Great things in business are never done by one person. They're done by a team of people.",
+      author: "Steve Jobs",
+      title: "Co-Founder, Apple Inc.",
+      initials: "SJ"
+    },
+    {
+      text: "Efficiency is doing things right; effectiveness is doing the right things.",
+      author: "Peter Drucker",
+      title: "Management Consultant & Author",
+      initials: "PD"
+    },
+    {
+      text: "Alone we can do so little; together we can do so much.",
+      author: "Helen Keller",
+      title: "Author & Activist",
+      initials: "HK"
+    },
+    {
+      text: "Productivity is never an accident. It is always the result of a commitment to excellence.",
+      author: "Paul J. Meyer",
+      title: "Pioneer in Personal Growth",
+      initials: "PM"
+    },
+    {
+      text: "Innovation distinguishes between a leader and a follower.",
+      author: "Steve Jobs",
+      title: "Co-Founder, Apple Inc.",
+      initials: "SJ"
+    },
+    {
+      text: "The secret of getting ahead is getting started.",
+      author: "Mark Twain",
+      title: "Renowned Author & Humorist",
+      initials: "MT"
+    },
+    {
+      text: "Success is best when it's shared.",
+      author: "Howard Schultz",
+      title: "Former CEO, Starbucks",
+      initials: "HS"
+    },
+    {
+      text: "Quality means doing it right when no one is looking.",
+      author: "Henry Ford",
+      title: "Founder, Ford Motor Company",
+      initials: "HF"
+    }
+  ];
+
+  selectedQuote: any;
+
   constructor(
     private fb: FormBuilder,
     private http:HttpClient,
@@ -30,7 +83,10 @@ export class LoginComponent implements OnInit {
     private user:userData
     ) { }
  
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    const randomIndex = Math.floor(Math.random() * this.quotes.length);
+    this.selectedQuote = this.quotes[randomIndex];
+
     this.loginForm = this.fb.group({
       userID:['',Validators.required],
       password:['',Validators.minLength(6)],
@@ -59,12 +115,10 @@ export class LoginComponent implements OnInit {
          const decodedToken= this.jwt.decodeToken(res.token)
          console.log(decodedToken.companyID,decodedToken.role);
 
-         if(decodedToken.role === 'employee'){
-          this.user.role = 'employee'
+         if(decodedToken.role === 'employee' || decodedToken.role === 'intern'){
+          this.user.role = decodedToken.role;
           
           this.router.navigate(['/employee/checkIn'])
-
-
          }
          else if(decodedToken.role === 'companyAdmin'){
           this.user.role = 'companyAdmin'

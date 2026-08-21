@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class SocketService {
   public socket!: Socket;
 
   constructor(private http: HttpClient) {
-    this.socket = io('http://localhost:5000');
+    this.socket = io(environment.apiUrl);
     this.registerOnlineStatus()
   }
 
@@ -47,7 +48,7 @@ export class SocketService {
 
 
 getPreviuosMessages(reciever:string):Observable<any> {
-  return this.http.get(`https://worksyncback.illuminatespark.com/messages/${reciever}`)
+  return this.http.get(`${environment.apiUrl}/messages/${reciever}`)
 }
 
 

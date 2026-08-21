@@ -27,6 +27,11 @@ const routes: Routes = [
     canActivate: [LoggedAuthGuard],
     canDeactivate:[(comp:SignupComponent)=>{return comp.canExit()}], // Route for /signup path
   },
+  {
+    path: 'register',
+    redirectTo: 'signup',
+    pathMatch: 'full',
+  },
   
 
 ];

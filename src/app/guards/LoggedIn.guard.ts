@@ -15,10 +15,11 @@ export class LoggedAuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
     const token = localStorage.getItem('yourToken');
-    const role = this.user.role
+    const role = this.user.role;
 
-    if (token) {
-      this.router.navigate([`/${role}`]);
+    if (token && role) {
+      const targetPath = (role === 'intern') ? 'employee' : role;
+      this.router.navigate([`/${targetPath}`]);
       return false;
     } else {
       return true;

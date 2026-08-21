@@ -22,8 +22,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
 
-    const dtoken = this.jwt.decodeToken(this.token)
-    this.user.role = dtoken.role
+    const dtoken = this.jwt.decodeToken(this.token);
+    if (dtoken && dtoken.role) {
+      this.user.role = dtoken.role;
+    }
 
   }
 

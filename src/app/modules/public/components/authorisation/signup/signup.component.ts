@@ -5,6 +5,7 @@ import { ApiService } from '../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { Signup } from '../../../interfaces/signup';
 import { Router } from '@angular/router';
+import { JwtService } from 'src/app/services/jwt.service';
 
 @Component({
   selector: 'app-sigup',
@@ -19,13 +20,14 @@ export class SignupComponent implements OnInit {
   isSubmitted:boolean=false
 
   ngOnInit(){
-    alert('please move to login page for demo use')
+    // Demo alert removed for direct registration
   }
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private router:Router,
+    private router: Router,
+    private jwtService: JwtService,
   ) {
     this.signupForm = this.fb.group({
       companyName: ['', [Validators.required]], 
@@ -55,6 +57,9 @@ export class SignupComponent implements OnInit {
 
 
   canExit(){
+    if (this.isSubmitted) {
+      return true;
+    }
     if(this.signupForm.dirty){
       return confirm('you have unsaved changes do you really want to navigate away ?')
     }
@@ -69,27 +74,25 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit() {
-    this.isSubmitted=true
-    this.signupFormData = this.signupForm.value
-    // Add your form submission logic here
+    this.isSubmitted=true;
+    this.signupFormData = this.signupForm.value;
     console.log(this.signupForm);
     this.apiService.userSignupPost(this.signupFormData)
     .subscribe({
-      next:(res:any)=>{
-        this.showOtpComp=true
-        this.errorMessage=''
-        
-        console.log(res);
-        
+      next: (res: any) => {
+        this.errorMessage = '';
+        if (res.success && res.token) {
+          this.jwtService.setToken(res.token);
+          this.router.navigate(['/companyAdmin/dashboard']);
+        } else {
+          this.showOtpComp = true;
+        }
       },
       error: (err: any) => {
         this.showOtpComp = false; 
-        this.errorMessage = err.error?.data?.message || 'An error occurred.';
+        this.errorMessage = err.error?.data?.message || err.error?.message || 'An error occurred during registration.';
         console.error(err);
       },
     });
-
-
-    this.showOtpComp=true
-}
+  }
 }

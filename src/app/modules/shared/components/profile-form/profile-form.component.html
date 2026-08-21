@@ -74,10 +74,51 @@
             <!-- <app-multiselect></app-multiselect> -->
             <!-- Add UI for selecting skills here -->
 
-            <div class="md:justify-center md:items-end mt-5 self-end  grid">
-                <button type="submit" [disabled]="profileForm.invalid" class=" d:min-w-24 px-9 rounded-md bg-yellow-700  py-2 hover:bg-gray-600 text-white font-semibold  transition duration-300">Submit</button>
+            <div *ngIf="profileFormError" class="lg:col-span-3 md:col-span-2 col-span-1 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-center gap-3">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="font-medium">{{ profileFormError }}</span>
+            </div>
+
+            <div class="md:justify-center md:items-end mt-5 self-end grid lg:col-span-3 md:col-span-2">
+                <button type="submit" class="d:min-w-24 px-9 rounded-md bg-yellow-700 py-2.5 hover:bg-yellow-600 text-white font-semibold transition duration-300 cursor-pointer">Submit Profile</button>
             </div>
             
         </form>
+
+        <!-- Change Password Section -->
+        <div class="bg-gray-800 shadow-md shadow-gray-700 rounded-lg p-8 mt-10">
+            <h3 class="text-2xl font-semibold text-white mb-6">🔒 Change Password</h3>
+            <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()" class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 md:text-xl text-md">
+                <div class="text-white font-kanit flex flex-col">
+                    <label for="currentPassword">Current Password:</label>
+                    <input type="password" formControlName="currentPassword" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter current password">
+                </div>
+
+                <div class="text-white font-kanit flex flex-col">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" formControlName="newPassword" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter new password">
+                </div>
+
+                <div class="text-white font-kanit flex flex-col">
+                    <label for="confirmNewPassword">Confirm New Password:</label>
+                    <input type="password" formControlName="confirmNewPassword" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Confirm new password">
+                </div>
+
+                <div *ngIf="passwordErrorMessage" class="lg:col-span-3 md:col-span-2 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>{{ passwordErrorMessage }}</span>
+                </div>
+
+                <div class="lg:col-span-3 md:col-span-2 flex justify-end">
+                    <button type="submit" class="px-8 rounded-md bg-blue-600 hover:bg-blue-700 py-3 text-white font-semibold transition duration-300 cursor-pointer">
+                        Update Password
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -32,20 +32,15 @@ export class ToolbarComponent implements OnInit {
         this.isCompany = this.role == 'companyAdmin'
     console.log(this.isCompany);
     
-    this.isAdmin = this.role == 'admin'
-    this.isEmployee = this.role == 'employee'
-     this.isDepartmentHead = this.role == 'departmentHead' 
+        this.isAdmin = this.role == 'admin'
+        this.isEmployee = (this.role == 'employee' || this.role == 'intern')
+        this.isDepartmentHead = this.role == 'departmentHead' 
       },
       error:(err)=>{
         console.log(err);
       }
             
     })
-    // console.log(token)
-    // const decodedToken = this.jwt.decodeToken(token) 
-    // console.log(decodedToken.role);
-    
-     
   }
 
   passString(string: string): void {
@@ -58,7 +53,7 @@ export class ToolbarComponent implements OnInit {
   }
   navigate(link:string){
     console.log(this.role);
-    
-    this.router.navigate([`/${this.role}/${link}`]);
+    const parentRole = (this.role === 'intern') ? 'employee' : this.role;
+    this.router.navigate([`/${parentRole}/${link}`]);
   }
 }

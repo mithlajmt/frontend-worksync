@@ -1,59 +1,157 @@
-<div class="min-h-screen bg-gray-900 flex justify-center items-center">
-  <div class="bg-gray-200 rounded-lg w-full m-4 md:m-0 shadow-md px-8 py-12 flex flex-col md:flex-row md:w-1/2 md:h-[600px]">
-      <div class="bg-gray-300 md:w-5/12 flex flex-col justify-center md:justify-start pt-28 px-8 py-4 border-2 border-gray-400  border-b-0 md:border-b-2 md:border-r-0  ">
+<div class="min-h-screen bg-[#060911] relative flex items-center justify-center p-4 md:p-8 font-sans selection:bg-indigo-500 selection:text-white overflow-hidden">
+  
+  <!-- Floating Glass Orbs -->
+  <div class="fixed -top-20 -left-20 w-[550px] h-[550px] bg-gradient-to-br from-indigo-600/30 to-purple-600/20 rounded-full blur-[130px] pointer-events-none animate-orb-1"></div>
+  <div class="fixed -bottom-20 -right-20 w-[550px] h-[550px] bg-gradient-to-tr from-purple-600/25 to-pink-600/20 rounded-full blur-[130px] pointer-events-none animate-orb-2"></div>
+
+  <!-- Glassmorphism Card Container -->
+  <div class="relative w-full max-w-4xl glass-container rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[620px] z-10">
+    
+    <!-- Left Panel (Glassmorphism Editorial Quote) -->
+    <div class="lg:col-span-5 bg-slate-900/40 p-8 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden">
       
-        <p class="text-2xl font-semibold text-center  font-mono  text-gray-900 mb-4">Welcome back</p>
-        <div class="text-gray-700 flex flex-col justify-center font-kanit">
-            <div class="md:mt-4 mt-2 border-2 "> 
-                <div class="mb-2">
-                    <span class="font-semibold">Sample company Admin: <br> </span> COM-LEV474Owl2
-                </div>
-                <div class="">
-                    <span class="font-semibold">Password:</span> Minu@123
-                </div>
-            </div>
-
-
-            <div class=" border-2 mt-2">
-              <div class="mb-2">
-                <span class="font-semibold">Sample departmentHead:   <br></span> EMP-SAMMI474NaN453
-            </div>
-            <div>
-                <span class="font-semibold">Password:</span> yeemi6saq
-            </div>
+      <!-- Top Minimalist Brand Header -->
+      <div class="relative z-10">
+        <div class="flex items-center gap-3.5 mb-10">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/40 border border-white/20">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <span class="text-white font-bold tracking-widest text-base uppercase">WorkSync</span>
         </div>
 
-        <div class="mt-2 border-2">
-                <div class="mb-2 ">
-                    <span class="font-semibold">Sample Employee: <br></span> EMP-SHAMI474NaN329
-                </div>
-                <div>
-                    <span class="font-semibold">Password:</span> eermilmv7
-                </div>
-            </div>
+        <!-- Glass Quote Box (Randomized Quote) -->
+        <div *ngIf="selectedQuote" class="glass-quote-card p-6 rounded-2xl relative my-4">
+          <span class="text-6xl font-serif text-indigo-400/30 absolute -top-4 -left-1 pointer-events-none select-none">“</span>
+          
+          <blockquote class="relative z-10 space-y-4">
+            <p class="text-lg lg:text-xl font-medium text-slate-100 leading-relaxed tracking-tight italic">
+              "{{ selectedQuote.text }}"
+            </p>
+            <footer class="flex items-center gap-3 pt-3 border-t border-white/5">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white font-extrabold text-xs shadow-md border border-white/20">
+                {{ selectedQuote.initials }}
+              </div>
+              <div>
+                <cite class="not-italic text-sm font-bold text-white block">{{ selectedQuote.author }}</cite>
+                <span class="text-xs text-slate-400 font-medium">{{ selectedQuote.title }}</span>
+              </div>
+            </footer>
+          </blockquote>
         </div>
       </div>
-      <div class="md:w-7/12 flex flex-col justify-center px-8 py-4 border-2 border-gray-400 md:border-l-0 border-t-0 md:border-t-2">
-        <div *ngIf="error" class="text-center font-semibold text-red-500 md:mb-12 mb-6">*{{error}}</div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="mb-4">
-            <label for="userID" class="text-gray-800 font-serif">UserID :</label>
-            <input id="userID" formControlName="userID" type="text" placeholder="Enter your userID" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring focus:ring-gray-900">
-            <div *ngIf="f['userID'].touched && f['userID'].invalid" class="text-red-500 text-sm">
-              <div *ngIf="f['userID'].errors?.['required']">*UserID is required.</div>
+
+      <!-- Bottom Card Accent -->
+      <div class="relative z-10 pt-6">
+        <div class="p-4 rounded-2xl glass-quote-card flex items-center gap-3.5">
+          <div class="p-2.5 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white">Enterprise Glass Portal</p>
+            <p class="text-[11px] text-slate-400">Protected by 256-bit JWT Encryption</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Login Form Panel (Neomorphic Inset Controls) -->
+    <div class="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-center bg-slate-950/30 relative">
+      <div class="max-w-md mx-auto w-full">
+        
+        <div class="mb-8">
+          <h3 class="text-3xl font-extrabold text-white tracking-tight mb-2">Sign In</h3>
+          <p class="text-slate-400 text-sm">Enter your credentials to access your portal</p>
+        </div>
+
+        <!-- Error Notification -->
+        <div *ngIf="error" class="mb-6 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-sm flex items-center gap-3 backdrop-blur-md">
+          <svg class="w-5 h-5 flex-shrink-0 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="font-medium text-xs md:text-sm">{{ error }}</span>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+          
+          <!-- UserID / Email Input -->
+          <div>
+            <label for="userID" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              User ID / Email
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <input 
+                id="userID" 
+                formControlName="userID" 
+                type="text" 
+                placeholder="Company ID, Employee ID, or Email" 
+                class="w-full pl-12 pr-4 py-3.5 neo-input rounded-2xl text-white placeholder-slate-600 text-sm focus:outline-none"
+              >
+            </div>
+            <div *ngIf="f['userID'].touched && f['userID'].invalid" class="text-rose-400 text-xs mt-1.5 pl-1">
+              <span *ngIf="f['userID'].errors?.['required']">* User ID or Email is required.</span>
             </div>
           </div>
-          <div class="mb-4">
-            <label for="password" class="text-gray-800 font-serif">Password :</label>
-            <input id="password" formControlName="password" type="password" placeholder="Enter your password" class="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring focus:ring-gray-900">
-            <div *ngIf="f['password'].touched && f['password'].invalid" class="text-red-500 text-sm">
-              <div *ngIf="f['password'].errors?.['required']">*Password is required.</div>
-              <div *ngIf="f['password'].errors?.['minlength']">*Password must be at least 8 characters long.</div>
+
+          <!-- Password Input -->
+          <div>
+            <label for="password" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              Password
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </div>
+              <input 
+                id="password" 
+                formControlName="password" 
+                type="password" 
+                placeholder="••••••••••••" 
+                class="w-full pl-12 pr-4 py-3.5 neo-input rounded-2xl text-white placeholder-slate-600 text-sm focus:outline-none"
+              >
+            </div>
+            <div *ngIf="f['password'].touched && f['password'].invalid" class="text-rose-400 text-xs mt-1.5 pl-1">
+              <span *ngIf="f['password'].errors?.['required']">* Password is required.</span>
+              <span *ngIf="f['password'].errors?.['minlength']">* Minimum 6 characters.</span>
             </div>
           </div>
-          <button type="submit" class="bg-gray-700 w-full text-white py-2 px-4 rounded-md hover:bg-teal-700 focus:outline-none focus:bg-teal-700" [disabled]="loginForm.invalid">Login</button>
+
+          <!-- Neomorphic Submit Button -->
+          <button 
+            type="submit" 
+            [disabled]="loginForm.invalid" 
+            class="w-full py-4 px-6 neo-button disabled:opacity-40 disabled:cursor-not-allowed text-white font-extrabold text-sm rounded-2xl focus:outline-none flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Sign In to Workspace</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
         </form>
+
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-xs text-slate-400">
+            Registering a new company? 
+            <a routerLink="/signup" class="text-indigo-400 font-bold hover:text-indigo-300 transition duration-150 ml-1">
+              Create Organization &rarr;
+            </a>
+          </p>
+        </div>
+
       </div>
     </div>
+
   </div>
+</div>
   
