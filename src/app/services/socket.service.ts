@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
 import { environment } from 'src/environments/environment';
 
@@ -9,58 +9,63 @@ import { environment } from 'src/environments/environment';
 })
 export class SocketService {
   public socket!: Socket;
+  private messageSubject = new Subject<any>();
 
   constructor(private http: HttpClient) {
     this.socket = io(environment.apiUrl);
-    this.registerOnlineStatus()
+
+    this.socket.on('connect', () => {
+      this.registerOnlineStatus();
+    });
+
+    this.registerOnlineStatus();
+    this.setupListeners();
   }
 
+  registerOnlineStatus() {
+    const token = localStorage.getItem('yourToken');
+    if (token) {
+      this.socket.emit('setUserID', token);
+    }
+  }
 
-  registerOnlineStatus(){
-    const token= localStorage.getItem('yourToken')
-    this.socket.emit('setUserID',token)
+  setupListeners() {
+    this.socket.on('welcome', (data: any) => {
+      console.log('Socket welcome:', data);
+    });
+
+    this.socket.on('sentedMessage', (res: any) => {
+      this.messageSubject.next(res);
+    });
   }
 
   welcomer() {
+    this.registerOnlineStatus();
+  }
 
-    // const token = localStorage.getItem("yourToken");
-    this.socket.on('welcome', (data: any) => {
-      console.log( );
-      
-      // this.socket.emit('token',token )
-      // console.log('Received request:', data);
+  onSend(data: any) {
+    const token = localStorage.getItem('yourToken');
+    const packet = { ...data, token };
+    this.socket.emit('onMessageSend', packet);
+
+    return new Observable<any>((observer) => {
+      const handler = (res: any) => {
+        observer.next(res);
+        observer.complete();
+      };
+      this.socket.once('sentedMessage', handler);
     });
-  }  
+  }
 
-  onSend(data:any) {
-    const token = localStorage.getItem("yourToken");
-    const packet={...data};
-    packet.token=token
-    this.socket.emit('onMessageSend',packet)
+  getMessageObservable(): Observable<any> {
+    return this.messageSubject.asObservable();
+  }
 
-    return new Observable<any>((observer)=>{
-      this.socket.on('sentedMessage', (res: any)=>{
-        observer.next(res)
-    })
-    })
+  getPreviuosMessages(reciever: string): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/messages/${reciever}`);
+  }
 }
 
-
-
-getPreviuosMessages(reciever:string):Observable<any> {
-  return this.http.get(`${environment.apiUrl}/messages/${reciever}`)
-}
-
-
-// getmessage(): Observable<any> {
-//   return new Observable<any>(observer => {
-//     this.socket.on('sentedMessage', (res:any) => {
-//       console.log(res);
-//       observer.next(res);
-//     });
-//   });
-// }
-}
 
 
 

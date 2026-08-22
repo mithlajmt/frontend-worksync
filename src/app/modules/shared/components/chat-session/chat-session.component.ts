@@ -1,5 +1,6 @@
 // chat-session.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SocketService } from 'src/app/services/socket.service';
 import { CommonService } from '../../services/common.service';
 
@@ -8,91 +9,109 @@ import { CommonService } from '../../services/common.service';
   templateUrl: './chat-session.component.html',
   styleUrls: ['./chat-session.component.css']
 })
-export class ChatSessionComponent implements OnInit {
-  inputMessage:string=''
-  showChat=false
-  profileData:any;
-  previousMessage:any[] = []
-  userID:any=''
-  // senterData = []
- 
+export class ChatSessionComponent implements OnInit, OnDestroy {
+  inputMessage: string = '';
+  showChat = false;
+  profileData: any;
+  previousMessage: any[] = [];
+  userID: any = '';
+  private socketSub!: Subscription;
 
   constructor(
     private socketS: SocketService,
-    private common:CommonService
-    ) { }
+    private common: CommonService
+  ) { }
 
-    isOwnMessage(senderID:string | number){
-      return this.userID == senderID ? true : false
-    }
+  isOwnMessage(senderID: string | number) {
+    return String(this.userID) === String(senderID);
+  }
 
   ngOnInit(): void {
     this.common.getUsernameAndProfile().subscribe({
-      next:(res)=>{
-        this.userID = res.data[0]._id
-        
-                
-
-            },
-      error:(err)=>{
-        console.log(err);
-      }
-    })
-
-    this.socketS.welcomer(); // Call the welcomer method to listen for 'welcome' event
-  }
-
-  onTyping(){
-    // console.log(this.InputMessage);
-    
-  }
-
-  selectedChat(event:any){
-    // console.log(event);
-    this.showChat=true
-    this.profileData=event;
-    this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
-      next:(res)=>{
-        // console.log(res);
-        this.previousMessage=res.data;
-        console.log(this.previousMessage)
+      next: (res) => {
+        if (res && res.data && res.data[0]) {
+          this.userID = res.data[0]._id;
+        }
       },
-
-      error:(err)=>{
-        console.log(err);
-        
+      error: (err) => {
+        console.error('Error fetching user profile info:', err);
       }
-    })
+    });
 
+    this.socketS.welcomer();
+
+    // Subscribe to real-time incoming messages stream
+    this.socketSub = this.socketS.getMessageObservable().subscribe({
+      next: (msg: any) => {
+        if (!msg) return;
+
+        const isRelevant = this.profileData && (
+          String(msg.sender) === String(this.profileData._id) ||
+          String(msg.receiver) === String(this.profileData._id) ||
+          String(msg.reciever) === String(this.profileData._id) ||
+          String(msg.sender) === String(this.userID)
+        );
+
+        if (isRelevant) {
+          const exists = this.previousMessage.some(prevMsg => prevMsg._id && msg._id && prevMsg._id === msg._id);
+          if (!exists) {
+            this.previousMessage.push(msg);
+            this.scrollToBottom();
+          }
+        }
+      },
+      error: (err) => {
+        console.error('Socket message stream error:', err);
+      }
+    });
   }
 
-onMessageSent() {
-  const data = {
-    reciever: this.profileData._id,
-    message: this.inputMessage
-  };
-
-  // Subscribe to the message sent event
-  const messageSubscription = this.socketS.onSend(data).subscribe({
-    next: (msg) => {
-      // Push the message to the previousMessage array only if it's not already there
-      if (!this.previousMessage.find(prevMsg => prevMsg._id === msg._id)) {
-        this.previousMessage.push(msg);
-        window.scrollTo(0, document.body.scrollHeight);
-      }
-    },
-    error: (err) => {
-      console.log(err);
-    },
-    complete: () => {
-      // Unsubscribe from the subscription to avoid memory leaks
-      messageSubscription.unsubscribe();
+  ngOnDestroy(): void {
+    if (this.socketSub) {
+      this.socketSub.unsubscribe();
     }
-  });
+  }
 
-  // Clear the input message after sending
-  this.inputMessage = '';
+  onTyping() {
+    // Optional typing indicator listener
+  }
+
+  selectedChat(event: any) {
+    this.showChat = true;
+    this.profileData = event;
+    this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
+      next: (res) => {
+        this.previousMessage = res.data || [];
+        this.scrollToBottom();
+      },
+      error: (err) => {
+        console.error('Error fetching messages:', err);
+      }
+    });
+  }
+
+  onMessageSent() {
+    if (!this.inputMessage || !this.inputMessage.trim() || !this.profileData) {
+      return;
+    }
+
+    const data = {
+      reciever: this.profileData._id,
+      receiver: this.profileData._id,
+      message: this.inputMessage.trim()
+    };
+
+    this.socketS.onSend(data);
+    this.inputMessage = '';
+  }
+
+  private scrollToBottom() {
+    setTimeout(() => {
+      const el = document.getElementById('messages');
+      if (el) {
+        el.scrollTop = el.scrollHeight;
+      }
+    }, 50);
+  }
 }
 
-
-}
