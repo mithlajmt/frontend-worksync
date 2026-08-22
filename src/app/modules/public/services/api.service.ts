@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Login } from '../interfaces/login';
 import { Signup } from '../interfaces/signup';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -17,9 +18,9 @@ const httpOptions = {
   
   
   export class ApiService {
-    apiUrl='http://localhost:3000'
+    apiUrl = environment.apiUrl;
     
-    private userapi = 'http://localhost:3000';
+    private userapi = environment.apiUrl;
   
     constructor( private http:HttpClient) { }
     
