@@ -5808,53 +5808,66 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function ChatSessionComponent_div_2_div_25_div_1_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 44)(1, "div", 45)(2, "div", 46)(3, "div")(4, "span", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](6, "img", 48);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-  }
-  if (rf & 2) {
-    const message_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](message_r2.content);
-  }
-}
-function ChatSessionComponent_div_2_div_25_div_2_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 49)(1, "div", 50)(2, "div", 51)(3, "div")(4, "span", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](6, "img", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-  }
-  if (rf & 2) {
-    const message_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](message_r2 == null ? null : message_r2.content);
-  }
-}
 function ChatSessionComponent_div_2_div_25_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](1, ChatSessionComponent_div_2_div_25_div_1_Template, 7, 1, "div", 42);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, ChatSessionComponent_div_2_div_25_div_2_Template, 7, 1, "div", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 42)(1, "div", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "svg", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](3, "circle", 45)(4, "path", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "Loading conversation...");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+  }
+}
+function ChatSessionComponent_div_2_div_26_div_1_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 50)(1, "div", 51)(2, "div", 52)(3, "div")(4, "span", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](6, "img", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const message_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](message_r3.content);
+  }
+}
+function ChatSessionComponent_div_2_div_26_div_2_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 55)(1, "div", 56)(2, "div", 57)(3, "div")(4, "span", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](6, "img", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const message_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](message_r3 == null ? null : message_r3.content);
+  }
+}
+function ChatSessionComponent_div_2_div_26_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](1, ChatSessionComponent_div_2_div_26_div_1_Template, 7, 1, "div", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, ChatSessionComponent_div_2_div_26_div_2_Template, 7, 1, "div", 49);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
   if (rf & 2) {
-    const message_r2 = ctx.$implicit;
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const message_r3 = ctx.$implicit;
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r1.isOwnMessage(message_r2.sender));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r2.isOwnMessage(message_r3.sender));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", !ctx_r1.isOwnMessage(message_r2.sender));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", !ctx_r2.isOwnMessage(message_r3.sender));
   }
 }
 function ChatSessionComponent_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 3)(1, "div", 4)(2, "div", 5)(3, "div", 6)(4, "span", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "svg", 8);
@@ -5888,58 +5901,59 @@ function ChatSessionComponent_div_2_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](24, "div", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](25, ChatSessionComponent_div_2_div_25_Template, 3, 2, "div", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](26, "div", 24)(27, "div", 25)(28, "span", 26)(29, "button", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](25, ChatSessionComponent_div_2_div_25_Template, 7, 0, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](26, ChatSessionComponent_div_2_div_26_Template, 3, 2, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](27, "div", 25)(28, "div", 26)(29, "span", 27)(30, "button", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](30, "svg", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](31, "path", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](31, "svg", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](32, "path", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](32, "input", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function ChatSessionComponent_div_2_Template_input_ngModelChange_32_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r8);
-      const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r7.inputMessage = $event);
-    })("input", function ChatSessionComponent_div_2_Template_input_input_32_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r8);
-      const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r9.onTyping());
-    })("keyup.enter", function ChatSessionComponent_div_2_Template_input_keyup_enter_32_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](33, "input", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function ChatSessionComponent_div_2_Template_input_ngModelChange_33_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r9);
+      const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r8.inputMessage = $event);
+    })("input", function ChatSessionComponent_div_2_Template_input_input_33_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r9);
       const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r10.onMessageSent());
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](33, "div", 31)(34, "button", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](35, "svg", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](36, "path", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](37, "button", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](38, "svg", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](39, "path", 34)(40, "path", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](41, "button", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](42, "svg", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](43, "path", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](44, "button", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ChatSessionComponent_div_2_Template_button_click_44_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r8);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r10.onTyping());
+    })("keyup.enter", function ChatSessionComponent_div_2_Template_input_keyup_enter_33_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r9);
       const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
       return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r11.onMessageSent());
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](45, "span", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](46, "Send");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](34, "div", 32)(35, "button", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](36, "svg", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](37, "path", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](38, "button", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](39, "svg", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](40, "path", 35)(41, "path", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](42, "button", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](43, "svg", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](44, "path", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceHTML"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](45, "button", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function ChatSessionComponent_div_2_Template_button_click_45_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r9);
+      const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r12.onMessageSent());
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](46, "span", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](47, "Send");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnamespaceSVG"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](47, "svg", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](48, "path", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](48, "svg", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](49, "path", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()()()()();
   }
   if (rf & 2) {
@@ -5951,6 +5965,8 @@ function ChatSessionComponent_div_2_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r0.profileData.department);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r0.isLoadingMessages);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngForOf", ctx_r0.previousMessage);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r0.inputMessage);
@@ -5962,6 +5978,7 @@ class ChatSessionComponent {
     this.common = common;
     this.inputMessage = '';
     this.showChat = false;
+    this.isLoadingMessages = false;
     this.previousMessage = [];
     this.userID = '';
   }
@@ -6002,6 +6019,9 @@ class ChatSessionComponent {
     if (this.socketSub) {
       this.socketSub.unsubscribe();
     }
+    if (this.messagesSub) {
+      this.messagesSub.unsubscribe();
+    }
   }
   onTyping() {
     // Optional typing indicator listener
@@ -6009,12 +6029,19 @@ class ChatSessionComponent {
   selectedChat(event) {
     this.showChat = true;
     this.profileData = event;
-    this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
+    this.previousMessage = [];
+    this.isLoadingMessages = true;
+    if (this.messagesSub) {
+      this.messagesSub.unsubscribe();
+    }
+    this.messagesSub = this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
       next: res => {
         this.previousMessage = res.data || [];
+        this.isLoadingMessages = false;
         this.scrollToBottom();
       },
       error: err => {
+        this.isLoadingMessages = false;
         console.error('Error fetching messages:', err);
       }
     });
@@ -6047,7 +6074,7 @@ class ChatSessionComponent {
     selectors: [["app-chat-session"]],
     decls: 3,
     vars: 1,
-    consts: [[1, "flex", "flex-row", "max-h-full", "min-h-full"], [1, "w-1/5", 3, "selectedContact"], ["class", "flex-1 p:2 sm:p-6 justify-between flex flex-col max-h-full bg-gray-900", 4, "ngIf"], [1, "flex-1", "p:2", "sm:p-6", "justify-between", "flex", "flex-col", "max-h-full", "bg-gray-900"], [1, "flex", "sm:items-center", "justify-between", "py-3", "border-b-2", "border-gray-200"], [1, "relative", "flex", "items-center", "space-x-4"], [1, "relative"], [1, "absolute", "text-green-500", "right-0", "bottom-0"], ["width", "20", "height", "20"], ["cx", "8", "cy", "8", "r", "8", "fill", "currentColor"], ["alt", "", 1, "w-10", "sm:w-16", "h-10", "sm:h-16", "object-cover", "rounded-full", 3, "src"], [1, "flex", "flex-col", "leading-tight"], [1, "text-2xl", "mt-1", "flex", "items-center"], [1, "text-gray-200", "mr-3"], [1, "text-lg", "text-gray-500"], [1, "flex", "items-center", "space-x-2", "text-white"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-lg", "border", "border-gray-300", "h-10", "w-10", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-700", "focus:outline-none"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", "stroke", "white", 1, "h-6", "w-6"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-lg", "border", "h-10", "w-10", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-700", "focus:outline-none"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"], ["id", "messages", 1, "flex", "flex-col", "space-y-4", "p-3", "overflow-y-auto", "scrollbar-thumb-blue", "scrollbar-thumb-rounded", "scrollbar-track-blue-lighter", "scrollbar-w-2", "scrolling-touch"], ["class", "flex flex-col space-y-4 p-3  scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch ", 4, "ngFor", "ngForOf"], [1, "border-t-2", "border-gray-200", "px-4", "pt-4", "mb-2", "sm:mb-0"], [1, "relative", "flex", "bg-yellow-300", "max-h-full", "flex-wrap"], [1, "absolute", "inset-y-0", "flex", "items-center"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-full", "h-12", "w-12", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-300", "focus:outline-none"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "h-6", "w-6", "text-gray-600"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"], ["type", "text", "placeholder", "Write your message!", 1, "w-full", "focus:outline-none", "focus:placeholder-gray-400", "text-gray-600", "placeholder-gray-600", "pl-12", "lg:pr-56", "bg-gray-200", "rounded-md", "py-3", 3, "ngModel", "ngModelChange", "input", "keyup.enter"], [1, "absolute", "right-0", "items-center", "inset-y-0", "hidden", "sm:flex"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-full", "h-10", "w-10", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-300", "focus:outline-none"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15 13a3 3 0 11-6 0 3 3 0 016 0z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-lg", "px-4", "py-3", "transition", "duration-500", "ease-in-out", "text-white", "bg-blue-500", "hover:bg-blue-400", "focus:outline-none", 3, "click"], [1, "font-bold"], ["xmlns", "http://www.w3.org/2000/svg", "viewBox", "0 0 20 20", "fill", "currentColor", 1, "h-6", "w-6", "ml-2", "transform", "rotate-90"], ["d", "M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"], [1, "flex", "flex-col", "space-y-4", "p-3", "scrollbar-thumb-blue", "scrollbar-thumb-rounded", "scrollbar-track-blue-lighter", "scrollbar-w-2", "scrolling-touch"], ["class", "chat-message bg", 4, "ngIf"], ["class", "chat-message", 4, "ngIf"], [1, "chat-message", "bg"], [1, "flex", "items-end", "justify-end"], [1, "flex", "flex-col", "space-y-2", "text-xs", "max-w-xs", "mx-2", "order-1", "items-end"], [1, "px-4", "py-2", "rounded-lg", "inline-block", "rounded-br-none", "bg-blue-600", "text-white"], ["src", "https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=144&h=144", "alt", "My profile", 1, "w-6", "h-6", "rounded-full", "order-2"], [1, "chat-message"], [1, "flex", "items-end"], [1, "flex", "flex-col", "space-y-2", "text-xs", "max-w-xs", "mx-2", "order-2", "items-start"], [1, "px-4", "py-2", "rounded-lg", "inline-block", "rounded-bl-none", "bg-gray-300", "text-gray-600"], ["src", "https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=144&h=144", "alt", "My profile", 1, "w-6", "h-6", "rounded-full", "order-1"]],
+    consts: [[1, "flex", "flex-row", "max-h-full", "min-h-full"], [1, "w-1/5", 3, "selectedContact"], ["class", "flex-1 p:2 sm:p-6 justify-between flex flex-col max-h-full bg-gray-900", 4, "ngIf"], [1, "flex-1", "p:2", "sm:p-6", "justify-between", "flex", "flex-col", "max-h-full", "bg-gray-900"], [1, "flex", "sm:items-center", "justify-between", "py-3", "border-b-2", "border-gray-200"], [1, "relative", "flex", "items-center", "space-x-4"], [1, "relative"], [1, "absolute", "text-green-500", "right-0", "bottom-0"], ["width", "20", "height", "20"], ["cx", "8", "cy", "8", "r", "8", "fill", "currentColor"], ["alt", "", 1, "w-10", "sm:w-16", "h-10", "sm:h-16", "object-cover", "rounded-full", 3, "src"], [1, "flex", "flex-col", "leading-tight"], [1, "text-2xl", "mt-1", "flex", "items-center"], [1, "text-gray-200", "mr-3"], [1, "text-lg", "text-gray-500"], [1, "flex", "items-center", "space-x-2", "text-white"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-lg", "border", "border-gray-300", "h-10", "w-10", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-700", "focus:outline-none"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", "stroke", "white", 1, "h-6", "w-6"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-lg", "border", "h-10", "w-10", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-700", "focus:outline-none"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"], ["id", "messages", 1, "flex", "flex-col", "space-y-4", "p-3", "overflow-y-auto", "scrollbar-thumb-blue", "scrollbar-thumb-rounded", "scrollbar-track-blue-lighter", "scrollbar-w-2", "scrolling-touch", "min-h-[300px]"], ["class", "flex items-center justify-center py-12", 4, "ngIf"], ["class", "flex flex-col space-y-4 p-3  scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch ", 4, "ngFor", "ngForOf"], [1, "border-t-2", "border-gray-200", "px-4", "pt-4", "mb-2", "sm:mb-0"], [1, "relative", "flex", "bg-yellow-300", "max-h-full", "flex-wrap"], [1, "absolute", "inset-y-0", "flex", "items-center"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-full", "h-12", "w-12", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-300", "focus:outline-none"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", "stroke", "currentColor", 1, "h-6", "w-6", "text-gray-600"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"], ["type", "text", "placeholder", "Write your message!", 1, "w-full", "focus:outline-none", "focus:placeholder-gray-400", "text-gray-600", "placeholder-gray-600", "pl-12", "lg:pr-56", "bg-gray-200", "rounded-md", "py-3", 3, "ngModel", "ngModelChange", "input", "keyup.enter"], [1, "absolute", "right-0", "items-center", "inset-y-0", "hidden", "sm:flex"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-full", "h-10", "w-10", "transition", "duration-500", "ease-in-out", "text-gray-500", "hover:bg-gray-300", "focus:outline-none"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M15 13a3 3 0 11-6 0 3 3 0 016 0z"], ["stroke-linecap", "round", "stroke-linejoin", "round", "stroke-width", "2", "d", "M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"], ["type", "button", 1, "inline-flex", "items-center", "justify-center", "rounded-lg", "px-4", "py-3", "transition", "duration-500", "ease-in-out", "text-white", "bg-blue-500", "hover:bg-blue-400", "focus:outline-none", 3, "click"], [1, "font-bold"], ["xmlns", "http://www.w3.org/2000/svg", "viewBox", "0 0 20 20", "fill", "currentColor", 1, "h-6", "w-6", "ml-2", "transform", "rotate-90"], ["d", "M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"], [1, "flex", "items-center", "justify-center", "py-12"], [1, "flex", "items-center", "space-x-2", "text-gray-400"], ["xmlns", "http://www.w3.org/2000/svg", "fill", "none", "viewBox", "0 0 24 24", 1, "animate-spin", "h-6", "w-6", "text-blue-500"], ["cx", "12", "cy", "12", "r", "10", "stroke", "currentColor", "stroke-width", "4", 1, "opacity-25"], ["fill", "currentColor", "d", "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z", 1, "opacity-75"], [1, "flex", "flex-col", "space-y-4", "p-3", "scrollbar-thumb-blue", "scrollbar-thumb-rounded", "scrollbar-track-blue-lighter", "scrollbar-w-2", "scrolling-touch"], ["class", "chat-message bg", 4, "ngIf"], ["class", "chat-message", 4, "ngIf"], [1, "chat-message", "bg"], [1, "flex", "items-end", "justify-end"], [1, "flex", "flex-col", "space-y-2", "text-xs", "max-w-xs", "mx-2", "order-1", "items-end"], [1, "px-4", "py-2", "rounded-lg", "inline-block", "rounded-br-none", "bg-blue-600", "text-white"], ["src", "https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=144&h=144", "alt", "My profile", 1, "w-6", "h-6", "rounded-full", "order-2"], [1, "chat-message"], [1, "flex", "items-end"], [1, "flex", "flex-col", "space-y-2", "text-xs", "max-w-xs", "mx-2", "order-2", "items-start"], [1, "px-4", "py-2", "rounded-lg", "inline-block", "rounded-bl-none", "bg-gray-300", "text-gray-600"], ["src", "https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=144&h=144", "alt", "My profile", 1, "w-6", "h-6", "rounded-full", "order-1"]],
     template: function ChatSessionComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0)(1, "app-chat-list", 1);
@@ -6055,7 +6082,7 @@ class ChatSessionComponent {
           return ctx.selectedChat($event);
         });
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, ChatSessionComponent_div_2_Template, 49, 5, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, ChatSessionComponent_div_2_Template, 50, 6, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
       }
       if (rf & 2) {

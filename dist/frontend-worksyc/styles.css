@@ -809,6 +809,9 @@ video {
 .min-h-\[200px\] {
   min-height: 200px;
 }
+.min-h-\[300px\] {
+  min-height: 300px;
+}
 .min-h-\[620px\] {
   min-height: 620px;
 }
@@ -1973,6 +1976,9 @@ video {
 }
 .opacity-100 {
   opacity: 1;
+}
+.opacity-25 {
+  opacity: 0.25;
 }
 .opacity-75 {
   opacity: 0.75;

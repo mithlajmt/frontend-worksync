@@ -12,10 +12,12 @@ import { CommonService } from '../../services/common.service';
 export class ChatSessionComponent implements OnInit, OnDestroy {
   inputMessage: string = '';
   showChat = false;
+  isLoadingMessages = false;
   profileData: any;
   previousMessage: any[] = [];
   userID: any = '';
   private socketSub!: Subscription;
+  private messagesSub?: Subscription;
 
   constructor(
     private socketS: SocketService,
@@ -70,6 +72,9 @@ export class ChatSessionComponent implements OnInit, OnDestroy {
     if (this.socketSub) {
       this.socketSub.unsubscribe();
     }
+    if (this.messagesSub) {
+      this.messagesSub.unsubscribe();
+    }
   }
 
   onTyping() {
@@ -79,12 +84,21 @@ export class ChatSessionComponent implements OnInit, OnDestroy {
   selectedChat(event: any) {
     this.showChat = true;
     this.profileData = event;
-    this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
+    this.previousMessage = [];
+    this.isLoadingMessages = true;
+
+    if (this.messagesSub) {
+      this.messagesSub.unsubscribe();
+    }
+
+    this.messagesSub = this.socketS.getPreviuosMessages(this.profileData._id).subscribe({
       next: (res) => {
         this.previousMessage = res.data || [];
+        this.isLoadingMessages = false;
         this.scrollToBottom();
       },
       error: (err) => {
+        this.isLoadingMessages = false;
         console.error('Error fetching messages:', err);
       }
     });
