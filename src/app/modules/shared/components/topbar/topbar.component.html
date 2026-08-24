@@ -1,7 +1,7 @@
 <div class="h-20 w-full flex items-center justify-between px-4 md:px-10 border-b border-white/10 glass-panel backdrop-blur-xl bg-gray-950/60 relative z-30 shadow-lg">
   <!-- Left Header Status & Mobile Hamburger Button -->
   <div class="flex items-center gap-3">
-    <button (click)="toggleMobileNav()" class="md:hidden p-2 text-gray-300 hover:text-white rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+    <button (click)="toggleMobileSidebar()" class="md:hidden p-2 text-gray-300 hover:text-white rounded-xl bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer">
       <mat-icon fontIcon="menu"></mat-icon>
     </button>
     <div class="flex items-center gap-2.5">
@@ -43,64 +43,5 @@
         </button>
       </div>
     </div>
-  </div>
-
-  <!-- Mobile Slide-out Navigation Drawer Overlay -->
-  <div *ngIf="isMobileNavOpen" class="fixed inset-0 z-50 flex md:hidden bg-gray-950/80 backdrop-blur-md animate-fade-in">
-    <div class="w-72 h-full glass-panel bg-gray-950/95 border-r border-white/15 p-5 flex flex-col justify-between space-y-6">
-      <div class="space-y-6">
-        <div class="flex items-center justify-between border-b border-white/10 pb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold">
-              <mat-icon fontIcon="blur_on"></mat-icon>
-            </div>
-            <span class="font-extrabold text-white text-base">WorkSync</span>
-          </div>
-          <button (click)="isMobileNavOpen = false" class="text-gray-400 hover:text-white">
-            <mat-icon fontIcon="close"></mat-icon>
-          </button>
-        </div>
-
-        <nav class="space-y-1 text-xs">
-          <button (click)="navigateMobile('dashboard')" class="menu-link w-full">
-            <mat-icon class="text-sm">dashboard</mat-icon> Dashboard
-          </button>
-          <button (click)="navigateMobile('departments')" class="menu-link w-full">
-            <mat-icon class="text-sm">store</mat-icon> Departments
-          </button>
-          <button (click)="navigateMobile('notifications')" class="menu-link w-full">
-            <mat-icon class="text-sm">notifications</mat-icon> Notifications
-          </button>
-          <button (click)="navigateMobile('employee')" class="menu-link w-full">
-            <mat-icon class="text-sm">people</mat-icon> Employees
-          </button>
-          <button (click)="navigateMobile('checkIn')" class="menu-link w-full">
-            <mat-icon class="text-sm">how_to_reg</mat-icon> Check In / Out
-          </button>
-          <button (click)="navigateMobile('attendance')" class="menu-link w-full">
-            <mat-icon class="text-sm">assignment_ind</mat-icon> Attendance
-          </button>
-          <button (click)="navigateMobile('leaveRequest')" class="menu-link w-full">
-            <mat-icon class="text-sm">work_off</mat-icon> Leave Requests
-          </button>
-          <button (click)="navigateMobile('todo')" class="menu-link w-full">
-            <mat-icon class="text-sm">checklist</mat-icon> Todo List
-          </button>
-          <button (click)="navigateMobile('profile')" class="menu-link w-full">
-            <mat-icon class="text-sm">person</mat-icon> Profile
-          </button>
-          <button (click)="navigateMobile('Messages')" class="menu-link w-full">
-            <mat-icon class="text-sm">insert_comment</mat-icon> Messages
-          </button>
-        </nav>
-      </div>
-
-      <div class="border-t border-white/10 pt-4">
-        <button (click)="onLogout()" class="menu-link text-rose-400 hover:text-rose-300 w-full">
-          <mat-icon class="text-sm text-rose-400">exit_to_app</mat-icon> Logout
-        </button>
-      </div>
-    </div>
-    <div (click)="isMobileNavOpen = false" class="flex-1"></div>
   </div>
 </div>

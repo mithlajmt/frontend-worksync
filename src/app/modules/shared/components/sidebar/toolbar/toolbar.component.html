@@ -1,11 +1,12 @@
-<div class="md:w-[270px] min-h-screen flex flex-col glass-panel border-r border-white/10 text-gray-300 backdrop-blur-xl bg-gray-950/80 shadow-2xl relative z-20">
+<!-- Desktop Sidebar View -->
+<div class="hidden md:flex md:w-[260px] lg:w-[270px] h-screen flex-col glass-panel border-r border-white/10 text-gray-300 backdrop-blur-xl bg-gray-950/80 shadow-2xl relative z-20 flex-shrink-0">
   <!-- Brand Header -->
   <div class="flex items-center px-6 h-20 border-b border-white/10 gap-3 bg-white/[0.02]">
     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
       <mat-icon class="text-white text-xl">blur_on</mat-icon>
     </div>
-    <div class="hidden md:flex flex-col">
-      <h1 class="font-bold text-lg text-white tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-400">
+    <div class="flex flex-col">
+      <h1 class="font-bold text-base lg:text-lg text-white tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-400 truncate max-w-[150px]">
         {{companyName || 'WorkSync'}}
       </h1>
       <span class="text-[10px] font-semibold text-indigo-400 tracking-wider uppercase">Enterprise Portal</span>
@@ -13,91 +14,185 @@
   </div>
 
   <!-- Sidebar Content -->
-  <div class="p-4 flex flex-col flex-1 justify-between gap-4 overflow-y-auto">
+  <div class="p-3 lg:p-4 flex flex-col flex-1 justify-between gap-4 overflow-y-auto">
     <div class="space-y-4">
-      <!-- Search Input -->
-      <div class="hidden md:block relative px-1">
+      <div class="relative px-1">
         <mat-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">search</mat-icon>
         <input type="text" placeholder="Quick Search..." class="w-full bg-white/[0.04] text-gray-200 placeholder-gray-400 text-xs pl-10 pr-4 py-2.5 rounded-xl border border-white/10 focus:outline-none focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20 transition-all">
       </div>
 
-      <!-- Navigation Section -->
       <div class="space-y-1 font-medium text-xs">
-        <div class="hidden md:block px-3 py-2 text-[11px] font-bold text-gray-500 tracking-wider uppercase">Main Menu</div>
+        <div class="px-3 py-2 text-[11px] font-bold text-gray-500 tracking-wider uppercase">Main Menu</div>
 
-        <button *ngIf="isCompany" (click)="navigate('employee')" class="nav-item group">
+        <button *ngIf="isCompany" (click)="navigate('employee')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="people"></mat-icon></div>
-          <span class="hidden md:block">Employees</span>
+          <span>Employees</span>
         </button>
 
-        <button *ngIf="isCompany" (click)="navigate('dashboard')" class="nav-item group">
+        <button *ngIf="isCompany" (click)="navigate('dashboard')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="dashboard"></mat-icon></div>
-          <span class="hidden md:block">Dashboard</span>
+          <span>Dashboard</span>
         </button>
 
-        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('departments')" class="nav-item group">
+        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('departments')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="store"></mat-icon></div>
-          <span class="hidden md:block">Department</span>
+          <span>Department</span>
         </button>
 
-        <button *ngIf="isCompany || isDepartmentHead || isEmployee" (click)="navigate('notifications')" class="nav-item group">
+        <button *ngIf="isCompany || isDepartmentHead || isEmployee" (click)="navigate('notifications')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="notifications"></mat-icon></div>
-          <span class="hidden md:block">Notifications</span>
+          <span>Notifications</span>
         </button>
 
-        <button *ngIf="isCompany" (click)="navigate('addemployee')" class="nav-item group">
+        <button *ngIf="isCompany" (click)="navigate('addemployee')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="person_add"></mat-icon></div>
-          <span class="hidden md:block">Recruitment</span>
+          <span>Recruitment</span>
         </button>
 
-        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('complaintsList')" class="nav-item group">
+        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('complaintsList')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="assignment_late"></mat-icon></div>
-          <span class="hidden md:block">Reviews</span>
+          <span>Reviews</span>
         </button>
 
-        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('checkIn')" class="nav-item group">
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('checkIn')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="how_to_reg"></mat-icon></div>
-          <span class="hidden md:block">Check In / Out</span>
+          <span>Check In / Out</span>
         </button>
 
-        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('attendance')" class="nav-item group">
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('attendance')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="assignment_ind"></mat-icon></div>
-          <span class="hidden md:block">Attendance</span>
+          <span>Attendance</span>
         </button>
 
-        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('complaints')" class="nav-item group">
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('complaints')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="contact_support"></mat-icon></div>
-          <span class="hidden md:block">Complaints</span>
+          <span>Complaints</span>
         </button>
 
-        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="nav-item group">
+        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="work_off"></mat-icon></div>
-          <span class="hidden md:block">Leave Request</span>
+          <span>Leave Request</span>
         </button>
 
-        <button (click)="navigate('todo')" class="nav-item group">
+        <button (click)="navigate('todo')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="checklist"></mat-icon></div>
-          <span class="hidden md:block">Todo List</span>
+          <span>Todo List</span>
         </button>
 
-        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('profile')" class="nav-item group">
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('profile')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="person"></mat-icon></div>
-          <span class="hidden md:block">Profile Session</span>
+          <span>Profile Session</span>
         </button>
 
-        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="nav-item group">
+        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="nav-item group w-full">
           <div class="icon-box"><mat-icon fontIcon="insert_comment"></mat-icon></div>
-          <span class="hidden md:block">Messages</span>
+          <span>Messages</span>
         </button>
       </div>
     </div>
 
-    <!-- Bottom Actions -->
     <div class="pt-4 border-t border-white/10">
       <button (click)="ji()" class="nav-item nav-item-logout group w-full">
         <div class="icon-box text-rose-400 group-hover:text-rose-300"><mat-icon fontIcon="exit_to_app"></mat-icon></div>
-        <span class="hidden md:block text-rose-300 font-semibold">Logout</span>
+        <span class="text-rose-300 font-semibold">Logout</span>
       </button>
     </div>
   </div>
+</div>
+
+<!-- Mobile Slide-out Drawer Overlay -->
+<div *ngIf="isMobileOpen" class="fixed inset-0 z-50 flex md:hidden bg-gray-950/80 backdrop-blur-md animate-fade-in">
+  <div class="w-72 h-full glass-panel bg-gray-950/95 border-r border-white/15 p-5 flex flex-col justify-between space-y-6">
+    <div class="space-y-6">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold">
+            <mat-icon fontIcon="blur_on"></mat-icon>
+          </div>
+          <div>
+            <h1 class="font-extrabold text-white text-base">{{companyName || 'WorkSync'}}</h1>
+            <span class="text-[10px] text-indigo-400 font-semibold uppercase">Enterprise</span>
+          </div>
+        </div>
+        <button (click)="closeMobile()" class="text-gray-400 hover:text-white p-1">
+          <mat-icon fontIcon="close"></mat-icon>
+        </button>
+      </div>
+
+      <nav class="space-y-1 text-xs font-medium">
+        <button *ngIf="isCompany" (click)="navigate('employee')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="people"></mat-icon></div>
+          <span>Employees</span>
+        </button>
+
+        <button *ngIf="isCompany" (click)="navigate('dashboard')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="dashboard"></mat-icon></div>
+          <span>Dashboard</span>
+        </button>
+
+        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('departments')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="store"></mat-icon></div>
+          <span>Department</span>
+        </button>
+
+        <button *ngIf="isCompany || isDepartmentHead || isEmployee" (click)="navigate('notifications')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="notifications"></mat-icon></div>
+          <span>Notifications</span>
+        </button>
+
+        <button *ngIf="isCompany" (click)="navigate('addemployee')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="person_add"></mat-icon></div>
+          <span>Recruitment</span>
+        </button>
+
+        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('complaintsList')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="assignment_late"></mat-icon></div>
+          <span>Reviews</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('checkIn')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="how_to_reg"></mat-icon></div>
+          <span>Check In / Out</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('attendance')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="assignment_ind"></mat-icon></div>
+          <span>Attendance</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('complaints')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="contact_support"></mat-icon></div>
+          <span>Complaints</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="work_off"></mat-icon></div>
+          <span>Leave Request</span>
+        </button>
+
+        <button (click)="navigate('todo')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="checklist"></mat-icon></div>
+          <span>Todo List</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('profile')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="person"></mat-icon></div>
+          <span>Profile Session</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="nav-item group w-full">
+          <div class="icon-box"><mat-icon fontIcon="insert_comment"></mat-icon></div>
+          <span>Messages</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="border-t border-white/10 pt-4">
+      <button (click)="ji()" class="nav-item nav-item-logout group w-full">
+        <div class="icon-box text-rose-400"><mat-icon fontIcon="exit_to_app"></mat-icon></div>
+        <span class="text-rose-300 font-semibold">Logout</span>
+      </button>
+    </div>
+  </div>
+  <div (click)="closeMobile()" class="flex-1"></div>
 </div>

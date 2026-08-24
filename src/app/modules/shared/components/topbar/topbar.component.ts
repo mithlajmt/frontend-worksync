@@ -14,7 +14,6 @@ export class TopbarComponent implements OnInit {
   name = '';
   showPro = false;
   isMenuOpen: boolean = false;
-  isMobileNavOpen: boolean = false;
 
   constructor(
     private authGuardService: AuthguardService,
@@ -49,13 +48,8 @@ export class TopbarComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  toggleMobileNav() {
-    this.isMobileNavOpen = !this.isMobileNavOpen;
-  }
-
-  navigateMobile(path: string) {
-    this.isMobileNavOpen = false;
-    this.router.navigate([path]);
+  toggleMobileSidebar() {
+    this.common.toggleMobileSidebar();
   }
 
   onLogout() {

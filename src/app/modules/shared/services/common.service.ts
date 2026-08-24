@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,19 +8,26 @@ import { environment } from 'src/environments/environment';
 })
 export class CommonService {
   public userApi = environment.apiUrl;
+  public mobileSidebarToggle$ = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
+
+  toggleMobileSidebar() {
+    this.mobileSidebarToggle$.next(!this.mobileSidebarToggle$.value);
+  }
+
+  closeMobileSidebar() {
+    this.mobileSidebarToggle$.next(false);
+  }
 
   getUserDetails(){
     return this.http.get(`${this.userApi}/userData`);
   }
 
- 
   getListData(endpoint:string){
     return this.http.get(`${this.userApi}/${endpoint}`);
-
   }
 
   postNotification(noty:any){
@@ -27,27 +35,26 @@ export class CommonService {
   }
 
   getProfile(){
-    return this.http.get<any>(`${this.userApi}/profile`,);
+    return this.http.get<any>(`${this.userApi}/profile`);
   }
 
   UpdateProfile(body:any){
     return this.http.patch<any>(`${this.userApi}/profile`,body);
   }
   getUsernameAndProfile(){
-    return this.http.get<any>(`${this.userApi}/profileInfo`,);
+    return this.http.get<any>(`${this.userApi}/profileInfo`);
   }
 
-  
   addTask(task:any){
     return this.http.post(`${this.userApi}/todo`,task);
   }
-  
+
   updateTaskStatus(id:any,status:any){
-    return this.http.patch(`${this.userApi}/todo`,{id,status})
+    return this.http.patch(`${this.userApi}/todo`,{id,status});
   }
-  
+
   deleteTask(id:any){
-    return this.http.delete(`${this.userApi}/todo/${id}`,);
+    return this.http.delete(`${this.userApi}/todo/${id}`);
   }
   getTasks(){
     return this.http.get(`${this.userApi}/todo`);
