@@ -1,111 +1,80 @@
-<div class="min-h-screen bg-[#070a12] flex items-center justify-center p-4 md:p-8 font-sans">
-  
-  <!-- Main Executive Card -->
-  <div class="w-full max-w-xl bg-[#0d121f] border border-slate-800/90 rounded-3xl p-8 lg:p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center">
+<div class="min-h-screen flex items-center justify-center p-4 md:p-8 font-sans animate-fade-in">
+  <!-- Main Executive Glass Card -->
+  <div class="w-full max-w-xl glass-panel rounded-3xl p-8 lg:p-10 border border-white/10 shadow-2xl backdrop-blur-2xl flex flex-col items-center text-center">
     
     <!-- Header: Live Date & Clock -->
     <div class="w-full flex flex-col items-center mb-8">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/70 border border-slate-700/50 text-xs font-medium text-slate-300 mb-4">
-        <span class="w-2 h-2 rounded-full" [ngClass]="checkedIn ? 'bg-emerald-400 animate-pulse' : (alreadyCheckedOut ? 'bg-indigo-400' : 'bg-amber-400')"></span>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-gray-300 mb-4">
+        <span class="w-2.5 h-2.5 rounded-full" [ngClass]="checkedIn ? 'bg-emerald-400 animate-pulse' : (alreadyCheckedOut ? 'bg-indigo-400' : 'bg-amber-400')"></span>
         <span>{{ currentDateStr }}</span>
       </div>
 
       <!-- Live Digital Clock -->
-      <h1 class="text-4xl lg:text-5xl font-black text-white font-mono tracking-wider">
+      <h1 class="text-4xl lg:text-5xl font-black text-white font-mono tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-gray-300">
         {{ currentTime }}
       </h1>
-      <p class="text-xs text-slate-400 mt-1.5 font-medium">Workstation Attendance Portal</p>
+      <p class="text-xs text-gray-400 mt-1.5 font-medium">Workstation Attendance Portal</p>
     </div>
 
     <!-- Center Interaction Area -->
-    <div class="w-full min-h-[200px] flex items-center justify-center my-4">
-      
+    <div class="w-full min-h-[180px] flex items-center justify-center my-4">
       <div *ngIf="checkButVisibility" class="w-full flex flex-col items-center">
-        
         <!-- State 1: Ready to Check In -->
         <div *ngIf="!checkedIn && !alreadyCheckedOut" class="flex flex-col items-center gap-4">
-          <button 
-            (click)="onCheckIn()"
-            class="px-12 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-base shadow-lg shadow-indigo-600/30 transition duration-200 cursor-pointer flex items-center gap-2.5"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>Check In</span>
+          <button (click)="onCheckIn()" class="glass-button px-10 py-4 text-base flex items-center gap-3">
+            <mat-icon fontIcon="camera_alt"></mat-icon>
+            <span>Check In (Face Verification)</span>
           </button>
         </div>
 
         <!-- State 2: Checked In (Ready to Check Out) -->
         <div *ngIf="checkedIn && !alreadyCheckedOut" class="flex flex-col items-center gap-4">
-          <button 
-            (click)="onCheckOut()"
-            class="px-12 py-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-base shadow-lg shadow-rose-600/30 transition duration-200 cursor-pointer flex items-center gap-2.5"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
+          <button (click)="onCheckOut()" class="px-10 py-4 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-base shadow-lg shadow-rose-600/30 transition duration-200 cursor-pointer flex items-center gap-3">
+            <mat-icon fontIcon="logout"></mat-icon>
             <span>Check Out</span>
           </button>
         </div>
 
         <!-- State 3: Already Checked Out -->
         <div *ngIf="alreadyCheckedOut" class="flex flex-col items-center gap-2 py-4">
-          <div class="px-6 py-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-2 text-sm font-semibold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-            </svg>
+          <div class="px-6 py-3 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 flex items-center gap-2.5 text-sm font-semibold">
+            <mat-icon fontIcon="check_circle" class="text-emerald-400"></mat-icon>
             <span>Shift Completed Today</span>
           </div>
         </div>
-
       </div>
 
       <!-- Camera View -->
       <div *ngIf="cameraVisibility" class="w-full flex justify-center">
-        <app-camera
-          (getResponse)="handleResponse($event)"
-          [action]="logType"
-          class="w-full max-w-md"
-        >
-        </app-camera>
+        <app-camera (getResponse)="handleResponse($event)" [action]="logType" class="w-full max-w-md"></app-camera>
       </div>
-
     </div>
 
     <!-- Bottom Metrics Cards -->
-    <div class="w-full grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-slate-800/80">
-      
+    <div class="w-full grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10">
       <!-- Check In Metric -->
-      <div class="p-4 rounded-2xl bg-[#070a12] border border-slate-800/80 text-left flex items-center gap-3.5">
-        <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
-          </svg>
+      <div class="p-4 rounded-2xl glass-card flex items-center gap-3.5 text-left border border-white/10">
+        <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <mat-icon fontIcon="login"></mat-icon>
         </div>
         <div>
-          <span class="text-[11px] font-semibold uppercase text-slate-400 tracking-wider block">Check-In</span>
+          <span class="text-[10px] font-bold uppercase text-gray-400 tracking-wider block">Check-In</span>
           <span class="font-mono font-bold text-white text-sm lg:text-base">{{ checkInTime || '--:--' }}</span>
         </div>
       </div>
 
       <!-- Check Out Metric -->
-      <div class="p-4 rounded-2xl bg-[#070a12] border border-slate-800/80 text-left flex items-center gap-3.5">
-        <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-          </svg>
+      <div class="p-4 rounded-2xl glass-card flex items-center gap-3.5 text-left border border-white/10">
+        <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+          <mat-icon fontIcon="logout"></mat-icon>
         </div>
         <div>
-          <span class="text-[11px] font-semibold uppercase text-slate-400 tracking-wider block">Check-Out</span>
+          <span class="text-[10px] font-bold uppercase text-gray-400 tracking-wider block">Check-Out</span>
           <span class="font-mono font-bold text-white text-sm lg:text-base">
             {{ checkOutTime || (checkedIn ? 'In Progress' : '--:--') }}
           </span>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>

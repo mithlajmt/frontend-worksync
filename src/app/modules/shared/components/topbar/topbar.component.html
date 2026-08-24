@@ -1,24 +1,106 @@
-<div 
- class="bg-gray-900 max-w-full  h-full flex flex-row-reverse items-center py-[4px] md:pr-12 pr-6 ">
-    <div
-    *ngIf="showPro"
-    class="md:w-60 w-fi hidden bg-gray-700 h-full rounded-full p-[4px] md:flex flex-row flex-wrap pr-2">
-        <div  class="md:w-full  w-fit h-full bg-gray-800 rounded-full pl-1 py-[3px] flex flex-row text-gray-400 ">
-            <div class="bg-red-400 min-w-14 h-full rounded-[100%] object-cover">
-                <img [src]="profile" alt="" class="h-full flex w-full object-cover rounded-[100%]"> <!-- Adjusted the class to maintain the height -->
+<div class="h-20 w-full flex items-center justify-between px-4 md:px-10 border-b border-white/10 glass-panel backdrop-blur-xl bg-gray-950/60 relative z-30 shadow-lg">
+  <!-- Left Header Status & Mobile Hamburger Button -->
+  <div class="flex items-center gap-3">
+    <button (click)="toggleMobileNav()" class="md:hidden p-2 text-gray-300 hover:text-white rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+      <mat-icon fontIcon="menu"></mat-icon>
+    </button>
+    <div class="flex items-center gap-2.5">
+      <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-lg shadow-emerald-500/50"></div>
+      <span class="text-xs font-semibold text-gray-300 tracking-wider uppercase hidden sm:inline">System Active</span>
+    </div>
+  </div>
+
+  <!-- Right Profile Badge & Dropdown -->
+  <div class="flex items-center gap-4">
+    <div *ngIf="showPro" (click)="toggleMenu()" class="flex items-center gap-3 p-1.5 pr-4 rounded-full bg-white/[0.04] border border-white/10 hover:border-indigo-500/40 hover:bg-white/[0.08] cursor-pointer transition-all duration-300 shadow-md group">
+      <div class="w-8 h-8 md:w-9 md:h-9 rounded-full overflow-hidden border border-indigo-500/50 shadow-inner">
+        <img [src]="profile" alt="User Profile" class="w-full h-full object-cover">
+      </div>
+      <span class="text-xs font-semibold text-gray-200 hidden md:block group-hover:text-white transition-colors">{{name}}</span>
+      <mat-icon fontIcon="arrow_drop_down" class="text-gray-400 group-hover:text-indigo-400 transition-colors"></mat-icon>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div *ngIf="isMenuOpen" class="absolute right-4 md:right-6 top-[72px] w-60 rounded-2xl glass-panel bg-gray-900/95 border border-white/15 shadow-2xl p-2 z-50 animate-fade-in space-y-1">
+      <div class="px-4 py-2.5 border-b border-white/10 mb-1">
+        <p class="text-xs font-bold text-white">{{name}}</p>
+        <p class="text-[10px] text-indigo-400 font-medium">Logged in</p>
+      </div>
+
+      <a routerLink="profile" (click)="isMenuOpen = false" class="menu-link">
+        <mat-icon class="text-sm">person</mat-icon> Profile
+      </a>
+      <a routerLink="support" (click)="isMenuOpen = false" class="menu-link">
+        <mat-icon class="text-sm">help_outline</mat-icon> Support
+      </a>
+      <a routerLink="about" (click)="isMenuOpen = false" class="menu-link">
+        <mat-icon class="text-sm">info</mat-icon> About
+      </a>
+
+      <div class="border-t border-white/10 pt-1">
+        <button (click)="onLogout()" class="menu-link text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 w-full">
+          <mat-icon class="text-sm text-rose-400">exit_to_app</mat-icon> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Slide-out Navigation Drawer Overlay -->
+  <div *ngIf="isMobileNavOpen" class="fixed inset-0 z-50 flex md:hidden bg-gray-950/80 backdrop-blur-md animate-fade-in">
+    <div class="w-72 h-full glass-panel bg-gray-950/95 border-r border-white/15 p-5 flex flex-col justify-between space-y-6">
+      <div class="space-y-6">
+        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold">
+              <mat-icon fontIcon="blur_on"></mat-icon>
             </div>
-            <div class="flex-1 justify-center items-center hidden md:flex gap-2">{{name}}
-                <div class="icon" (click)="toggleMenu()">
-                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_drop_down" class="white-icon "></mat-icon>
-                </div>
-            </div>            
+            <span class="font-extrabold text-white text-base">WorkSync</span>
+          </div>
+          <button (click)="isMobileNavOpen = false" class="text-gray-400 hover:text-white">
+            <mat-icon fontIcon="close"></mat-icon>
+          </button>
         </div>
-        
+
+        <nav class="space-y-1 text-xs">
+          <button (click)="navigateMobile('dashboard')" class="menu-link w-full">
+            <mat-icon class="text-sm">dashboard</mat-icon> Dashboard
+          </button>
+          <button (click)="navigateMobile('departments')" class="menu-link w-full">
+            <mat-icon class="text-sm">store</mat-icon> Departments
+          </button>
+          <button (click)="navigateMobile('notifications')" class="menu-link w-full">
+            <mat-icon class="text-sm">notifications</mat-icon> Notifications
+          </button>
+          <button (click)="navigateMobile('employee')" class="menu-link w-full">
+            <mat-icon class="text-sm">people</mat-icon> Employees
+          </button>
+          <button (click)="navigateMobile('checkIn')" class="menu-link w-full">
+            <mat-icon class="text-sm">how_to_reg</mat-icon> Check In / Out
+          </button>
+          <button (click)="navigateMobile('attendance')" class="menu-link w-full">
+            <mat-icon class="text-sm">assignment_ind</mat-icon> Attendance
+          </button>
+          <button (click)="navigateMobile('leaveRequest')" class="menu-link w-full">
+            <mat-icon class="text-sm">work_off</mat-icon> Leave Requests
+          </button>
+          <button (click)="navigateMobile('todo')" class="menu-link w-full">
+            <mat-icon class="text-sm">checklist</mat-icon> Todo List
+          </button>
+          <button (click)="navigateMobile('profile')" class="menu-link w-full">
+            <mat-icon class="text-sm">person</mat-icon> Profile
+          </button>
+          <button (click)="navigateMobile('Messages')" class="menu-link w-full">
+            <mat-icon class="text-sm">insert_comment</mat-icon> Messages
+          </button>
+        </nav>
+      </div>
+
+      <div class="border-t border-white/10 pt-4">
+        <button (click)="onLogout()" class="menu-link text-rose-400 hover:text-rose-300 w-full">
+          <mat-icon class="text-sm text-rose-400">exit_to_app</mat-icon> Logout
+        </button>
+      </div>
     </div>
-    <div *ngIf="isMenuOpen" class="bg-gray-800  text-gray-400 rounded-md py-2 px-4 absolute z-30 right-12 mt-2 w-60 top-[70px] shadow-lg show fade-in">
-        <div (click)="onLogout()" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white"  routerLink="/login">Logout</div>
-        <div class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white" routerLink="profile" >Profile</div>
-        <div routerLink="support" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">Support</div>
-        <div routerLink="about" class="block px-4 py-2 text-sm hover:bg-gray-700 hover:text-white">About</div>
-    </div>
+    <div (click)="isMobileNavOpen = false" class="flex-1"></div>
+  </div>
 </div>

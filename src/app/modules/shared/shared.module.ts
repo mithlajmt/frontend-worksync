@@ -105,6 +105,7 @@ import { EmployeeAttendanceDetaildataComponent } from './components/employee-att
     AboutComponent,
     SupportComponent,
     ShoweventsComponent,
+    MatIconModule,
   ],
   // providers: [NativeDateAdapter()],
 

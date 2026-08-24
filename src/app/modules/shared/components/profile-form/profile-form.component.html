@@ -1,124 +1,124 @@
-<div class="w-full min-h-full bg-gray-900">
-    <div class="w-full bg-gray-900 h-full p-10 gap-0">
-        <div class="flex justify-center items-center flex-col img-container gap-2">
-            <!-- Display current profile image -->
-            <img class="md:w-36 w-24 h-24 md:h-36 object-cover  object-center overflow-hidden p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" [src]="profileImage"  alt="">
-            <!-- Button to trigger profile image change -->
-            <label for="profileImageInput" class="text-gray-300 hover:text-yellow-600 cursor-pointer">Change profile Image</label>
-            <!-- File input field hidden from view -->
-            <input type="file" id="profileImageInput" accept="image/*" (change)="onProfileImageSelected($event)" style="display: none;">
-          </div>
-        <form 
-        *ngIf="loaded"
-        [formGroup]="profileForm"
-         (ngSubmit)="onSubmit()"
-          class="bg-gray-900 shadow-sm shadow-gray-700 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 h-5/6 p-8 justify-center items-center gap-9 md:text-xl text-md">
-            <div class="text-white font-kanit flex flex-col">
-                <label for="name">Name:</label>
-                <input type="text" formControlName="name" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter your name">
-                <div *ngIf="f['name'].errors && (f['name'].dirty || f['name'].touched)" class="text-red-500 ">
-                    <div *ngIf="f['name'].errors['required']">Name is required</div>
-                </div>
-            </div>
-
-
-            <div class="text-white font-kanit flex flex-col">
-                <label for="email">Email:</label>
-                <input type="email" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="email" placeholder="Enter your email">
-                <div *ngIf="f['email'].errors && (f['email'].dirty || f['email'].touched)" class="text-red-500">
-                    <div *ngIf="f['email'].errors['required']">Email is required</div>
-                    <div *ngIf="f['email'].errors['email']">Invalid email format</div>
-                </div>
-            </div>
-
-            <div class="text-white font-kanit flex flex-col">
-                <label for="gender">Gender:</label>
-                <select class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="gender" placeholder="Select gender">
-                    <option value="" disabled>Select gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-                <div *ngIf="f['gender'].errors && (f['gender'].dirty || f['gender'].touched)" class="text-red-500">
-                    <div *ngIf="f['gender'].errors['required']">Gender is required</div>
-                </div>
-            </div>
-
-            <div class="text-white font-kanit flex flex-col">
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="phoneNumber" placeholder="Enter your phone number">
-                <div *ngIf="f['phoneNumber'].errors && (f['phoneNumber'].dirty || f['phoneNumber'].touched)" class="text-red-500">
-                    <div *ngIf="f['phoneNumber'].errors['required']">Phone number is required</div>
-                    <div *ngIf="f['phoneNumber'].errors['pattern']">Invalid phone number format</div>
-                </div>
-            </div>
-
-            <div class="text-white font-kanit flex flex-col">
-                <label for="address">Address:</label>
-                <input type="text" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="address" placeholder="Enter your address">
-                <div *ngIf="f['address'].errors && (f['address'].dirty || f['address'].touched)" class="text-red-500">
-                    <div *ngIf="f['address'].errors['required']">Address is required</div>
-                </div>
-            </div>
-
-            <div class="text-white font-kanit flex flex-col">
-                <label for="secondPhoneNumber">Second Phone Number:</label>
-                <input type="tel" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" formControlName="secondPhoneNumber" placeholder="Enter your second phone number">
-            </div>
-
-            <div class="text-white font-kanit flex flex-col">
-                <label for="bio">Bio:</label>
-                <input type="text" formControlName="bio" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter your bio">
-            </div>
-
-            <!-- <app-multiselect></app-multiselect> -->
-            <!-- Add UI for selecting skills here -->
-
-            <div *ngIf="profileFormError" class="lg:col-span-3 md:col-span-2 col-span-1 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-center gap-3">
-                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span class="font-medium">{{ profileFormError }}</span>
-            </div>
-
-            <div class="md:justify-center md:items-end mt-5 self-end grid lg:col-span-3 md:col-span-2">
-                <button type="submit" class="d:min-w-24 px-9 rounded-md bg-yellow-700 py-2.5 hover:bg-yellow-600 text-white font-semibold transition duration-300 cursor-pointer">Submit Profile</button>
-            </div>
-            
-        </form>
-
-        <!-- Change Password Section -->
-        <div class="bg-gray-800 shadow-md shadow-gray-700 rounded-lg p-8 mt-10">
-            <h3 class="text-2xl font-semibold text-white mb-6">🔒 Change Password</h3>
-            <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()" class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 md:text-xl text-md">
-                <div class="text-white font-kanit flex flex-col">
-                    <label for="currentPassword">Current Password:</label>
-                    <input type="password" formControlName="currentPassword" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter current password">
-                </div>
-
-                <div class="text-white font-kanit flex flex-col">
-                    <label for="newPassword">New Password:</label>
-                    <input type="password" formControlName="newPassword" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Enter new password">
-                </div>
-
-                <div class="text-white font-kanit flex flex-col">
-                    <label for="confirmNewPassword">Confirm New Password:</label>
-                    <input type="password" formControlName="confirmNewPassword" class="rounded-lg border-th mt-2 md:min-h-14 px-3 py-2 text-gray-300 border-0 bg-gray-700 focus:outline-none focus:border-[#45aaf2]" placeholder="Confirm new password">
-                </div>
-
-                <div *ngIf="passwordErrorMessage" class="lg:col-span-3 md:col-span-2 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm flex items-center gap-3">
-                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span>{{ passwordErrorMessage }}</span>
-                </div>
-
-                <div class="lg:col-span-3 md:col-span-2 flex justify-end">
-                    <button type="submit" class="px-8 rounded-md bg-blue-600 hover:bg-blue-700 py-3 text-white font-semibold transition duration-300 cursor-pointer">
-                        Update Password
-                    </button>
-                </div>
-            </form>
-        </div>
+<div class="min-h-screen p-4 md:p-8 space-y-8 animate-fade-in">
+  <!-- Profile Form Main Card -->
+  <div class="glass-panel p-6 md:p-10 rounded-3xl border border-white/10 shadow-2xl space-y-8">
+    <!-- Profile Avatar Header -->
+    <div class="flex flex-col items-center text-center space-y-4 border-b border-white/10 pb-6">
+      <div class="relative group">
+        <img class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-2 border-indigo-500/50 shadow-xl shadow-indigo-500/20" [src]="profileImage" alt="User Avatar">
+        <label for="profileImageInput" class="absolute inset-0 rounded-full bg-gray-950/60 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all cursor-pointer text-xs font-bold text-white">
+          <mat-icon fontIcon="photo_camera" class="mr-1 text-sm"></mat-icon> Change
+        </label>
+        <input type="file" id="profileImageInput" accept="image/*" (change)="onProfileImageSelected($event)" class="hidden">
+      </div>
+      <div>
+        <h2 class="text-2xl font-extrabold text-white">User Profile Settings</h2>
+        <p class="text-xs text-gray-400">Update your personal details, contact preferences, and credentials</p>
+      </div>
     </div>
+
+    <!-- Loaded Form -->
+    <form *ngIf="loaded; else loadingProfileSkeleton" [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div>
+          <label for="name" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Full Name</label>
+          <input type="text" formControlName="name" class="w-full px-4 py-3 glass-input text-sm" placeholder="John Doe">
+          <div *ngIf="f['name'].errors && (f['name'].dirty || f['name'].touched)" class="text-rose-400 text-xs mt-1">* Name is required</div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Email Address</label>
+          <input type="email" formControlName="email" class="w-full px-4 py-3 glass-input text-sm" placeholder="john@company.com">
+          <div *ngIf="f['email'].errors && (f['email'].dirty || f['email'].touched)" class="text-rose-400 text-xs mt-1">* Valid email required</div>
+        </div>
+
+        <div>
+          <label for="gender" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Gender</label>
+          <select formControlName="gender" class="w-full px-4 py-3 glass-input text-sm bg-gray-900 text-white">
+            <option value="" disabled>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="phoneNumber" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Primary Phone</label>
+          <input type="tel" formControlName="phoneNumber" class="w-full px-4 py-3 glass-input text-sm" placeholder="+1 555-0199">
+        </div>
+
+        <div>
+          <label for="secondPhoneNumber" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Secondary Phone</label>
+          <input type="tel" formControlName="secondPhoneNumber" class="w-full px-4 py-3 glass-input text-sm" placeholder="+1 555-0198">
+        </div>
+
+        <div>
+          <label for="address" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Address</label>
+          <input type="text" formControlName="address" class="w-full px-4 py-3 glass-input text-sm" placeholder="City, Country">
+        </div>
+
+        <div class="md:col-span-2 lg:col-span-3">
+          <label for="bio" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Professional Bio</label>
+          <textarea formControlName="bio" rows="3" class="w-full px-4 py-3 glass-input text-sm" placeholder="Short bio description..."></textarea>
+        </div>
+      </div>
+
+      <div *ngIf="profileFormError" class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center gap-2">
+        <mat-icon class="text-sm">error</mat-icon>
+        <span>{{ profileFormError }}</span>
+      </div>
+
+      <div class="flex justify-end pt-4 border-t border-white/10">
+        <button type="submit" class="glass-button py-3.5 px-8 text-sm">Save Profile Changes</button>
+      </div>
+    </form>
+
+    <!-- Skeleton Loading Template -->
+    <ng-template #loadingProfileSkeleton>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse p-4">
+        <div *ngFor="let item of [1, 2, 3, 4, 5, 6]" class="space-y-2">
+          <div class="h-3 w-20 bg-white/10 rounded-full"></div>
+          <div class="h-12 w-full bg-white/5 rounded-xl border border-white/5"></div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Change Password Section Card -->
+  <div class="glass-panel p-6 md:p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6">
+    <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+      <div class="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+        <mat-icon fontIcon="lock"></mat-icon>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold text-white">Security &amp; Password</h3>
+        <p class="text-xs text-gray-400">Update your account password</p>
+      </div>
+    </div>
+
+    <form [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <label for="currentPassword" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Current Password</label>
+        <input type="password" formControlName="currentPassword" class="w-full px-4 py-3 glass-input text-sm" placeholder="••••••••••••">
+      </div>
+
+      <div>
+        <label for="newPassword" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">New Password</label>
+        <input type="password" formControlName="newPassword" class="w-full px-4 py-3 glass-input text-sm" placeholder="••••••••••••">
+      </div>
+
+      <div>
+        <label for="confirmNewPassword" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Confirm New Password</label>
+        <input type="password" formControlName="confirmNewPassword" class="w-full px-4 py-3 glass-input text-sm" placeholder="••••••••••••">
+      </div>
+
+      <div *ngIf="passwordErrorMessage" class="md:col-span-3 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-center gap-2">
+        <mat-icon class="text-sm">error</mat-icon>
+        <span>{{ passwordErrorMessage }}</span>
+      </div>
+
+      <div class="md:col-span-3 flex justify-end">
+        <button type="submit" class="glass-button py-3 px-8 text-sm">Update Password</button>
+      </div>
+    </form>
+  </div>
 </div>

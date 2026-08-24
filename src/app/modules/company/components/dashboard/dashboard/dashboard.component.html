@@ -1,23 +1,47 @@
+<div class="min-h-screen p-4 md:p-8 space-y-8 animate-fade-in">
+  <!-- Dashboard Title Header -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
+    <div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Organization Analytics &amp; Insights</h1>
+      <p class="text-xs md:text-sm text-gray-400 mt-1">Real-time breakdown of company departments, headcount, and workforce metrics</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="glass-badge bg-indigo-500/20 text-indigo-300 border-indigo-500/30 px-4 py-2 text-xs">Live Sync Active</span>
+    </div>
+  </div>
 
-<!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4"> -->
-  <!-- Repeat this block for additional cards -->
-<div class="bg-gray-900 min-h-screen flex flex-col gap-6 p-4 " >
-
-    <div class="chart-container  bg-white mt-6">
-        <div class="p-4">
-            <div class="text-red-500 font-kanit text-2xl">DEPARTMENTS DATA  :</div>
+  <!-- Charts Grid Container -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Chart Card 1 -->
+    <div class="glass-panel rounded-3xl p-6 border border-white/10 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+            <mat-icon fontIcon="pie_chart"></mat-icon>
+          </div>
+          <h2 class="font-bold text-white text-lg tracking-wide">Departments Overview</h2>
         </div>
-        <canvas  id="MyChartTwo" >{{ chartTwo }}</canvas>
+        <span class="text-xs text-gray-400">Distribution</span>
+      </div>
+      <div class="chart-wrapper p-4 rounded-2xl bg-gray-950/40 border border-white/5">
+        <canvas id="MyChartTwo">{{ chartTwo }}</canvas>
+      </div>
     </div>
 
-    <div class="chart-container  bg-white">
-        <canvas  id="MyChart" >{{ chart }}</canvas>
+    <!-- Chart Card 2 -->
+    <div class="glass-panel rounded-3xl p-6 border border-white/10 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+            <mat-icon fontIcon="bar_chart"></mat-icon>
+          </div>
+          <h2 class="font-bold text-white text-lg tracking-wide">Employee Statistics</h2>
+        </div>
+        <span class="text-xs text-gray-400">Headcount</span>
+      </div>
+      <div class="chart-wrapper p-4 rounded-2xl bg-gray-950/40 border border-white/5">
+        <canvas id="MyChart">{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-</div>
-
-
-

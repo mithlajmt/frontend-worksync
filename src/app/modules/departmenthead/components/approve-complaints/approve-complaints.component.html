@@ -1,43 +1,71 @@
-<div class="w-full min-h-full p-6 bg-slate-900 overflow-scroll">
-  <div>
-    <h1 class="text-gray-300">Reviews And Complaints :</h1>
+<div class="min-h-screen p-4 md:p-8 space-y-6 animate-fade-in">
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
+    <div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Reviews &amp; Employee Complaints</h1>
+      <p class="text-xs md:text-sm text-gray-400 mt-1">Review feedback, investigate reported grievances, and manage resolution cases</p>
+    </div>
   </div>
-  <ng-container *ngIf="complaints.length > 0; else noDataFound">
-    <div class="columns-1 md:columns-2 md:gap-4 space-y-9 md:space-y-4">
-      <div *ngFor="let complaint of complaints" class="rounded-lg shadow-md overflow-hidden bg-gray-800 hover:shadow-lg">
-        <div class="flex items-center p-4 cursor-pointer" (click)="toggleExpand(complaint)">
-          <img *ngIf="complaint.employeedata[0]" [src]="complaint.employeedata[0].photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
-          <div class="flex flex-col text-left gap-0">
-            <h2 class="text-xl font-semibold text-gray-200">AUTHOR : {{ complaint?.employeedata[0]?.employeeName | uppercase }}</h2>
-            <h3 class="text-lg font-medium text-gray-400"> TITLE : {{ complaint.title | uppercase}}</h3>
-            <div class="flex flex-col items-center text-sm text-gray-500 justify-around w-full">
-              <h4 class="mr-2"> STATUS : <span [ngStyle]="getStatusColor(complaint.status)">  {{ complaint.status |uppercase }}</span></h4>
-              <h5 class="">{{ complaint.postDate | date:'medium' }}</h5>
+
+  <!-- Complaints Grid / Feed -->
+  <ng-container *ngIf="complaints && complaints.length > 0; else noDataFound">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div *ngFor="let complaint of complaints" class="glass-card glass-card-hover border border-white/10 p-5 space-y-4">
+        <!-- Card Header / Author Details -->
+        <div class="flex items-start justify-between cursor-pointer" (click)="toggleExpand(complaint)">
+          <div class="flex items-center gap-3.5">
+            <img *ngIf="complaint.employeedata?.[0]?.photo" [src]="complaint.employeedata[0].photo" alt="Author" class="w-12 h-12 rounded-full object-cover border border-indigo-500/40 shadow-md">
+            <div *ngIf="!complaint.employeedata?.[0]?.photo" class="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-300 font-bold">
+              {{ complaint?.employeedata?.[0]?.employeeName?.substring(0,2) | uppercase }}
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-base">{{ complaint.title | uppercase }}</h3>
+              <p class="text-xs text-gray-400">By {{ complaint?.employeedata?.[0]?.employeeName || 'Employee' }} &bull; {{ complaint.postDate | date:'mediumDate' }}</p>
             </div>
           </div>
+
+          <span class="glass-badge uppercase font-bold text-[10px]" [ngStyle]="getStatusColor(complaint.status)">
+            {{ complaint.status }}
+          </span>
         </div>
-        <div class="p-4 overflow-hidden transition-max-h duration-300 ease-in-out" [class.max-h-0]="!complaint.expanded">
-          <div [hidden]="!complaint.expanded">
-            <div class="bg-gray-900 p-4 rounded-lg">
-              <p class="text-lg font-semibold text-gray-300 mb-2">Description:</p>
-              <p class="text-gray-400">{{ complaint.description }}</p>
-            </div>
-            <div class="bg-gray-900 p-4 mt-4 rounded-lg">
-              <p class="text-lg font-semibold text-gray-400 mb-2">Attachment:</p>
-              <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="complaint.attachment" alt="">
-              <div class="flex justify-center gap-9">
-                <button [disabled]="complaint.status !== 'pending'" [class.disabled]="complaint.status !== 'pending'" (click)="onInvestigate(complaint._id)" class="btn2">Investigate</button>
-                <button [class.disabled]="complaint.status == 'closed'" (click)="onCaseClose(complaint._id)" class="btn"> Close Case</button>
-              </div>
-            </div>
+
+        <!-- Expanded Details -->
+        <div *ngIf="complaint.expanded" class="pt-3 border-t border-white/10 space-y-4 animate-fade-in text-xs">
+          <div class="p-4 rounded-2xl bg-gray-950/40 border border-white/5 space-y-1">
+            <span class="text-gray-400 font-bold uppercase text-[10px] tracking-wider block">Description</span>
+            <p class="text-gray-200 text-sm leading-relaxed">{{ complaint.description }}</p>
+          </div>
+
+          <div *ngIf="complaint.attachment" class="space-y-1">
+            <span class="text-gray-400 font-bold uppercase text-[10px] tracking-wider block">Attachment</span>
+            <img [src]="complaint.attachment" alt="Attachment" class="max-h-56 rounded-2xl object-cover border border-white/10 shadow-lg">
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center justify-end gap-3 pt-2">
+            <button 
+              [disabled]="complaint.status !== 'pending'" 
+              (click)="onInvestigate(complaint._id); $event.stopPropagation()" 
+              class="px-4 py-2 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 hover:bg-amber-500/30 font-semibold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+              Investigate Case
+            </button>
+            <button 
+              [disabled]="complaint.status === 'closed'" 
+              (click)="onCaseClose(complaint._id); $event.stopPropagation()" 
+              class="px-4 py-2 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/30 font-semibold text-xs transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+              Close Case
+            </button>
           </div>
         </div>
       </div>
     </div>
   </ng-container>
+
   <ng-template #noDataFound>
-    <div class="flex justify-center items-center h-full">
-      <p class="text-red-900 md:text-xl"> *  No reviews or complaints found at the Moment.</p>
+    <div class="glass-card p-12 text-center text-gray-400 space-y-2">
+      <mat-icon class="text-4xl text-gray-500">assignment_turned_in</mat-icon>
+      <p class="font-bold text-base text-gray-200">No Complaints Found</p>
+      <p class="text-xs text-gray-500">There are currently no open reviews or employee complaints filed.</p>
     </div>
   </ng-template>
 </div>

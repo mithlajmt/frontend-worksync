@@ -1,84 +1,103 @@
-<div class="md:w-[270px]  min-h-screen flex flex-col shadow-2xl text-[#76839A]">
-    <div class="bg-gray-900 text-white flex  flex-row justify-center items-center text-center h-16 gap-1 ">
-        <mat-icon aria-hidden="false" aria-label="home icon" fontIcon="home"></mat-icon>
-        <h1 class="font-bold hidden md:flex">{{companyName}}</h1>
+<div class="md:w-[270px] min-h-screen flex flex-col glass-panel border-r border-white/10 text-gray-300 backdrop-blur-xl bg-gray-950/80 shadow-2xl relative z-20">
+  <!-- Brand Header -->
+  <div class="flex items-center px-6 h-20 border-b border-white/10 gap-3 bg-white/[0.02]">
+    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+      <mat-icon class="text-white text-xl">blur_on</mat-icon>
     </div>
-    <div class="bg-gray-900 text-white p-4 flex flex-col items-center min-h-screen">
-        <div class="bg-gray-900 hidden md:flex">
-            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon> -->
-            <input type="text" placeholder="Search" class="bg-gray-700 text-white p-2 rounded shadow-md mb-4">
-        </div>
-        <!-- Adding gap between buttons -->
-        <div class="grid gap-2 w-full h-full">
-            <!-- Button styles with hover effect -->
-            <button *ngIf="isCompany" (click)="navigate('employee')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
-                <span class="md:block hidden">Employees</span>
-            </button>
-            <button *ngIf="isCompany" (click)="navigate('dashboard')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dashboard"></mat-icon>
-                <span class="md:block hidden">Dashboard</span>
-            </button>
-            <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('departments')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="store"></mat-icon>
-                <span class="md:block hidden">Department</span>
-            </button>
-            <button *ngIf="isCompany || isDepartmentHead || isEmployee
-            " (click)="navigate('notifications')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="notifications"></mat-icon>
-                <span class="md:block hidden">Notifications</span>
-            </button>
-            <button *ngIf="isCompany" (click)="navigate('addemployee')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_add"></mat-icon>
-                <span class="md:block hidden">Recruitment</span>
-            </button>
-            <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('complaintsList')"class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_late"></mat-icon>
-                <span class="md:block hidden">reviews</span>
-            </button>
-            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('checkIn')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="how_to_reg"></mat-icon>
-                <span class="md:block hidden">Check In/Check Out</span>
-            </button>
-            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('attendance')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_ind"></mat-icon>
-                <span class="md:block hidden">Attendance</span>
-            </button>
-            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('complaints')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="contact_support"></mat-icon>
-                <span class="md:block hidden">Complaints</span>
-            </button>
-
-            
-            <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
-                <span class="md:block hidden">Leave Request</span>
-            </button>
-
-            <!-- <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Leads')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="work_off"></mat-icon>
-                <span class="md:block hidden">Leads</span>
-            </button>
-             -->
-            <button (click)="navigate('todo')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="checklist"></mat-icon>
-                <span class="md:block hidden">Todo</span>
-            </button>
-
-            <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('profile')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>
-                <span class="md:block hidden">Profile Session</span>
-            </button>
-            
-            <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="insert_comment"></mat-icon>
-                <span class="md:block hidden">Messages</span>
-            </button>
-
-            <button (click)="ji()" class="btn btn-hover hover:bg-gray-800 gap-5">
-                <mat-icon aria-hidden="false" aria-label="Logout" fontIcon="exit_to_app"></mat-icon>
-                <span class="md:block hidden">Logout</span>
-            </button>
-        </div>
+    <div class="hidden md:flex flex-col">
+      <h1 class="font-bold text-lg text-white tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-400">
+        {{companyName || 'WorkSync'}}
+      </h1>
+      <span class="text-[10px] font-semibold text-indigo-400 tracking-wider uppercase">Enterprise Portal</span>
     </div>
+  </div>
+
+  <!-- Sidebar Content -->
+  <div class="p-4 flex flex-col flex-1 justify-between gap-4 overflow-y-auto">
+    <div class="space-y-4">
+      <!-- Search Input -->
+      <div class="hidden md:block relative px-1">
+        <mat-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">search</mat-icon>
+        <input type="text" placeholder="Quick Search..." class="w-full bg-white/[0.04] text-gray-200 placeholder-gray-400 text-xs pl-10 pr-4 py-2.5 rounded-xl border border-white/10 focus:outline-none focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20 transition-all">
+      </div>
+
+      <!-- Navigation Section -->
+      <div class="space-y-1 font-medium text-xs">
+        <div class="hidden md:block px-3 py-2 text-[11px] font-bold text-gray-500 tracking-wider uppercase">Main Menu</div>
+
+        <button *ngIf="isCompany" (click)="navigate('employee')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="people"></mat-icon></div>
+          <span class="hidden md:block">Employees</span>
+        </button>
+
+        <button *ngIf="isCompany" (click)="navigate('dashboard')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="dashboard"></mat-icon></div>
+          <span class="hidden md:block">Dashboard</span>
+        </button>
+
+        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('departments')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="store"></mat-icon></div>
+          <span class="hidden md:block">Department</span>
+        </button>
+
+        <button *ngIf="isCompany || isDepartmentHead || isEmployee" (click)="navigate('notifications')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="notifications"></mat-icon></div>
+          <span class="hidden md:block">Notifications</span>
+        </button>
+
+        <button *ngIf="isCompany" (click)="navigate('addemployee')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="person_add"></mat-icon></div>
+          <span class="hidden md:block">Recruitment</span>
+        </button>
+
+        <button *ngIf="isCompany || isDepartmentHead" (click)="navigate('complaintsList')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="assignment_late"></mat-icon></div>
+          <span class="hidden md:block">Reviews</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('checkIn')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="how_to_reg"></mat-icon></div>
+          <span class="hidden md:block">Check In / Out</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('attendance')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="assignment_ind"></mat-icon></div>
+          <span class="hidden md:block">Attendance</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('complaints')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="contact_support"></mat-icon></div>
+          <span class="hidden md:block">Complaints</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('leaveRequest')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="work_off"></mat-icon></div>
+          <span class="hidden md:block">Leave Request</span>
+        </button>
+
+        <button (click)="navigate('todo')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="checklist"></mat-icon></div>
+          <span class="hidden md:block">Todo List</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead" (click)="navigate('profile')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="person"></mat-icon></div>
+          <span class="hidden md:block">Profile Session</span>
+        </button>
+
+        <button *ngIf="isEmployee || isDepartmentHead || isCompany" (click)="navigate('Messages')" class="nav-item group">
+          <div class="icon-box"><mat-icon fontIcon="insert_comment"></mat-icon></div>
+          <span class="hidden md:block">Messages</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="pt-4 border-t border-white/10">
+      <button (click)="ji()" class="nav-item nav-item-logout group w-full">
+        <div class="icon-box text-rose-400 group-hover:text-rose-300"><mat-icon fontIcon="exit_to_app"></mat-icon></div>
+        <span class="hidden md:block text-rose-300 font-semibold">Logout</span>
+      </button>
+    </div>
+  </div>
 </div>

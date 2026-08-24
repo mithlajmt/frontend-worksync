@@ -1,25 +1,48 @@
-<div class="container bg-gray-900 min-h-full  flex flex-col gap-3 md:gap-6  max-h-full border border-yellow-800  overflow-scroll" style="overflow-x: hidden;">
-    <div *ngIf="!addClicked" class="flex flex-row-reverse">
-        <button (click)="addClick()" class="add-button self-end sm:mr-14 sm:mt-3 flex flex-row p-2 bg-gradient-to-r from-yellow-500 to-yellow-700 text-white rounded-md hover:bg-gradient-to-r hover:from-yellow-700 hover:to-yellow-900 transition duration-300">
-            ADD &nbsp;<span class="hidden md:block"> EMPLOYEE</span>
-        </button>
-    </div>
-    <div *ngIf="addClicked" class="p-10">
-        <app-employeeform></app-employeeform>
-    </div>
+<div class="min-h-screen p-4 md:p-8 space-y-6 animate-fade-in">
+  <!-- Header Bar -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
     <div>
-
-        <div>
-            <h1 class="text-white font-mono pl-3">Employees List :</h1>
-        </div>
-        <app-table-list 
-            [keyID]="'userID'"
-            (clickData)="onRowClick($event)"
-            [tableData]="employees"
-        ></app-table-list>
-        <!-- Show message if there are no employees -->
-        <div *ngIf="employees && employees.length === 0" class="text-red-500 p-4 text-center md:text-xl">
-            *At the moment, there are no employees found. Please add an employee to any Department see them here."
-        </div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Employees Directory</h1>
+      <p class="text-xs md:text-sm text-gray-400 mt-1">Manage personnel, departmental roles, and employee records</p>
     </div>
+    
+    <div *ngIf="!addClicked">
+      <button (click)="addClick()" class="glass-button py-3 px-6 text-sm flex items-center gap-2">
+        <mat-icon fontIcon="person_add"></mat-icon>
+        <span>Add New Employee</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Employee Add Form Embed -->
+  <div *ngIf="addClicked" class="glass-panel p-6 md:p-8 rounded-3xl border border-white/10 shadow-2xl">
+    <app-employeeform></app-employeeform>
+  </div>
+
+  <!-- Employee Table Glass Card -->
+  <div class="glass-panel rounded-3xl p-6 border border-white/10 shadow-2xl space-y-4">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+          <mat-icon fontIcon="badge"></mat-icon>
+        </div>
+        <h2 class="font-bold text-white text-lg tracking-wide">Staff Records</h2>
+      </div>
+      <span class="text-xs text-gray-400" *ngIf="employees">{{ employees.length }} Members Total</span>
+    </div>
+
+    <!-- Table Component -->
+    <app-table-list 
+      [keyID]="'userID'"
+      (clickData)="onRowClick($event)"
+      [tableData]="employees">
+    </app-table-list>
+
+    <!-- Empty State -->
+    <div *ngIf="employees && employees.length === 0" class="p-8 text-center glass-card">
+      <mat-icon class="text-4xl text-gray-500 mb-2">person_off</mat-icon>
+      <p class="text-gray-300 font-semibold text-sm">No Employees Found</p>
+      <p class="text-gray-500 text-xs mt-1">Click "Add New Employee" above to register staff into a department.</p>
+    </div>
+  </div>
 </div>

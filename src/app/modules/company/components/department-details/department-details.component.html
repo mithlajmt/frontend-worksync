@@ -1,15 +1,29 @@
-<div class="w-full min-h-full bg-gray-900">
-    <div class="pt-5">
+<div class="min-h-screen p-4 md:p-8 space-y-6 animate-fade-in">
+  <!-- Top Statistics Cards Component -->
   <app-department-statisctics></app-department-statisctics>
+
+  <!-- Employee List Glass Panel Card -->
+  <div class="glass-panel rounded-3xl p-6 border border-white/10 shadow-2xl space-y-4">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+          <mat-icon fontIcon="people_outline"></mat-icon>
+        </div>
+        <h2 class="font-bold text-white text-lg tracking-wide">Department Staff Directory</h2>
+      </div>
+      <span class="text-xs text-gray-400" *ngIf="employeeData">{{ employeeData.length }} Staff Assigned</span>
     </div>
-    <div> 
-      <h1 class="text-gray-200 font-kanit text-lg pl-4 pt-3"> Employee List : </h1>
-      <app-table-list 
+
+    <!-- Table Component -->
+    <app-table-list 
       [keyID]="'employeeID'"
       (clickData)="onRowClick($event)"
       [tableData]="employeeData"
-  ></app-table-list>
-      
-      <div *ngIf="message" class="text-red-600 font-mono  text-xl text-center mt-2">*{{message}}</div>
+    ></app-table-list>
+
+    <!-- Error / Info message -->
+    <div *ngIf="message" class="p-6 text-center glass-card text-rose-400 text-sm font-semibold">
+      * {{ message }}
     </div>
+  </div>
 </div>

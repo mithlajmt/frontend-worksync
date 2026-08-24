@@ -1,32 +1,46 @@
-
-
-
-<div>
-
-    <div>
-        <div class="w-full  bg-gray-900 flex flex-col justify-center  items-center">
-
-            <div class="  md:w-6/12 md:p-8 p-2 rounded-md gap-4">
-                <full-calendar [options]="calendarOptions" *ngIf="showCalendar" class="bg-white"></full-calendar>
-            </div>
-        
-        <div class="grid grid-cols-3 gap-3">
-        
-            <h1 class="text-white"> <img src="./../../../../../assets/WhatsApp Image 2024-05-02 at 15.16.11_3d15a527.jpg" alt=""> Present</h1>
-            <h1 class="text-white"> <img src="./../../../../../assets/WhatsApp Image 2024-05-02 at 15.16.43_ba773683.jpg" alt=""> Late </h1>
-            <h1 class="text-white"> <img src="./../../../../../assets/WhatsApp Image 2024-05-02 at 15.17.31_07f16556.jpg" alt=""> Leave</h1>
+<div class="min-h-screen p-4 md:p-8 space-y-8 animate-fade-in flex flex-col items-center">
+  <!-- Calendar View Panel -->
+  <div class="glass-panel p-6 md:p-8 rounded-3xl border border-white/10 shadow-2xl space-y-6 max-w-4xl w-full">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+          <mat-icon fontIcon="history"></mat-icon>
         </div>
-            
-        
-        
+        <div>
+          <h1 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">Employee Attendance Log</h1>
+          <p class="text-xs text-gray-400">Monthly check-in timestamps &amp; records</p>
         </div>
-        
+      </div>
+
+      <div class="flex items-center gap-2.5 text-xs font-semibold">
+        <span class="glass-badge bg-emerald-500/20 text-emerald-300 border-emerald-500/30">Present</span>
+        <span class="glass-badge bg-amber-500/20 text-amber-300 border-amber-500/30">Late</span>
+        <span class="glass-badge bg-rose-500/20 text-rose-300 border-rose-500/30">Leave</span>
+      </div>
     </div>
 
-    <div>
-
-        <app-table-list
-        [tableData]="attendanceData"
-        ></app-table-list>
+    <!-- Calendar Container -->
+    <div *ngIf="showCalendar; else loadingAttendanceSkeleton" class="glass-card p-4 md:p-6 border border-white/10 rounded-2xl bg-gray-950/60 overflow-hidden max-w-3xl mx-auto shadow-inner">
+      <full-calendar [options]="calendarOptions" class="text-white text-xs"></full-calendar>
     </div>
+
+    <!-- Loading Skeleton -->
+    <ng-template #loadingAttendanceSkeleton>
+      <div class="glass-card p-8 min-h-[350px] max-w-3xl mx-auto flex flex-col items-center justify-center space-y-4 animate-pulse border border-white/5">
+        <div class="w-10 h-10 rounded-full border-4 border-indigo-500/30 border-t-indigo-500 animate-spin"></div>
+        <div class="h-3 w-36 bg-white/10 rounded-full"></div>
+        <div class="h-2 w-24 bg-white/5 rounded-full"></div>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Attendance Table Section -->
+  <div class="glass-panel p-6 rounded-3xl border border-white/10 shadow-2xl space-y-4 max-w-4xl w-full">
+    <h2 class="font-bold text-white text-lg tracking-wide border-b border-white/10 pb-3 flex items-center gap-2">
+      <mat-icon class="text-indigo-400" fontIcon="table_view"></mat-icon>
+      <span>Attendance Log Records</span>
+    </h2>
+
+    <app-table-list [tableData]="attendanceData"></app-table-list>
+  </div>
 </div>

@@ -1,88 +1,83 @@
-<!-- notifications.component.html -->
-<div class="min-w-full min-h-full bg-gray-900 pb-5">
-<div class="bg-gray-900 max-w-screen m-0  md:p-4 gap-9 grid-flow-row">
-    <h1 class="font-kanit text-3xl text-white font-bold mb-4">Create a New Event:</h1>
-    <div class="form-container grid grid-cols-2  gap-4">
-        <form [formGroup]="eventForm" (ngSubmit)="createEvent()" class="grid grid-cols-1 md:grid-cols-2 px-1 gap-5">
-            <div class="">
-                <label for="title" class="block text-sm font-medium text-gray-200 mb-2">Title:</label>
-                <input type="text" id="title" formControlName="title" class="input-field bg-gray-700 text-white" placeholder="Event Title">
-                <div *ngIf="eventForm.get('title')?.hasError('required') && eventForm.get('title')?.touched" class="text-red-500">*Title is required</div>
-                <div *ngIf="eventForm.get('title')?.hasError('minlength') && eventForm.get('title')?.touched" class="text-red-500">*Title must be at least 4 characters long</div>
-            </div>
-
-            <div>
-                <label for="eventDate" class="block mt-2 text-sm font-medium text-gray-200 mb-2">Event Date:</label>
-                <!-- <input type="date" id="eventDate" formControlName="eventDate" class="input-field bg-gray-700 text-white" placeholder="Select Event Date">
-                <div *ngIf="eventForm.get('eventDate')?.hasError('required') && eventForm.get('eventDate')?.touched" class="text-red-500">*Event Date is required</div> -->
-                <div class="mt-4 md:mt-0 grid md:place-items-center">
-                    <mat-form-field appearance="fill">
-                      <mat-label class="text-white">Enter a date range</mat-label>
-                      <mat-date-range-input [rangePicker]="picker" formGroupName="range">
-                        <input matStartDate formControlName="start" placeholder="Start date" id="start" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-105">
-                        <input matEndDate formControlName="end" placeholder="End date" id="end" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:scale-105">
-                      </mat-date-range-input>
-                      <mat-hint class="text-white">MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-date-range-picker #picker></mat-date-range-picker>
-                    </mat-form-field>
-                  
-                    <div *ngIf="eventForm.get('range.start')?.hasError('required')&&eventForm.get('range.start')?.touched" class="text-red-500">please select a date or multiple dates</div>
-                  </div>
-                  
-            
-            <!-- <app-datepicker (getDates)="handleDateSelection($event)"></app-datepicker> -->
-            </div>
-
-            <div>
-                <label for="description" class="block mt-2 text-sm font-medium text-gray-200 mb-2">Description:</label>
-                <textarea id="description" formControlName="description" rows="3" class="input-field bg-gray-700 text-white" placeholder="Event Description"></textarea>
-                <div *ngIf="eventForm.get('description')?.hasError('required') && eventForm.get('description')?.touched" class="text-red-500">*Description is required</div>
-                <div *ngIf="eventForm.get('description')?.hasError('minlength') && eventForm.get('description')?.touched" class="text-red-500">*Description must be at least 10 characters long</div>
-            </div>
-
-            <div class="flex flex-col">
-                <label for="attachments" class="text-white">Attachments:</label>
-                <input type="file" id="attachments" (change)="onFileSelection($event)" class="bg-gray-700 text-white p-2 rounded-md my-1 transition duration-300 ease-in-out transform hover:">
-              </div>
-          
-
-
-            <div>
-                <label for="target" class="block mt-2 text-sm font-medium text-gray-200 mb-2">Target Audience:</label>
-                <select id="target" formControlName="target" class="select-field bg-gray-700 text-gray-200">
-                    <option value="" disabled selected>Select Target Audience</option>
-                    <option *ngFor="let targetItem of target" [value]="targetItem.value">{{ targetItem.name | uppercase }}</option>
-                </select>
-                <div *ngIf="eventForm.get('target')?.hasError('required') && eventForm.get('target')?.touched" class="text-red-500">Target Audience is required</div>
-            </div>
-
-            <div>
-                <label for="eventType" class="block mt-2 text-sm font-medium text-gray-200 mb-2">Event Priority:</label>
-                <select id="eventType" formControlName="eventType" class="select-field bg-gray-700 text-gray-200">
-                    <option value="" disabled selected>Select Event Priority</option>
-                    <option  value="high">high Priority</option>
-                    <option  value="medium">Medium Priority</option>
-                    <option  value="low">Low Priority</option>
-                </select>
-                <div *ngIf="eventForm.get('eventType')?.hasError('required') && eventForm.get('eventType')?.touched" class="text-red-500">Target Audience is required</div>
-            </div>
-
-            <div class=" ">
-                <label for="" class="block mt-2 text-sm font-medium text-gray-200 mb-2">recipients:</label>
-                <app-multiselect [apiUrl]="api" (selectedOption)="handleSelectedDepartment($event)" class="text-gray-400"></app-multiselect>
-
-
-  
-     
-            </div>
-            <div class="self-center">
-                <button type="submit" [disabled]="eventForm.invalid" class="btn-primary mt-7 w-44">Create Event</button>
-            </div>
-        </form>
+<div class="min-w-full min-h-full p-4 md:p-8 space-y-8 animate-fade-in">
+  <!-- Event Creation Glass Panel -->
+  <div *ngIf="eventForm" class="glass-panel p-6 md:p-8 rounded-3xl border border-white/10 shadow-2xl">
+    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+        <mat-icon fontIcon="add_alert"></mat-icon>
+      </div>
+      <div>
+        <h1 class="text-2xl font-extrabold text-white tracking-tight">Create New Event / Announcement</h1>
+        <p class="text-xs text-gray-400">Broadcast notifications to departments and employees</p>
+      </div>
     </div>
-</div>
 
-<app-notification-list></app-notification-list>
+    <form [formGroup]="eventForm" (ngSubmit)="createEvent()" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="space-y-4">
+        <div>
+          <label for="title" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Event Title</label>
+          <input type="text" id="title" formControlName="title" class="w-full px-4 py-3 glass-input text-sm" placeholder="e.g. Q3 All-Hands Meeting">
+          <div *ngIf="eventForm.get('title')?.hasError('required') && eventForm.get('title')?.touched" class="text-rose-400 text-xs mt-1">* Title is required</div>
+          <div *ngIf="eventForm.get('title')?.hasError('minlength') && eventForm.get('title')?.touched" class="text-rose-400 text-xs mt-1">* Min length is 4 characters</div>
+        </div>
 
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Date Range</label>
+          <div class="glass-input p-2 flex items-center">
+            <mat-date-range-input [rangePicker]="picker" formGroupName="range" class="w-full text-white text-xs">
+              <input matStartDate formControlName="start" placeholder="Start date" id="start" class="bg-transparent text-white focus:outline-none w-1/2">
+              <input matEndDate formControlName="end" placeholder="End date" id="end" class="bg-transparent text-white focus:outline-none w-1/2">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker" class="text-gray-400"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </div>
+          <div *ngIf="eventForm.get('range.start')?.hasError('required') && eventForm.get('range.start')?.touched" class="text-rose-400 text-xs mt-1">* Please select date range</div>
+        </div>
+
+        <div>
+          <label for="description" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Description</label>
+          <textarea id="description" formControlName="description" rows="3" class="w-full px-4 py-3 glass-input text-sm" placeholder="Event Details & Agenda..."></textarea>
+          <div *ngIf="eventForm.get('description')?.hasError('required') && eventForm.get('description')?.touched" class="text-rose-400 text-xs mt-1">* Description is required</div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="eventType" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Event Priority</label>
+          <select id="eventType" formControlName="eventType" class="w-full px-4 py-3 glass-input text-sm bg-gray-900 text-white">
+            <option value="" disabled selected>Select Priority</option>
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="target" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Target Audience</label>
+          <select id="target" formControlName="target" class="w-full px-4 py-3 glass-input text-sm bg-gray-900 text-white">
+            <option value="" disabled selected>Select Target Audience</option>
+            <option *ngFor="let targetItem of target" [value]="targetItem.value">{{ targetItem.name | uppercase }}</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="attachments" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Attachments</label>
+          <input type="file" id="attachments" (change)="onFileSelection($event)" class="w-full text-xs text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-500/20 file:text-indigo-300 hover:file:bg-indigo-500/30 glass-input cursor-pointer">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-1.5">Department Recipients</label>
+          <app-multiselect [apiUrl]="api" (selectedOption)="handleSelectedDepartment($event)"></app-multiselect>
+        </div>
+
+        <div class="pt-4 flex justify-end">
+          <button type="submit" [disabled]="eventForm.invalid" class="glass-button py-3 px-8 text-sm">
+            Publish Event &rarr;
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Notification Feed List Component -->
+  <app-notification-list></app-notification-list>
 </div>

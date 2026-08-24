@@ -1,75 +1,69 @@
-
-<div class="min-h-full w-full bg-gray-900 p-8">
-    <div class="text-white text-xl mb-4">LEAVE REQUESTS:</div>
-
-    <ng-container *ngIf="leaveRequests.length === 0">
-        <div class="flex justify-center items-center h-full md:text-xl">
-          <p class="text-red-900">*No leave requests found at the Moment.</p>
-        </div>
-      </ng-container>
-      
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div *ngFor="let request of leaveRequests"   class="card-container bg-gray-800 h-[200px] sm:overflow-hidden overflow-scroll sm:h-[300px]">
-            <div  class="card rounded-lg shadow-md overflow-hidden bg-gray-800" [class.flipped]="request.expanded" (click)="toggleExpand(request)">
-                <div class="card__side card__side--front bg-gray-800 ">
-
-                    <!-- Front side content -->
-                    <div class="flex items-center flex-col gap-4 p-4 cursor-pointer">
-                        <img *ngIf="request.photo" [src]="request.photo" alt="" class="w-20 h-20 object-cover rounded-full mr-4">
-                        <div class="flex flex-col text-left gap-0">
-                            <h2 class="text-xl font-semibold text-gray-200">AUTHOR : {{ request.userName | uppercase }} </h2>
-                            <h3 class="text-lg font-medium text-gray-400"> TITLE : {{ request.title | uppercase }}</h3>
-                            <div class="flex flex-col items-center text-sm text-gray-500 justify-around w-full">
-                                <h4 class="mr-2"> STATUS : <span [ngStyle]="getStatusColor(request.reviewStatus)">{{ request.reviewStatus | uppercase }}</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card__side card__side--back ">
-                    <!-- Back side content -->
-                    <div class="p-4 gap-4 overflow-hidden transition-max-h duration-300 ease-in-out" [class.max-h-0]="!request.expanded">
-                        <div [hidden]="!request.expanded">
-
-                            <div class="bg-gray-900 p-4 mt-4 rounded-lg">
-                                <p class="text-lg font-semibold text-gray-300 mb-2">Description:</p>
-                                <p class="text-gray-400">{{ request.description }}</p>
-                            </div>
-                            
-                            <div class="bg-gray-900 p-4 rounded-lg mt-4 ">
-                                <p class="text-lg font-semibold text-gray-300 mb-2">Dates:</p>
-                                <ul class="list-disc pl-4" *ngFor="let date of request.requestedDates">
-                                    <li
-                                     class="text-gray-400 mt-2 "
-                                     *ngIf="date"
-                                     >
-                                     <span>
-                                         {{date |date:'medium'}}
-                                     </span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div
-                            *ngIf="request.attachment"
-                             class="bg-gray-900 p-4 mt-4 rounded-lg">
-                                <p class="text-lg font-semibold text-gray-400 mb-2">Attachment:</p>
-                                <img class="object-cover lg:max-h-[400px] lg:max-w-[400px] mb-2" [src]="request.attachment" alt="">                                
-                            </div>
-                            
-                                <div class="flex justify-center gap-4 mt-5">
-                                    <button
-                                    (click)="onDecline(request._Id)"
-                                     class="bg-red-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out">Decline</button>
-                                    <button
-                                    (click)="onApprove(request._id)"
-                                     class="bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out">Approve</button>
-                                </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="min-h-screen p-4 md:p-8 space-y-6 animate-fade-in">
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
+    <div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Leave Approvals &amp; Requests</h1>
+      <p class="text-xs md:text-sm text-gray-400 mt-1">Review, approve, or decline employee time-off requests</p>
     </div>
+  </div>
+
+  <!-- Leave Requests Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6" *ngIf="leaveRequests && leaveRequests.length > 0; else noData">
+    <div *ngFor="let request of leaveRequests" (click)="toggleExpand(request)" class="glass-card glass-card-hover p-6 border border-white/10 cursor-pointer space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3.5">
+          <img *ngIf="request.photo" [src]="request.photo" alt="Author" class="w-12 h-12 rounded-full object-cover border border-white/20">
+          <div *ngIf="!request.photo" class="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-300 font-bold">
+            {{ request.userName?.substring(0,2) | uppercase }}
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-base">{{ request.title | uppercase }}</h3>
+            <p class="text-xs text-gray-400">Applicant: {{ request.userName }}</p>
+          </div>
+        </div>
+
+        <span class="glass-badge uppercase font-bold text-[10px]" [ngStyle]="getStatusColor(request.reviewStatus)">
+          {{ request.reviewStatus }}
+        </span>
+      </div>
+
+      <!-- Expanded Details -->
+      <div *ngIf="request.expanded" class="pt-3 border-t border-white/10 space-y-4 text-xs animate-fade-in">
+        <div class="p-4 rounded-2xl bg-gray-950/40 border border-white/5 space-y-1">
+          <span class="text-gray-400 font-bold uppercase text-[10px] tracking-wider block">Description</span>
+          <p class="text-gray-200 leading-relaxed">{{ request.description }}</p>
+        </div>
+
+        <div>
+          <span class="text-gray-400 font-bold uppercase text-[10px] tracking-wider block mb-1">Requested Dates</span>
+          <ul class="list-disc pl-4 text-gray-300 space-y-1">
+            <li *ngFor="let date of request.requestedDates">{{ date | date:'mediumDate' }}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="request.attachment">
+          <span class="text-gray-400 font-bold uppercase text-[10px] tracking-wider block mb-1">Attachment</span>
+          <img [src]="request.attachment" alt="Attachment" class="max-h-56 rounded-2xl object-cover border border-white/10 shadow-lg">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center justify-end gap-3 pt-2">
+          <button (click)="onDecline(request._Id); $event.stopPropagation()" class="px-5 py-2 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-300 hover:bg-rose-500/30 text-xs font-bold transition-all">
+            Decline
+          </button>
+          <button (click)="onApprove(request._id); $event.stopPropagation()" class="glass-button px-6 py-2 text-xs">
+            Approve Request
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="glass-card p-12 text-center text-gray-400 space-y-2">
+      <mat-icon class="text-4xl text-gray-500">event_busy</mat-icon>
+      <p class="font-bold text-base text-gray-200">No Leave Requests Found</p>
+      <p class="text-xs text-gray-500">There are currently no pending leave applications to review.</p>
+    </div>
+  </ng-template>
 </div>

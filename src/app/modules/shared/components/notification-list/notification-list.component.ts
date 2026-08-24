@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiutitilityService } from 'src/app/modules/departmenthead/services/apiUtitility.service';
 
 @Component({
@@ -8,32 +8,30 @@ import { ApiutitilityService } from 'src/app/modules/departmenthead/services/api
   styleUrls: ['./notification-list.component.css']
 })
 export class NotificationListComponent implements OnInit {
-  upcomingEvents:any[]=[]
-  allEvents :any[]=[]
+  upcomingEvents: any[] = [];
+  allEvents: any[] = [];
+  loaded: boolean = false;
 
   constructor(
     private api: ApiutitilityService,
-    private route : ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router
-    ) {}
+  ) {}
 
   ngOnInit(): void { 
     const currentUrl = this.router.url;
-    // console.log('Current URL:', currentUrl);
-    const urlParts = currentUrl.split('/')
+    const urlParts = currentUrl.split('/');
     
     this.api.getNotificationList(urlParts[1]).subscribe({
-      next:(res:any)=>{
-        console.log(res,'juju');
-        // console.log(res.upcomingNotifications);
-        this.allEvents = [...res.previousOrAllNotifications]
-        this.upcomingEvents = [...res.upcomingNotifications]
-        
-
+      next: (res: any) => {
+        this.allEvents = [...res.previousOrAllNotifications];
+        this.upcomingEvents = [...res.upcomingNotifications];
+        this.loaded = true;
       },
-      error:(err)=>{
-
+      error: (err) => {
+        console.error(err);
+        this.loaded = true;
       }
-    })
+    });
   }  
 }

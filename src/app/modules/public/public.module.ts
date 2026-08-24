@@ -16,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { companyComponent } from '../company/company.component';
 import { CompanyModule } from '../company/company.module';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-VerificationOtpComponent
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     LandingpageComponent,
@@ -37,8 +38,7 @@ VerificationOtpComponent
     PublicRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // CompanyModule
-
+    MatIconModule,
   ],
   exports: [LandingpageComponent,NotfoundComponent,FeaturespageComponent] 
 
